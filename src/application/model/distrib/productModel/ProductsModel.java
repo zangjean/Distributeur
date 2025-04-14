@@ -1,9 +1,10 @@
-package main.java.editormvc.model.productModel;
+package application.model.distrib.productModel;
 
 import application.controller.distrib.ProductController;
-import main.java.editormvc.model.productModel.product.Product;
-import main.java.editormvc.model.productModel.product.beverage.sugar.all.Coffee;
-import main.java.editormvc.model.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
+import application.model.distrib.productModel.product.Product;
+import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
+import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
+
 
 import java.util.ArrayList;
 
@@ -97,7 +98,7 @@ public class ProductsModel {
 
     public void initAllHotChocolate(){
         //---------HOT_CHOCOLATE
-        HotChocolate hotChocolate;
+        HotChocolate hotChocolate = new HotChocolate("");
 
     }
 }

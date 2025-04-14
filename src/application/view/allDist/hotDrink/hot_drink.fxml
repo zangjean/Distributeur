@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.distrib.Hot_drinkController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.distrib.HotDrinkController">
    <center>
       <VBox alignment="CENTER" prefHeight="761.0" prefWidth="603.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,7 +24,7 @@
                                  <children>
                                     <ImageView fitHeight="383.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../ressources/images/cafe-en-grains.jpg" />
+                                          <Image url="@../../../ressources/images/cafe-en-grains.jpg" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -42,7 +42,7 @@
                                  <children>
                                     <ImageView fitHeight="266.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../ressources/images/cappu.png" />
+                                          <Image url="@../../../ressources/images/cappu.png" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="80.0" prefWidth="121.0">
@@ -72,7 +72,7 @@
                                  <children>
                                     <ImageView fitHeight="267.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../ressources/images/chocolat.png" />
+                                          <Image url="@../../../ressources/images/chocolat.png" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -90,7 +90,7 @@
                                  <children>
                                     <ImageView fitHeight="248.0" fitWidth="287.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../ressources/images/tea.png" />
+                                          <Image url="@../../../ressources/images/tea.png" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -108,7 +108,7 @@
                                  <children>
                                     <ImageView fitHeight="240.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../ressources/images/soupe.png" />
+                                          <Image url="@../../../ressources/images/soupe.png" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -130,6 +130,6 @@
       </VBox>
    </center>
    <top>
-      <fx:include source="../menuBar.fxml"/>
+      <fx:include source="../../menuBar.fxml"/>
    </top>
 </BorderPane>

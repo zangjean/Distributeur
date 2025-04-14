@@ -1,6 +1,7 @@
-package main.java.editormvc.model.productModel.product.beverage.sugar;
+package application.model.distrib.productModel.product.beverage.sugar;
 
-import main.java.editormvc.model.productModel.product.beverage.Beverage;
+
+import application.model.distrib.productModel.product.beverage.Beverage;
 
 public abstract class CanAddSugar extends Beverage {
 

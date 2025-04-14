@@ -1,6 +1,7 @@
-package main.java.editormvc.model.productModel.product.beverage;
+package application.model.distrib.productModel.product.beverage;
 
-import main.java.editormvc.model.productModel.product.Product;
+
+import application.model.distrib.productModel.product.Product;
 
 import java.util.HashMap;
 import java.util.Map;

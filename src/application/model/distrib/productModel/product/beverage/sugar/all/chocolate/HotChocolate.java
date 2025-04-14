@@ -1,10 +1,8 @@
 package application.model.distrib.productModel.product.beverage.sugar.all.chocolate;
 
-import main.java.editormvc.model.productModel.product.NeedPreparation;
-import main.java.editormvc.model.productModel.product.beverage.sugar.CanAddSugar;
-import main.java.editormvc.model.productModel.product.beverage.sugar.all.chocolate.Aroma;
+import application.model.distrib.productModel.product.NeedPreparation;
+import application.model.distrib.productModel.product.beverage.sugar.CanAddSugar;
 import java.util.ArrayList;
-import main.java.editormvc.model.productModel.product.beverage.sugar.all.chocolate.Toping;
 
 public class HotChocolate extends CanAddSugar implements NeedPreparation {
     //on peut choisir un seul arome mais plusieurs toppings

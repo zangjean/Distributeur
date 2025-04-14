@@ -1,9 +1,8 @@
-package main.java.editormvc.model.productModel.product.beverage.sugar.all;
+package application.model.distrib.productModel.product.beverage.sugar.all;
 
-import main.java.editormvc.model.productModel.product.NeedPreparation;
-import main.java.editormvc.model.productModel.product.beverage.sugar.CanAddSugar;
+import application.model.distrib.productModel.product.NeedPreparation;
+import application.model.distrib.productModel.product.beverage.sugar.CanAddSugar;
 
-import java.util.Map;
 
 public class Coffee extends CanAddSugar implements NeedPreparation {
 

@@ -1,4 +1,4 @@
-package main.java.editormvc.model.productModel.product;
+package application.model.distrib.productModel.product;
 
 public interface NeedPreparation {
 

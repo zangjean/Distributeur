@@ -1,4 +1,4 @@
-package main.java.editormvc.model.productModel.product;
+package application.model.distrib.productModel.product;
 
 public enum Nutriscore {
     A,B,C,D,E

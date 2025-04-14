@@ -1,8 +1,10 @@
 package application.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,9 +16,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class menuBarController {
+    @FXML
     public Label fx_id_label_hello;
+    @FXML
     public ImageView fx_id_account;
+    @FXML
     public BorderPane fx_id_header;
+    @FXML
+    public Button fx_id_acceuilButton;
 
     @FXML
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
@@ -49,5 +56,24 @@ public class menuBarController {
 
 
 
+    }
+
+    @FXML
+    public void onActionAcceuil(ActionEvent actionEvent) {
+        try {
+            // Vérifie si la page actuelle est différente de la page d'accueil
+            Scene currentScene = ((Button) actionEvent.getSource()).getScene();
+            String currentFXML = currentScene.getRoot().getClass().getSimpleName();
+
+            if (!"homePage.fxml".equals(currentFXML)) {  // Remplacez "AcceuilView.fxml" par le nom de votre fichier FXML de la page d'accueil
+                // Chargement de la page d'accueil
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"));
+                BorderPane acceuilView = loader.load();
+
+                currentScene.setRoot(acceuilView);  // Remplace la scène actuelle par la page d'accueil
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

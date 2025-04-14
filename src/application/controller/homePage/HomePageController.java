@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
@@ -19,38 +16,31 @@ public class HomePageController {
     private CreateOrConnexionController createOrConnexionController;
 
 
-
-
+    @FXML
     public void on_action_hot_drink(ActionEvent actionEvent) throws IOException {
+        try {
+            // Obtenir le noeud source de l'événement (le bouton) et la scène actuelle
+            Node source = (Node) actionEvent.getSource();
+            Scene currentScene = source.getScene();
 
-        int width = 800; int height = 850;
-        //Scene scene = new Scene(createOrConnexionView, width, height);
-        Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/allDist/hot_drink.fxml"))).load(), width, height);
-        Stage stage = new Stage();
+            // Charger la nouvelle vue (hot drink)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/allDist/hotDrink/hot_drink.fxml"));
+            BorderPane hotDrinkView = loader.load();
 
-        // Obtenir la scène actuelle et la fenêtre
-        Node source = (Node) actionEvent.getSource();
-        Stage currentStage = (Stage) source.getScene().getWindow();
-
-        // Configurer le stage comme modal
-        stage.initModality(Modality.APPLICATION_MODAL); // Empêche l'interaction avec d'autres fenêtres de l'application
-
-        stage.setResizable(false);
-        stage.setTitle(" HOT DRINK ");
-        stage.setScene(scene);
-        // Afficher la nouvelle fenêtre et attendre jusqu'à ce qu'elle soit fermée
-        stage.show();
-
-        // Fermer la fenêtre actuelle seulement après que la nouvelle ait été fermée
-        currentStage.close();
+            // Définir la nouvelle vue comme racine de la scène actuelle
+            currentScene.setRoot(hotDrinkView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    @FXML
     public void on_action_snacks(ActionEvent actionEvent) {
     }
-
+    @FXML
     public void on_action_pizzas(ActionEvent actionEvent) {
     }
-
+    @FXML
     public void on_action_cold_drink(ActionEvent actionEvent) {
     }
 }

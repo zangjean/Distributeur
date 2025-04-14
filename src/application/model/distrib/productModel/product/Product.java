@@ -1,4 +1,4 @@
-package main.java.editormvc.model.productModel.product;
+package application.model.distrib.productModel.product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
