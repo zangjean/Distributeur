@@ -10,23 +10,21 @@ public class UserManager {
 
     public UserManager() {
         this.all_users = new ArrayList<>();
-
         initAdmin_Jean();
 
     }
+
     private static final String USERS_FILE = "users.dat";
 
     public static void saveUsers(List<User> newUsers) {
-        List<User> existingUsers = loadUsers(); // Charger les utilisateurs existants
+        List<User> existingUsers = loadUsers();
 
-        // Ajouter uniquement les nouveaux utilisateurs qui n'existent pas déjà
         for (User newUser : newUsers) {
             if (!existingUsers.contains(newUser)) {
                 existingUsers.add(newUser);
             }
         }
 
-        // Sauvegarder la liste mise à jour
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USERS_FILE))) {
             oos.writeObject(existingUsers);
         } catch (IOException e) {

@@ -1,19 +1,16 @@
 package application;
 
-import application.model.connexion.Connexion;
-import application.model.user.User;
-import application.model.user.UserManager;
+import application.controller.distrib.ProductController;
+import application.model.distrib.panier.Panier;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static application.model.user.UserManager.*;
-
 public class Main extends Application {
+    public static final ProductController productController = new ProductController();
+    public static final Panier panier = new Panier();
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -44,10 +41,20 @@ public class Main extends Application {
 
         //Connexion connexion = new Connexion();
 
+
     }
 
     public static void main(String[] args) {
         launch();
     }
+
+    public static ProductController getProductController() {
+        return productController;
+    }
+
+    public static Panier getPanier() {
+        return panier;
+    }
+
 
 }

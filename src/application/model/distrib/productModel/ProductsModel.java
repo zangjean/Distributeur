@@ -12,7 +12,7 @@ public class ProductsModel {
 
     private ProductController productController;
 
-    private final ArrayList<Product> products;
+    private ArrayList<Product> products;
 
     public ProductsModel(ProductController controller){
         this.productController = controller;
@@ -45,6 +45,7 @@ public class ProductsModel {
 
         Coffee ristretto = new Coffee("Ristretto");
         ristretto.addOneQuantityPrice(20,0.40);
+        ristretto.addOneQuantityPrice(40,0.70);
         this.products.add(ristretto);
 
         Coffee lungo = new Coffee("Lungo");
@@ -100,5 +101,31 @@ public class ProductsModel {
         //---------HOT_CHOCOLATE
         HotChocolate hotChocolate = new HotChocolate("");
 
+    }
+
+    public ArrayList<Product> getProductsByName(String name){
+        ArrayList<Product> productsByName = new ArrayList<>();
+        for (Product product : products) {
+            if(product.getName().equals(name)){
+                productsByName.add(product);
+            }
+        }
+        return productsByName;
+    }
+
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product){
+        this.products.remove(product);
+    }
+
+    public ArrayList<Product> getAllProducts(){
+        return this.products;
+    }
+
+    public ProductController getProductController(String name){
+        return this.productController;
     }
 }

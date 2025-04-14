@@ -1,14 +1,19 @@
 package application.controller;
 
+import application.Main;
+import application.model.distrib.panier.Panier;
+import application.model.distrib.panier.ProductForPanier;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,6 +30,13 @@ public class menuBarController {
     @FXML
     public Button fx_id_acceuilButton;
 
+    private Panier panier;
+
+
+    @FXML
+    public void initialize() {
+        this.panier = Main.getPanier();
+    }
     @FXML
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
         StackPane stackPaneAccount = (StackPane) mouseEvent.getSource();
@@ -75,5 +87,53 @@ public class menuBarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onActionPanier(ActionEvent actionEvent) {
+        BorderPane borderPane = new BorderPane();
+        GridPane panierGrid = new GridPane();
+        panierGrid.setGridLinesVisible(true);
+        panierGrid.add(new Label(" Nom Produit "), 0, 0);
+        panierGrid.add(new Label(" Taille (ml) "), 1, 0);
+        panierGrid.add(new Label(" Prix (€) "), 2, 0);
+        panierGrid.add(new Label(" Quantite demandé "), 3, 0);
+        panierGrid.add(new Label(" Delete "), 4, 0);
+
+        int rowIndex = 1;
+        for (ProductForPanier productForPanier : this.panier.getProducts()) {
+            panierGrid.add(new Label(productForPanier.getNameProduct()+""), 0, rowIndex);
+            panierGrid.add(new Label(productForPanier.getQuantityML()+""),1,rowIndex);
+            panierGrid.add(new Label(productForPanier.getPrice()+""),2,rowIndex);
+            panierGrid.add(new Label(productForPanier.getAskingQuantity()+""),3,rowIndex);
+
+            rowIndex++;
+
+        }
+
+        borderPane.setCenter(panierGrid);
+
+        Button btnCancel = new Button("Cancel");
+        btnCancel.setOnAction(closeEvent -> {
+            // Ferme la fenêtre en cours
+            Stage stage = (Stage) btnCancel.getScene().getWindow();
+            stage.close();
+        });
+
+        borderPane.setBottom(btnCancel);
+        BorderPane.setAlignment(btnCancel, Pos.CENTER);
+
+        Stage newStage = new Stage();
+        newStage.setTitle(" Panier ");
+        Scene newScene = new Scene(borderPane, 400, 300);
+        newStage.setScene(newScene);
+        // Rendre la fenêtre modale
+        newStage.initModality(Modality.APPLICATION_MODAL);
+
+        // Définir la fenêtre principale comme propriétaire
+        newStage.initOwner(((Button) actionEvent.getSource()).getScene().getWindow());
+
+        // Afficher la nouvelle fenêtre
+        newStage.show();
+
     }
 }

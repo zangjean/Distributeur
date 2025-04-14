@@ -85,4 +85,8 @@ public abstract class Product {
         this.quantityPriceMap.remove(quantity);
         this.quantityPriceMap.put(quantity,newPrice);
     }
+
+    public Map<Integer, Double> getPriceMap(){
+        return this.quantityPriceMap;
+    }
 }
