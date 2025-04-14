@@ -6,12 +6,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
 public class HomePageController {
 
+    @FXML
+    public Button fx_id_button_BoissonsChaude;
+    @FXML
+    public Button fx_id_button_Snacks;
+    public Button fx_id_button_Pizzas;
+    public Button fx_id_button_BoissonsFroide;
     //HomePage homePageModel=new HomePage();
     private CreateOrConnexionController createOrConnexionController;
 

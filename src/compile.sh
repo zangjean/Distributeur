@@ -6,7 +6,8 @@
 ## On suppose que l'on se trouve dans le dossier contenant [...]/src
 # Chemin absolu du dossier contenant les fichiers sources
 # Exemple : SRC_DIR="/le/chemin/absolu/vers/POO-IHM2_CM_2025/src"
-SRC_DIR="/home/jean/Documents/S6/RE/POO/TP/EXO_PERSO/tp2/src" # à mettre à jour
+
+SRC_DIR="/home/jean/Documents/S6/RE/POO/PROJET/distrib/src" # à mettre à jour
 
 cd ${SRC_DIR}
 
@@ -29,6 +30,6 @@ done < tempo
 rm tempo
 
 # Mise à jour de la configuration
-echo "localRootDirectory=file://${SRC_DIR}/" > exo1/configuration/config.properties
+echo "localRootDirectory=file://${SRC_DIR}/" > application/configuration/config.properties
 
 

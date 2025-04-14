@@ -2,26 +2,13 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="application.controller.distrib.MenuHotDrinkController">
   <tabs>
-    <Tab text="CAFE EN GRAIN" />
-    <Tab text="CAPPUCCINO, LATTE" />
-      <Tab text="CHOCOLAT">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-      </Tab>
-      <Tab text="THE">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-      </Tab>
-      <Tab text="SOUPES">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-      </Tab>
+    <Tab fx:id="tab_cafe" text="CAFE EN GRAIN" />
+    <Tab fx:id="tab_cappu" text="CAPPUCCINO, LATTE" />
+      <Tab fx:id="tab_choco" text="CHOCOLAT" />
+      <Tab fx:id="tab_the" text="THE" />
+      <Tab fx:id="tab_soupes" text="SOUPES" />
   </tabs>
 </TabPane>
