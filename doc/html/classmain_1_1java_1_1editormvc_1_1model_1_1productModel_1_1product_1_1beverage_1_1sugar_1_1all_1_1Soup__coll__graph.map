@@ -1,0 +1,13 @@
+<map id="main.java.editormvc.model.productModel.product.beverage.sugar.all.Soup" name="main.java.editormvc.model.productModel.product.beverage.sugar.all.Soup">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1345,53,1620,93"/>
+<area shape="rect" id="Node000002" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1CanAddSugar.html" title=" " alt="" coords="985,5,1296,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1297,45,1345,51,1345,57,1297,50"/>
+<area shape="rect" id="Node000003" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1Beverage.html" title=" " alt="" coords="681,5,936,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="950,23,985,23,985,28,950,28"/>
+<area shape="rect" id="Node000004" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html" title=" " alt="" coords="377,5,632,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="645,23,681,23,681,28,645,28"/>
+<area shape="rect" id="Node000005" href="$enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Nutriscore.html" title=" " alt="" coords="5,5,260,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="274,23,377,23,377,28,274,28"/>
+<area shape="rect" id="Node000006" href="$interfacemain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1NeedPreparation.html" title=" " alt="" coords="1013,69,1268,109"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1282,80,1345,77,1345,82,1282,85"/>
+</map>

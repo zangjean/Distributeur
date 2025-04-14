@@ -1,0 +1,11 @@
+<map id="main.java.editormvc.model.productModel.product.beverage.sugar.all.Tea" name="main.java.editormvc.model.productModel.product.beverage.sugar.all.Tea">
+<area shape="rect" id="Node000001" title=" " alt="" coords="969,37,1235,77"/>
+<area shape="rect" id="Node000002" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1CanAddSugar.html" title=" " alt="" coords="611,5,921,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="935,39,969,42,969,47,935,44"/>
+<area shape="rect" id="Node000003" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1Beverage.html" title=" " alt="" coords="308,5,563,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="577,23,610,23,610,28,577,28"/>
+<area shape="rect" id="Node000004" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html" title=" " alt="" coords="5,5,260,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="274,23,308,23,308,28,274,28"/>
+<area shape="rect" id="Node000005" href="$interfacemain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1NeedPreparation.html" title=" " alt="" coords="639,69,893,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="907,73,969,67,969,73,907,79"/>
+</map>

@@ -1,0 +1,6 @@
+package main.java.editormvc.model.productModel.product.beverage.sugar.all.chocolate;
+
+public enum Toping {
+    //price : +0.10
+    NOISETTE,CHANTILLY,SPECULOS,OREO
+}

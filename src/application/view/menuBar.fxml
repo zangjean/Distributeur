@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane fx:id="fx_id_header" prefHeight="23.0" prefWidth="900.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.menuBarController">
+    <right>
+        <StackPane onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" onMousePressed="#onMousePressedAccount" prefHeight="96.0" prefWidth="64.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="fx_id_account" fitHeight="60.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../ressources/images/account.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+    </right>
+    <left>
+        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="67.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../ressources/images/univ.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+    </left>
+   <center>
+      <Label fx:id="fx_id_label_hello" text="Invité" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

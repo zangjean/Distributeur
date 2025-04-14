@@ -1,0 +1,19 @@
+<map id="main.java.editormvc.model.productModel.product.beverage.Beverage" name="main.java.editormvc.model.productModel.product.beverage.Beverage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="308,101,563,141"/>
+<area shape="rect" id="Node000003" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1Soda.html" title=" " alt="" coords="639,69,893,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="576,105,638,99,639,104,577,110"/>
+<area shape="rect" id="Node000004" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1CanAddSugar.html" title=" " alt="" coords="611,133,921,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="577,132,611,136,610,141,576,138"/>
+<area shape="rect" id="Node000002" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html" title=" " alt="" coords="5,101,260,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,119,308,119,308,124,274,124"/>
+<area shape="rect" id="Node000005" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Coffee.html" title=" " alt="" coords="982,5,1267,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="909,125,920,119,935,104,943,88,951,71,968,55,991,43,994,48,971,60,956,74,948,90,939,108,923,123,912,130"/>
+<area shape="rect" id="Node000006" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1HotWine.html" title=" " alt="" coords="975,69,1274,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="892,128,1012,107,1013,112,893,133"/>
+<area shape="rect" id="Node000007" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Soup.html" title=" " alt="" coords="987,133,1262,173"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="935,151,987,151,987,156,935,156"/>
+<area shape="rect" id="Node000008" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Tea.html" title=" " alt="" coords="992,197,1257,237"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="893,173,1013,195,1012,200,892,178"/>
+<area shape="rect" id="Node000009" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1HotChocolate.html" title=" " alt="" coords="969,262,1280,317"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="817,177,889,213,970,247,1009,259,1007,264,968,252,886,217,815,182"/>
+</map>
