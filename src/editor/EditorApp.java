@@ -14,7 +14,6 @@ public class EditorApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         EditorLoader editorLoader = new EditorLoader();
-
         primaryStage.setTitle("Editor Application");
         Scene scene = new Scene(editorLoader);
         primaryStage.setScene(scene);

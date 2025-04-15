@@ -56,12 +56,12 @@
           <VBox fx:id="leftSide" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
               <children>
                   <Button mnemonicParsing="false" text="Our vending machine" />
-                  <Button fx:id="btnTemplate" mnemonicParsing="false" onAction="#displayStage" text="Templates" />
-                  <Button mnemonicParsing="false" text="Hot drink" />
-                  <Button mnemonicParsing="false" text="Pizza" />
-                  <Button mnemonicParsing="false" text="Snacks" />
-                  <Button mnemonicParsing="false" text="Cold drink" />
-                  <Button mnemonicParsing="false" text="Personalisation" />
+                  <Button fx:id="btnTemplate" mnemonicParsing="false" onAction="#displayTemplate" text="Templates" />
+                  <Button fx:id="btnHotDrink" mnemonicParsing="false" text="Hot drink" onAction="#displayHotDrink"  />
+                  <Button fx:id="btnPizza" mnemonicParsing="false" text="Pizza" onAction="#displayPizza" />
+                  <Button fx:id="btnSnack" mnemonicParsing="false" text="Snack" onAction="#displaySnack" />
+                  <Button fx:id="btnColdDrink" mnemonicParsing="false" text="Cold drink" onAction="#displayColdDrink"  />
+                  <Button fx:id="btnPersonalisation" mnemonicParsing="false" text="Personalisation" onAction="#displayPersonalisation" />
 
               </children>
           </VBox>

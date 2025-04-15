@@ -1,0 +1,44 @@
+package editor.composants.templates.composants.hotdrink.controller;
+
+import editor.composants.templates.composants.hotdrink.model.ProductCard;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.awt.*;
+import java.util.Objects;
+
+public class ProductCardController {
+
+
+    @FXML
+    private ImageView imgView;
+
+    @FXML
+    private Label lbNom, lbPrix;
+
+    public ProductCardController(){
+
+    }
+
+//    @FXML
+//    public void initialize() {
+//        // Initialize the controller
+//        // You can set default values or perform any setup here
+//        // For example, you can set the default image and text for the labels
+//
+//    }
+
+    public void setProductCard(ProductCard productCard) {
+
+        lbNom.setText(productCard.getName());
+        lbPrix.setText(String.valueOf(productCard.getPrice()) + " €");
+
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(productCard.getImagePath())));
+
+        imgView.setImage(image);
+
+
+    }
+}

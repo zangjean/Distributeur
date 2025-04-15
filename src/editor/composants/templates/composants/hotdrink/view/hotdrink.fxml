@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.TilePane?>
+
+
+<fx:root fx:id="root" alignment="CENTER" hgap="10.0" minWidth="100.0" prefWidth="400.0" type="javafx.scene.layout.TilePane" vgap="10.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editor.composants.templates.composants.hotdrink.controller.HotDrinkController">
+
+</fx:root>
