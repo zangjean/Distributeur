@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,21 +15,33 @@
    <children>
       <StackPane fx:id="stackpane1" prefHeight="80.0" prefWidth="80.0">
          <children>
-            <ImageView fx:id="imgView1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/images/cafe.jpg" />
+               </image></ImageView>
          </children>
       </StackPane>
       <StackPane fx:id="stackpane2" prefHeight="80.0" prefWidth="80.0" GridPane.rowIndex="1">
          <children>
-            <ImageView fx:id="imgView2" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/images/snack.jpg" />
+               </image></ImageView>
          </children></StackPane>
       <StackPane fx:id="stackpane3" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="1">
          <children>
-            <ImageView fx:id="imgView3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView3" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/images/pizza.jpg" />
+               </image></ImageView>
          </children>
       </StackPane>
       <StackPane fx:id="stackpane4" prefHeight="80.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <ImageView fx:id="imgView4" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView4" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressources/images/coca.jpg" />
+               </image></ImageView>
          </children>
       </StackPane>
    </children>

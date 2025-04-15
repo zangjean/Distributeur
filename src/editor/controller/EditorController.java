@@ -44,10 +44,8 @@ public class EditorController{
         // unset border for the rightSide
         //rightSide.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
 
-        // setAction on the button btnTemplate
-        //btnTemplate.setOnAction(this::displayStage);
-
-
+        // set border for the leftSide
+        rightSide.setStyle("-fx-border-color: rose; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
 
     }
 
@@ -62,8 +60,6 @@ public class EditorController{
         newStage.setTitle("Test stage ");
         newStage.setScene(scene);
         newStage.show();
-
-
     }
 
 
