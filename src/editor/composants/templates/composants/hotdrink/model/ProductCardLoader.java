@@ -12,6 +12,8 @@ public class ProductCardLoader extends VBox {
     private ProductCardController controller;
 
     public ProductCardLoader() throws IOException {
+
+        // Load the FXML file and create the controller
         try {
             FXMLLoader loader = new FXMLLoader(ProductCardLoader.class.getResource("/editor/composants/templates/composants/hotdrink/view/productcard.fxml"));
             //loader.load();

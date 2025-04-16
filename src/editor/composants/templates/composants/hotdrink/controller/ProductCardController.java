@@ -33,9 +33,9 @@ public class ProductCardController {
     public void setProductCard(ProductCard productCard) {
 
         lbNom.setText(productCard.getName());
-        lbPrix.setText(String.valueOf(productCard.getPrice()) + " €");
+        lbPrix.setText(productCard.getPrice() + " €");
 
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(productCard.getImagePath())));
+        Image image = new Image(getClass().getResourceAsStream(productCard.getImagePath()));
 
         imgView.setImage(image);
 

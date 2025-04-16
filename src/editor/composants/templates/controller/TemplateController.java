@@ -44,7 +44,7 @@ public class TemplateController {
         // Set the scene and show the stage
         Scene scene = new Scene(hotDrinkLoader);
         newStage.setScene(scene);
-        newStage.showAndWait();
+        newStage.show();
 
     }
 

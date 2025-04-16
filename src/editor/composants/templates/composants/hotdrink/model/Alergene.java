@@ -7,5 +7,5 @@ public enum Alergene {
     EGGS,
     SOY,
     FISH,
-    SHELLFISH
+    SESAME, CELERY, MUSTARD, SULPHITES, LUPIN, PEANUTS, CORN, SHELLFISH
 }
