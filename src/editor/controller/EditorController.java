@@ -1,5 +1,6 @@
 package editor.controller;
 
+import editor.composants.hotdrink.model.HotDrinksLoader;
 import editor.composants.templates.model.TemplateLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,14 +10,15 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class EditorController{
 
 
-    Map<String, Stage> stageMaps = new HashMap<>();
 
     @FXML
     private Button btnTemplate, btnHotDrink, btnColdDrink, btnPersonalisation, btnPizza, btnSnack;
@@ -27,6 +29,7 @@ public class EditorController{
 
     @FXML
     private VBox leftSide;
+
 
     public EditorController()
     {
@@ -52,7 +55,6 @@ public class EditorController{
 
         // set border for the leftSide
         rightSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
-
 
     }
 
@@ -81,12 +83,39 @@ public class EditorController{
 
         newStage.setTitle("Test stage ");
         newStage.setScene(scene);
-        newStage.showAndWait();
+        newStage.show();
+
+        // add an listener to close the stage when the main stage is closed
+
+        currentStage.setOnCloseRequest(event1 -> {
+            newStage.close();
+        });
+
     }
 
     @FXML
-    private void displayHotDrink(ActionEvent event) {
+    private void displayHotDrink(ActionEvent event) throws IOException {
         System.out.println("Display Hot Drink");
+
+        // Get the current stage
+        Stage currentStage = (Stage) root.getScene().getWindow();
+        // Get the current stage's position
+        double x = currentStage.getX();
+        double y = currentStage.getY();
+        // Set the new stage's position to the left of the current stage
+
+        HotDrinksLoader hotDrinksLoader = new HotDrinksLoader();
+        // Create a new scene with the HotdrinkLoader as the root
+        Scene scene = new Scene(hotDrinksLoader);
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setX(x - 400);
+        newStage.setY(y);
+        newStage.setTitle("Hot Drink List");
+        newStage.setScene(scene);
+        newStage.show();
+
+
     }
 
     @FXML

@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class TemplateController {
 
@@ -27,7 +28,6 @@ public class TemplateController {
     public void initialize() {
 
 
-
     }
 
     @FXML
@@ -35,16 +35,16 @@ public class TemplateController {
     {
         System.out.println("Cafe clicked");
 
-        final Stage newStage = new Stage();
-        newStage.setTitle("Cafe");
+        final Stage cafeStage = new Stage();
+        cafeStage.setTitle("Cafe");
 
         HotDrinkLoader hotDrinkLoader = new HotDrinkLoader();
         hotDrinkLoader.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px; -fx-border-color: #000000; -fx-border-width: 2px;");
 
         // Set the scene and show the stage
         Scene scene = new Scene(hotDrinkLoader);
-        newStage.setScene(scene);
-        newStage.show();
+        cafeStage.setScene(scene);
+        cafeStage.show();
 
     }
 

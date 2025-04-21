@@ -39,6 +39,5 @@ public class ProductCardController {
 
         imgView.setImage(image);
 
-
     }
 }

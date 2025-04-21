@@ -15,10 +15,6 @@
       <HBox fx:id="pageBar" alignment="CENTER" fillHeight="false" prefHeight="50.0">
          <children>
             <Button fx:id="btnPre" mnemonicParsing="false" text="precedent" />
-<!--             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />-->
-
-<!--             <Button fx:id="btnAlerg" mnemonicParsing="false" text="Allergie" />-->
-
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
             <Button fx:id="btnSuiv" mnemonicParsing="false" text="suivant" />
          </children>

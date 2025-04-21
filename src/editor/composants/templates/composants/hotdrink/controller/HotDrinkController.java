@@ -19,8 +19,7 @@ public class HotDrinkController {
 //    private Button btnAlerg;
     @FXML
     private Button btnPre, btnSuiv;
-    @FXML
-    private HBox pageBar;
+
     @FXML
     private TilePane tilePane;
 
@@ -29,7 +28,7 @@ public class HotDrinkController {
 
     private final Set<ProductCard> productCards = new HashSet<>();
 
-    private final int ITEM_PAGE = 9;
+    private final int ITEM_PAGE = 6;
 
 
     private int currentPage = 0;
@@ -40,12 +39,11 @@ public class HotDrinkController {
 
     @FXML
     public void initialize() throws IOException {
-        // Initialize the controller
         // Initialize a liste of products
 
         // set the size of the tilePane
         tilePane.setPrefColumns(3);
-//        tilePane.setPrefRows(3);
+        tilePane.setPrefRows(2);
 
         loadProductCard(productCards);
 
@@ -65,17 +63,6 @@ public class HotDrinkController {
                 throw new RuntimeException(e);
             }
         });
-
-//        // btnAlerg to display the alergie
-//        btnAlerg.setOnAction(event -> {
-//            // Display the alergies of the first product
-//            if(!productCards.isEmpty()){
-//                ProductCard productCard = productCards.iterator().next();
-//                System.out.println("Alergies: " + productCard.AlergenToStringV1());
-//            }
-//        });
-
-
     }
 
     private void displayPage(int pageIndex) throws IOException {
@@ -150,58 +137,45 @@ public class HotDrinkController {
     }
 
     public void loadProductCard(Set<ProductCard> productCards) {
-        // Add each product to the list but unique
-        productCards.add(new ProductCard("Cafe Expresso", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Allongé ", 1.50, "/editor/composants/templates/ressources/images/coca.jpg"));
-        productCards.add(new ProductCard("Americano", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Coca sans sucre", 1.50, "/editor/composants/templates/ressources/images/coca.jpg"));
-        productCards.add(new ProductCard("Latte ", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Coco original", 1.50, "/editor/composants/templates/ressources/images/coca.jpg"));
-        productCards.add(new ProductCard("Café au lait", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Café crème", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Café noisette", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-        productCards.add(new ProductCard("Pizza Napolitaine", 1.50, "/editor/composants/templates/ressources/images/pizza.jpg"));
-        productCards.add(new ProductCard("Pizza Margherita", 1.50, "/editor/composants/templates/ressources/images/pizza.jpg"));
-        productCards.add(new ProductCard("Pizza Quattro Stagioni", 1.50, "/editor/composants/templates/ressources/images/pizza.jpg"));
-        productCards.add(new ProductCard("BimBim", 1.50, "/editor/composants/templates/ressources/images/snack.jpg"));
-        productCards.add(new ProductCard("Pizza dommage", 1.50, "/editor/composants/templates/ressources/images/pizza.jpg"));
+        // Add product cards to the set
+        productCards.addAll(Set.of(
+                new ProductCard("Basieu", 3.00, "/editor/composants/templates/ressources/images/hotdrink/basieu.jpg"),
+                new ProductCard("Cafe 3", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe3.jpg"),
+                new ProductCard("Cafe 5", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe5.jpg"),
+                new ProductCard("Cafe 6", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe6.jpg"),
+                new ProductCard("Cafe 7", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe7.jpg"),
+                new ProductCard("Cafe 8", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe8.jpg"),
+                new ProductCard("Cafe 11", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe11.jpg"),
+                new ProductCard("Cafe 12", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe12.jpg"),
+                new ProductCard("Cafe 13", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe13.jpg"),
+                new ProductCard("Cafe 14", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe14.jpg"),
+                new ProductCard("Cafe 15", 3.25, "/editor/composants/templates/ressources/images/hotdrink/cafe15.jpg"),
+                new ProductCard("Cafe au Creme", 3.50, "/editor/composants/templates/ressources/images/hotdrink/cafe_au_creme.jpg"),
+                new ProductCard("Cafe au Lait", 3.00, "/editor/composants/templates/ressources/images/hotdrink/cafe_au_lait.jpg"),
+                new ProductCard("Cafe Creeme", 3.50, "/editor/composants/templates/ressources/images/hotdrink/cafe_creeme.jpg"),
+                new ProductCard("Cafe Cremee", 3.50, "/editor/composants/templates/ressources/images/hotdrink/cafe_cremee.jpg"),
+                new ProductCard("Cafe Tiramisu", 3.75, "/editor/composants/templates/ressources/images/hotdrink/cafe_tiramisu.jpg"),
+                new ProductCard("Cafe Wisky", 4.00, "/editor/composants/templates/ressources/images/hotdrink/cafe_wisky.jpg"),
+                new ProductCard("Café2", 3.00, "/editor/composants/templates/ressources/images/hotdrink/café2.jpg"),
+                new ProductCard("Coldbrew", 3.50, "/editor/composants/templates/ressources/images/hotdrink/coldbrew.jpg"),
+                new ProductCard("Cortado", 3.00, "/editor/composants/templates/ressources/images/hotdrink/cortado.jpg"),
+                new ProductCard("Fin Coffee", 3.25, "/editor/composants/templates/ressources/images/hotdrink/fin_coffee.jpg"),
+                new ProductCard("Flat White", 3.00, "/editor/composants/templates/ressources/images/hotdrink/flatwhite.jpg"),
+                new ProductCard("Halloween Cafe", 3.75, "/editor/composants/templates/ressources/images/hotdrink/halloween_cafe.jpg"),
+                new ProductCard("Hot Chocolat", 2.50, "/editor/composants/templates/ressources/images/hotdrink/hotchocolat.jpg"),
+                new ProductCard("Hot Wine", 4.00, "/editor/composants/templates/ressources/images/hotdrink/hotwine.jpg"),
+                new ProductCard("Irish Café", 4.25, "/editor/composants/templates/ressources/images/hotdrink/irish_café.jpg"),
+                new ProductCard("Latte", 3.00, "/editor/composants/templates/ressources/images/hotdrink/latte.jpg"),
+                new ProductCard("Latte Macchiato", 3.50, "/editor/composants/templates/ressources/images/hotdrink/latte_machiato.jpg"),
+                new ProductCard("Macchiato", 3.25, "/editor/composants/templates/ressources/images/hotdrink/machiato.jpg"),
+                new ProductCard("Mocha", 3.50, "/editor/composants/templates/ressources/images/hotdrink/mocha.jpg"),
+                new ProductCard("Soupe", 2.75, "/editor/composants/templates/ressources/images/hotdrink/soupe.jpg"),
+                new ProductCard("Expresso", 2.50, "/editor/composants/templates/ressources/images/hotdrink/expresso.jpg")
+        ));
 
 
-        // add 12 more products with 4 different names and 4 images
-        for(int i = 0; i < 12; i++){
-            if(i % 4 == 0){
-                productCards.add(new ProductCard("Café au lait", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-            }
-            else if(i % 4 == 1){
-                productCards.add(new ProductCard("Café crème", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-            }
-            else if(i % 4 == 2){
-                productCards.add(new ProductCard("Café noisette", 1.50, "/editor/composants/templates/ressources/images/cafe.jpg"));
-            }
-            else{
-                productCards.add(new ProductCard("Pizza Napolitaine", 1.50, "/editor/composants/templates/ressources/images/pizza.jpg"));
-            }
-        }
 
-        // Add allergens to the product cards
-        for (ProductCard productCard : productCards) {
-            // Add allergens to the product card
-            productCard.addAlergie(Alergene.DAIRY);
-            productCard.addAlergie(Alergene.GLUTEN);
-            productCard.addAlergie(Alergene.NUTS);
-            productCard.addAlergie(Alergene.SHELLFISH);
-            productCard.addAlergie(Alergene.SOY);
-            productCard.addAlergie(Alergene.EGGS);
-            productCard.addAlergie(Alergene.FISH);
-            productCard.addAlergie(Alergene.SESAME);
-            productCard.addAlergie(Alergene.CELERY);
-            productCard.addAlergie(Alergene.MUSTARD);
-            productCard.addAlergie(Alergene.SULPHITES);
-            productCard.addAlergie(Alergene.LUPIN);
-            productCard.addAlergie(Alergene.PEANUTS);
-            productCard.addAlergie(Alergene.CORN);
 
-        }
 
 
     }

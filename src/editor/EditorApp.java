@@ -4,6 +4,7 @@ import editor.model.EditorLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class EditorApp extends Application {
 
@@ -18,6 +19,7 @@ public class EditorApp extends Application {
         Scene scene = new Scene(editorLoader);
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
 
