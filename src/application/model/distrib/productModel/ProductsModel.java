@@ -4,7 +4,8 @@ import application.controller.distrib.ProductController;
 import application.model.distrib.productModel.product.Product;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
 import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
-
+import application.model.distrib.productModel.product.food.Pizza;
+import application.model.distrib.productModel.product.food.Snacks;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,9 @@ public class ProductsModel {
 
     private void initAllProducts(){
         initAllCoffees();
-
+        initAllPizzas();
+        initAllSnacks();
     }
-
 
     public ProductController getProductController() {
         return productController;
@@ -101,6 +102,40 @@ public class ProductsModel {
         //---------HOT_CHOCOLATE
         HotChocolate hotChocolate = new HotChocolate("");
 
+    }
+
+    public void initAllPizzas(){
+        Pizza margherita = new Pizza("Margherita", 15);
+        margherita.addOneQuantityPrice(1, 5.00);
+        margherita.addOneQuantityPrice(2, 7.50);
+        this.products.add(margherita);
+
+        Pizza pepperoni = new Pizza("Pepperoni", 20);
+        pepperoni.addOneQuantityPrice(1, 6.00);
+        pepperoni.addOneQuantityPrice(2, 8.50);
+        this.products.add(pepperoni);
+
+        Pizza hawaiian = new Pizza("Hawaiian", 18);
+        hawaiian.addOneQuantityPrice(1, 6.50);
+        hawaiian.addOneQuantityPrice(2, 9.00);
+        this.products.add(hawaiian);
+    }
+
+    public void initAllSnacks(){
+        Snacks chips = new Snacks("Chips", 5);
+        chips.addOneQuantityPrice(1, 2.00);
+        chips.addOneQuantityPrice(2, 3.50);
+        this.products.add(chips);
+
+        Snacks nuts = new Snacks("Nuts", 5);
+        nuts.addOneQuantityPrice(1, 2.50);
+        nuts.addOneQuantityPrice(2, 4.00);
+        this.products.add(nuts);
+
+        Snacks cookies = new Snacks("Cookies", 10);
+        cookies.addOneQuantityPrice(1, 3.00);
+        cookies.addOneQuantityPrice(2, 5.00);
+        this.products.add(cookies);
     }
 
     public ArrayList<Product> getProductsByName(String name){

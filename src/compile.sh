@@ -9,21 +9,24 @@
 
 SRC_DIR="/home/jean/Documents/S6/RE/POO/PROJET/distrib/src" # à mettre à jour
 
+# Chemin vers le dossier lib du SDK JavaFX 24.0.1 sur Windows (mettre à jour selon votre installation)
+JAVA_FX_LIB_PATH="E:\openjfx-24.0.1_windows-x64_bin-sdk\javafx-sdk-24.0.1\lib"
+
 cd ${SRC_DIR}
 
 pwd
 
 find . -name '*.java' > tempo
 
-# Compilation des fichiers source
+# Compilation des fichiers source avec support JavaFX 24.0.1
 while read -r string; do
 		string_size=${#string}
 		string_without_leading_chars=${string:2:${string_size}}
 		set -x
 		
 		# Attention : la version de Java doit être au moins égale à 21.
-		# Pour supporter JavaFX, il est recommandé d'utiliser une version JavaFX SDK de Azul : https://www.azul.com/downloads/
-		javac -Xlint:all -Xdiags:verbose ${string_without_leading_chars}
+		# Pour supporter JavaFX 24.0.1, on ajoute le module-path et les modules nécessaires
+		javac --module-path "$JAVA_FX_LIB_PATH" --add-modules javafx.controls,javafx.fxml -Xlint:all -Xdiags:verbose ${string_without_leading_chars}
 		{ set +x; } &> /dev/null
 done < tempo
 
@@ -31,5 +34,3 @@ rm tempo
 
 # Mise à jour de la configuration
 echo "localRootDirectory=file://${SRC_DIR}/" > application/configuration/config.properties
-
-

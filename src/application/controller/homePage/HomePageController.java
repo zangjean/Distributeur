@@ -43,10 +43,34 @@ public class HomePageController {
 
     @FXML
     public void on_action_snacks(ActionEvent actionEvent) {
+        try {
+            Node source = (Node) actionEvent.getSource();
+            Scene currentScene = source.getScene();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/allDist/snack/snack.fxml"));
+            BorderPane snackView = loader.load();
+
+            currentScene.setRoot(snackView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     @FXML
     public void on_action_pizzas(ActionEvent actionEvent) {
+        try {
+            Node source = (Node) actionEvent.getSource();
+            Scene currentScene = source.getScene();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/allDist/pizza/pizza.fxml"));
+            BorderPane pizzaView = loader.load();
+
+            currentScene.setRoot(pizzaView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     @FXML
     public void on_action_cold_drink(ActionEvent actionEvent) {
     }
