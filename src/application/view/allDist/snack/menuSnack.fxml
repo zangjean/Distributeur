@@ -20,7 +20,8 @@
                   <BorderPane prefHeight="200.0" prefWidth="200.0" />
                </content>
             </Tab>
-            <Tab fx:id="tab_nuggets" text="NUGGETS">
+            <Tab fx:id="tab_chocolate" text="CHOCOLATE">
+
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>

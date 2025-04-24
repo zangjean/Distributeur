@@ -127,6 +127,26 @@ public class ProductsModel {
         chips.addOneQuantityPrice(2, 3.50);
         this.products.add(chips);
 
+        Snacks original = new Snacks("Original", 5);
+        original.addOneQuantityPrice(1, 2.00);
+        original.addOneQuantityPrice(2, 3.50);
+        this.products.add(original);
+
+        Snacks bbq = new Snacks("BBQ", 5);
+        bbq.addOneQuantityPrice(1, 2.00);
+        bbq.addOneQuantityPrice(2, 3.50);
+        this.products.add(bbq);
+
+        Snacks chicken = new Snacks("Chicken", 5);
+        chicken.addOneQuantityPrice(1, 2.00);
+        chicken.addOneQuantityPrice(2, 3.50);
+        this.products.add(chicken);
+
+        Snacks beef = new Snacks("Beef", 5);
+        beef.addOneQuantityPrice(1, 2.00);
+        beef.addOneQuantityPrice(2, 3.50);
+        this.products.add(beef);
+
         Snacks nuts = new Snacks("Nuts", 5);
         nuts.addOneQuantityPrice(1, 2.50);
         nuts.addOneQuantityPrice(2, 4.00);
@@ -137,6 +157,7 @@ public class ProductsModel {
         cookies.addOneQuantityPrice(2, 5.00);
         this.products.add(cookies);
     }
+
 
     public ArrayList<Product> getProductsByName(String name){
         ArrayList<Product> productsByName = new ArrayList<>();

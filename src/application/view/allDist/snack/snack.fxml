@@ -41,14 +41,14 @@
                                  <children>
                                     <ImageView fitHeight="266.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../ressources/images/nuggets.jpg" />
+                                          <Image url="@../../../ressources/images/chocolate.jpg" />
                                        </image>
                                     </ImageView>
                                     <StackPane prefHeight="80.0" prefWidth="121.0">
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="90.0" prefWidth="121.0">
                                              <children>
-                                                <Label text="Nuggets" />
+                                                <Label text="Chocolate" />
                                              </children>
                                           </VBox>
                                        </children>

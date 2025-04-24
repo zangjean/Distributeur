@@ -18,7 +18,7 @@ public class SnackController {
 
     @FXML
     public void onActionNuggets(ActionEvent actionEvent) {
-        loadMenuSnackView(actionEvent, "Nuggets");
+        loadMenuSnackView(actionEvent, "Chocolate");
     }
 
     @FXML
@@ -44,7 +44,7 @@ public class SnackController {
                         menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_chips);
                         break;
                     case "nuggets":
-                        menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_nuggets);
+                        menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_chocolate);
                         break;
                     case "sandwich":
                         menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_sandwich);

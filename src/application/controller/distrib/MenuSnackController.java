@@ -12,9 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -27,15 +30,9 @@ public class MenuSnackController {
     @FXML
     public Tab tab_chips;
     @FXML
-    public Tab tab_nuggets;
+    public Tab tab_chocolate;
     @FXML
     public Tab tab_sandwich;
-    @FXML
-    public GridPane grid_chips;
-    @FXML
-    public GridPane grid_nuggets;
-    @FXML
-    public GridPane grid_sandwich;
 
     private ProductController productController;
     private Panier panier;
@@ -45,32 +42,58 @@ public class MenuSnackController {
         this.productController = Main.getProductController();
         this.panier = Main.getPanier();
         initAllChips();
-        initAllNuggets();
+        initAllChocolate();
         initAllSandwich();
     }
+
 
     private void initAllChips() {
         FlowPane flowPane_chips = new FlowPane();
         flowPane_chips.setHgap(10);
         flowPane_chips.setVgap(10);
 
-        Button orderButton = new Button("Order");
-        orderButton.setOnAction(event -> openSelectSnackDialog("Chips", orderButton));
-        flowPane_chips.getChildren().add(orderButton);
+        String[] chipFlavors = {"Original", "BBQ", "Chicken", "Beef"};
+        for (String flavor : chipFlavors) {
+            Button flavorButton = new Button(flavor);
+            try {
+                // Load image with fallback for missing images
+                String imagePath = "../../ressources/images/chips/" + flavor.toLowerCase() + ".jpg";
+                java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
+                if (imageStream == null) {
+                    System.out.println("Image not found for flavor: " + flavor + " at path: " + imagePath);
+                } else {
+                    Image image = new Image(imageStream);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(40);
+                    imageView.setFitHeight(40);
+                    imageView.setPreserveRatio(true);
+                    flavorButton.setGraphic(imageView);
+                }
+            } catch (Exception e) {
+                System.out.println("Error loading image for flavor: " + flavor + " - " + e.getMessage());
+            }
+
+            flavorButton.setOnAction(event -> openSelectSnackDialog(flavor, flavorButton));
+            flowPane_chips.getChildren().add(flavorButton);
+        }
+
 
         this.tab_chips.setContent(flowPane_chips);
     }
 
-    private void initAllNuggets() {
-        FlowPane flowPane_nuggets = new FlowPane();
-        flowPane_nuggets.setHgap(10);
-        flowPane_nuggets.setVgap(10);
+
+
+
+    private void initAllChocolate() {
+        FlowPane flowPane_chocolate = new FlowPane();
+        flowPane_chocolate.setHgap(10);
+        flowPane_chocolate.setVgap(10);
 
         Button orderButton = new Button("Order");
-        orderButton.setOnAction(event -> openSelectSnackDialog("Nuggets", orderButton));
-        flowPane_nuggets.getChildren().add(orderButton);
+        orderButton.setOnAction(event -> openSelectSnackDialog("Chocolate", orderButton));
+        flowPane_chocolate.getChildren().add(orderButton);
 
-        this.tab_nuggets.setContent(flowPane_nuggets);
+        this.tab_chocolate.setContent(flowPane_chocolate);
     }
 
     private void initAllSandwich() {
@@ -111,9 +134,9 @@ public class MenuSnackController {
         Map<Integer, Double> prices = snack.getQuantityPriceMap();
 
         // Define fixed sizes and their labels
-        String[] sizeLabels = {"Small", "Large", "Extra Large"};
-        int[] sizeValues = {1, 2, 3}; // example size codes for snacks
-        double[] fixedPrices = {3.0, 5.0, 7.0}; // fixed prices for sizes
+        String[] sizeLabels = {"Small", "Large"};
+        int[] sizeValues = {1, 2}; // example size codes for snacks
+        double[] fixedPrices = {3.0, 5.0}; // fixed prices for sizes
 
         int rowIndex = 1;
         for (int i = 0; i < sizeLabels.length; i++) {
