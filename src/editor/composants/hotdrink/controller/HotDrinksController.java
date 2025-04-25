@@ -1,5 +1,6 @@
 package editor.composants.hotdrink.controller;
 
+import editor.composants.hotdrink.model.DragProduct;
 import editor.composants.templates.composants.hotdrink.model.ProductCard;
 import editor.composants.templates.composants.hotdrink.model.ProductCardLoader;
 import javafx.animation.FadeTransition;
@@ -178,11 +179,14 @@ public class HotDrinksController {
     //
     private void setupDragAndDrop(ProductCardLoader cardLoader, ProductCard productCard) {
         cardLoader.setOnDragDetected(event -> {
-            Dragboard db = cardLoader.startDragAndDrop(TransferMode.COPY);
+            Dragboard db = cardLoader.startDragAndDrop(TransferMode.COPY); // Start drag-and-drop operation
 
-            ClipboardContent content = new ClipboardContent();
+            ClipboardContent content = new ClipboardContent();  // Create a clipboard content
             content.putString(productCard.getName()); // You can use ID or serialize JSON if needed
-            db.setContent(content);
+            db.setContent(content); // Set the content of the dragboard
+
+            DragProduct.setCurrentProduct( productCard );
+
 
             // Optional: use image preview while dragging
             SnapshotParameters snapParams = new SnapshotParameters();
@@ -192,6 +196,7 @@ public class HotDrinksController {
             event.consume();
         });
     }
+
 
 
 

@@ -12,17 +12,17 @@ public class ProductCardLoader extends VBox {
     private ProductCardController controller;
 
     public ProductCardLoader() throws IOException {
+        System.out.println("ProductCardLoader created");
 
         // Load the FXML file and create the controller
         try {
             FXMLLoader loader = new FXMLLoader(ProductCardLoader.class.getResource("/editor/composants/templates/composants/hotdrink/view/productcard.fxml"));
-            //loader.load();
-            Parent root = loader.load();
+            loader.setRoot(this);
+            loader.load();
 
-            // Set the root of the ProductCardLoader to the loaded FXML
             controller  = loader.getController();
 
-            this.getChildren().add(root);
+            //this.getChildren().add(root);
         }
         catch (IOException ie) {
             System.out.println("Error loading ProductCardLoader: " + ie.getMessage());

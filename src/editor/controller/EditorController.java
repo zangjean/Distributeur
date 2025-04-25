@@ -1,18 +1,27 @@
 package editor.controller;
 
 import editor.composants.hotdrink.model.HotDrinksLoader;
+import editor.composants.savegarde.SaveLoad;
+import editor.composants.templates.controller.HotDrinkPresetController;
+import editor.composants.templates.controller.TemplateController;
+import editor.composants.templates.model.HotDrinkPresetLoader;
+import editor.composants.templates.model.Saveable;
+import editor.composants.templates.model.Template;
 import editor.composants.templates.model.TemplateLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +65,8 @@ public class EditorController{
         // set border for the leftSide
         rightSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
 
+
+
     }
 
     // set and show stage for the template functionning on the loader dans model
@@ -66,8 +77,12 @@ public class EditorController{
         final Stage newStage = new Stage();
         newStage.setResizable(false);
 
-        // Create a new HotdrinkLoader
-        TemplateLoader hotdrinkLoader = new TemplateLoader();
+        // Create a new template loader
+        TemplateLoader templateLoader  = new TemplateLoader();
+
+        // Get the template controller from the loader
+        TemplateController templateController = templateLoader.getTemplateController();
+        templateController.setEditorController(this);
 
         // Get the current stage
         Stage currentStage = (Stage) root.getScene().getWindow();
@@ -79,7 +94,7 @@ public class EditorController{
         newStage.setY(y);
 
         // Create a new scene with the HotdrinkLoader as the root
-        Scene scene = new Scene(hotdrinkLoader);
+        Scene scene = new Scene(templateLoader);
 
         newStage.setTitle("Test stage ");
         newStage.setScene(scene);
@@ -137,6 +152,123 @@ public class EditorController{
     }
 
 
+    public void setTemplate(String templateName){
+        switch (templateName)
+        {
+            case "HotDrink" -> {
+                // Create a new template loader
+                HotDrinkPresetLoader temp = new HotDrinkPresetLoader();
+                // Get the template controller from the loader
+                rightSide.setContent(temp);
+                rightSide.setFitToWidth(true);
+                rightSide.setFitToHeight(true);
+
+                System.out.println("Template HotDrink");
+
+            }
+            // On ajoute d'autres templates ici
+            case "Pizza" -> {
+                //temp = new PizzaPresetLoader();
+            }
+            case "Snack" -> {
+                //temp = new SnackPresetLoader();
+            }
+            case "ColdDrink" -> {
+                //temp = new ColdDrinkPresetLoader();
+            }
+        }
+    }
+
+    private void showAlert(String saveError) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText("Can not " + saveError) ;
+        alert.setContentText("Please select a template first");
+        alert.showAndWait();
+    }
+
+    // For menu
+    @FXML
+    private void saveLayout(ActionEvent event) {
+        System.out.println("Save Layout");
+        Node content = rightSide.getContent();
+
+        if(content instanceof Saveable saveable)
+        {
+            SaveLoad layout = saveable.getLayout();
+            // Save the layout to a file
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Layout");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Layout Files", "*.layout"),
+                    new FileChooser.ExtensionFilter("All Files", "*.*")
+            );
+
+            File file = fileChooser.showSaveDialog(root.getScene().getWindow());
+
+            if(file != null){
+                try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+                    oos.writeObject(layout);
+                    System.out.println("Layout saved to " + file.getAbsolutePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        else{
+            showAlert("Save ");
+        }
+    }
+
+    @FXML
+    private void loadLayout(ActionEvent event) {
+        Node content = rightSide.getContent();
+
+        if (content instanceof Saveable saveable) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Load Layout");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Layout Files", "*.layout"));
+
+            File file = fileChooser.showOpenDialog(root.getScene().getWindow());
+
+            if (file != null) {
+                System.out.println("Load Layout: " + file.getAbsolutePath());
+
+                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+                    SaveLoad loadedLayout = (SaveLoad) in.readObject();
+
+                    if (loadedLayout == null || loadedLayout.getSlots().isEmpty()) {
+                        System.out.println("⚠ File is empty or layout is blank");
+                        showAlert("Load Empty");
+                        return;
+                    }
+
+                    System.out.println("✅ Layout has " + loadedLayout.getSlots().size() + " slots");
+
+                    // apply the layout
+                    saveable.applySaveLoad(loadedLayout);
+                    System.out.println("✅ Layout applied successfully");
+
+                    // Optional success message
+                    Alert success = new Alert(Alert.AlertType.INFORMATION);
+                    success.setTitle("Layout Loaded");
+                    success.setHeaderText(null);
+                    success.setContentText("Layout successfully loaded!");
+                    success.showAndWait();
+
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                    showAlert("Load Failed");
+                }
+
+            } else {
+                System.out.println("❌ Load canceled or no file selected.");
+            }
+
+        } else {
+            showAlert("Load");
+        }
+    }
 
 
 

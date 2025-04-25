@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class ProductCardController {
 
+    private ProductCard currentProductCard;
 
     @FXML
     private ImageView imgView;
@@ -32,6 +33,7 @@ public class ProductCardController {
 
     public void setProductCard(ProductCard productCard) {
 
+        this.currentProductCard = productCard;
         lbNom.setText(productCard.getName());
         lbPrix.setText(productCard.getPrice() + " €");
 
@@ -40,4 +42,9 @@ public class ProductCardController {
         imgView.setImage(image);
 
     }
+
+    public ProductCard getProductCard() {
+        return currentProductCard;
+    }
+
 }

@@ -3,15 +3,21 @@ package editor.composants.savegarde;
 import editor.composants.templates.composants.hotdrink.model.ProductCard;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SaveLoad implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String nameTemplate;
     private Map<String, ProductCard> slots;
 
-    public SaveLoad(String nameTemplate, Map<String, ProductCard> slots) {
+    public SaveLoad(String nameTemplate, Map<String, ProductCard> slots)
+    {
         this.nameTemplate = nameTemplate;
-        this.slots = slots;
+        this.slots = (slots != null) ? slots : new HashMap<>();
+    }
+    public SaveLoad(String nameTemplate) {
+        this(nameTemplate, null);
     }
 
     public String getNameTemplate() {

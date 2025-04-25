@@ -30,9 +30,9 @@
          <children>
               <MenuBar prefHeight="27.0" prefWidth="182.0">
                   <Menu mnemonicParsing="false" text="File">
-                      <MenuItem mnemonicParsing="false" text="Save" />
-                      <MenuItem mnemonicParsing="false" text="Save As" />
-                      <MenuItem mnemonicParsing="false" text="Load" />
+                      <MenuItem mnemonicParsing="false" text="Save" onAction="#saveLayout" />
+                      <MenuItem mnemonicParsing="false" text="Save As"  />
+                      <MenuItem mnemonicParsing="false" text="Load" onAction="#loadLayout" />
                       <MenuItem mnemonicParsing="false" text="Quit" />
                   </Menu>
                   <Menu mnemonicParsing="false" text="Edit">

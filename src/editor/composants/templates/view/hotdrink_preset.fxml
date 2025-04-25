@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<fx:root type="javafx.scene.layout.GridPane" fx:id="gridPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="editor.composants.templates.controller.HotDrinkPresetController"
+>
+
+    <!-- Column widths (3 equal parts) -->
+    <columnConstraints>
+        <ColumnConstraints percentWidth="33.33"/>
+        <ColumnConstraints percentWidth="33.33"/>
+        <ColumnConstraints percentWidth="33.33"/>
+    </columnConstraints>
+
+    <!-- Row heights (2 equal parts) -->
+    <rowConstraints>
+        <RowConstraints percentHeight="50"/>
+        <RowConstraints percentHeight="50"/>
+    </rowConstraints>
+
+    <!-- Row 0 -->
+    <StackPane fx:id="slot00" GridPane.rowIndex="0" GridPane.columnIndex="0"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+    <StackPane fx:id="slot01" GridPane.rowIndex="0" GridPane.columnIndex="1"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+    <StackPane fx:id="slot02" GridPane.rowIndex="0" GridPane.columnIndex="2"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+
+    <!-- Row 1 -->
+    <StackPane fx:id="slot10" GridPane.rowIndex="1" GridPane.columnIndex="0"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+    <StackPane fx:id="slot11" GridPane.rowIndex="1" GridPane.columnIndex="1"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+    <StackPane fx:id="slot12" GridPane.rowIndex="1" GridPane.columnIndex="2"
+               style="-fx-border-color: gray; -fx-background-color: #f5f5f5;" />
+
+</fx:root>
