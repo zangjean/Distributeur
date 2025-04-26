@@ -6,19 +6,23 @@ import application.model.distrib.panier.ProductForPanier;
 import application.model.distrib.productModel.product.Product;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+
+import static java.util.function.Predicate.not;
 
 public class MenuHotDrinkController {
     @FXML
@@ -39,32 +43,45 @@ public class MenuHotDrinkController {
     public GridPane grid_the;
     @FXML
     public GridPane grid_soupes;
+    @FXML
+    public TabPane tabPaneID;
 
     private ProductController productController;
     private Panier panier;
     private GridPane grid_cafe = new GridPane();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         //this.grid_cafe = new GridPane();
 
         this.productController = Main.getProductController();
         this.panier = Main.getPanier();
-        initAllCoffee();
+        initAllCoffee("cafe");
+        initAllCoffee("cappu");
+        initChocolateScrean();
 
     }
-    private ArrayList<Coffee> returnCoffee(){
+    private ArrayList<Coffee> returnCoffee(String type){
         ArrayList<Product> products = productController.getProductsModel().getAllProducts();
         ArrayList<Coffee> coffees = new ArrayList<>();
         for (Product product : products) {
             if(product.getClass().equals(Coffee.class)){
-                coffees.add((Coffee) product);
+                if(type.equals("cafe")){
+                    if (!((product.getName().toLowerCase().contains("latte"))|| (product.getName().toLowerCase().contains("cappuccino")))){
+                        coffees.add((Coffee) product);
+                    }
+                }else{
+                    if ((product.getName().toLowerCase().contains("latte"))|| (product.getName().toLowerCase().contains("cappuccino"))){
+                        coffees.add((Coffee) product);
+                    }
+                }
+
             }
         }
         return coffees;
     }
 
-    private void initAllCoffee() {
+    private void initAllCoffee(String type) {
         // Créer un FlowPane à la place d'un GridPane
         FlowPane flowPane = new FlowPane();
 
@@ -73,7 +90,7 @@ public class MenuHotDrinkController {
         flowPane.setVgap(10); // Espace vertical entre les lignes
 
         // Récupérer la liste de café
-        ArrayList<Coffee> coffees = returnCoffee();
+        ArrayList<Coffee> coffees = returnCoffee(type);
 
         // Parcourir tous les cafés pour générer des boutons
         for (Coffee coffee : coffees) {
@@ -87,7 +104,11 @@ public class MenuHotDrinkController {
         }
 
         // Définir le FlowPane comme contenu du tab
-        this.tab_cafe.setContent(flowPane);
+        if(type.equals("cafe")){
+            this.tab_cafe.setContent(flowPane);
+        }else if(type.equals("cappu")){
+            this.tab_cappu.setContent(flowPane);
+        }
     }
 
 
@@ -160,18 +181,64 @@ public class MenuHotDrinkController {
             // Afficher la nouvelle fenêtre
             newStage.show();
         });
-
     }
 
     private void addOnPanier(Button button, Map.Entry<Integer, Double> entry, Coffee coffee){
         button.setOnAction(event -> {
-            System.out.println("Button clicked for size " + entry.getKey() + "ml");
-            //this.panier.add(coffee);
-            this.panier.addProduct(coffee,entry.getKey(),entry.getValue());
+
+            BorderPane borderPane = new BorderPane();
+            Stage newStage = new Stage();
+            Button buttonValidate = new Button("Valider");
+
+
+            Label sucreLabel = new Label("Sucre :");
+            Slider sucreSlider = new Slider(0, 5, 0);
+            sucreSlider.setMajorTickUnit(1);
+            sucreSlider.setMinorTickCount(0);
+            sucreSlider.setSnapToTicks(true);
+            sucreSlider.setShowTickLabels(true);
+            sucreSlider.setShowTickMarks(true);
+            sucreSlider.setBlockIncrement(1);
+
+            // Pour afficher la valeur sélectionnée
+            Label valueLabel = new Label("Niveau : 0");
+            sucreSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+                valueLabel.setText("Niveau : " + newVal.intValue());
+            });
+
+            VBox sucreBox = new VBox(5, sucreLabel, sucreSlider, valueLabel, buttonValidate);
+            sucreBox.setAlignment(Pos.CENTER);
+
+            borderPane.setCenter(sucreBox);
+            Scene scene = new Scene(borderPane, 400, 300);
+            newStage.setScene(scene);
+            newStage.setTitle(" Choisissez le niveau de sucre ");
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.setResizable(false);
+            newStage.show();
+
+            buttonValidate.setOnAction(actionEvent -> {
+                this.panier.addProduct(coffee,entry.getKey(),entry.getValue());
+                newStage.close();
+            });
         });
     }
 
 
+    private void initChocolateScrean() throws IOException {
+        // Charger le fichier FXML du ScrollPane
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/view/allDist/hotDrink/create_chocolate.fxml"));
+        ScrollPane scrollPane = fxmlLoader.load();
+
+        // Créer un nouveau BorderPane pour organiser le ScrollPane
+        BorderPane borderPane = new BorderPane();
+
+        // Définir le ScrollPane dans la région centrale du BorderPane
+        borderPane.setCenter(scrollPane);
+
+        // Définir ce BorderPane comme le contenu de l'onglet "tab_choco"
+        this.tab_choco.setContent(borderPane);
+    }
 
 
 

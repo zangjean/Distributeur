@@ -35,7 +35,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false">
+                        <Button mnemonicParsing="false" onAction="#onActionMocha">
                            <graphic>
                               <VBox prefHeight="330.0" prefWidth="100.0">
                                  <children>
@@ -65,7 +65,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="275.0" prefWidth="762.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="350.0" prefWidth="100.0">
+                        <Button mnemonicParsing="false" onAction="#onActionCreateChocolate" prefHeight="350.0" prefWidth="100.0">
                            <graphic>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -83,7 +83,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="350.0" prefWidth="100.0">
+                        <Button mnemonicParsing="false" onAction="#onActionThe" prefHeight="350.0" prefWidth="100.0">
                            <graphic>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -101,7 +101,7 @@
                               </VBox>
                            </graphic>
                         </Button>
-                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" prefHeight="350.0" prefWidth="100.0">
+                        <Button layoutX="410.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionSoupes" prefHeight="350.0" prefWidth="100.0">
                            <graphic>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>

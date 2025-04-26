@@ -29,12 +29,13 @@ public class Main extends Application {
 
          */
 
-        int width = 900; int height = 900 ;
+        int width = 900; int height = 800 ;
 
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"))).load(), width, height);
         stage.setResizable(false); // Empêche le redimensionnement
         stage.setTitle(" DISTRIBUTEUR ");
         stage.setScene(scene);
+
         stage.show();
         // Charger le fichier CSS
         //scene.getStylesheets().add(getClass().getResource("/application/ressources/sheetstyle.css").toExternalForm());
