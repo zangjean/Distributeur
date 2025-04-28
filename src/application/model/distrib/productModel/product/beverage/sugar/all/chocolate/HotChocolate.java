@@ -3,16 +3,17 @@ package application.model.distrib.productModel.product.beverage.sugar.all.chocol
 import application.model.distrib.productModel.product.NeedPreparation;
 import application.model.distrib.productModel.product.beverage.sugar.CanAddSugar;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class HotChocolate extends CanAddSugar implements NeedPreparation {
     //on peut choisir un seul arome mais plusieurs toppings
 
     private Boolean withMilk;
     private Aroma aroma;
-    private ArrayList<Toping> topings;
+    private HashSet<Toping> topings;
     public HotChocolate(String name) {
         super(name);
-        this.topings=new ArrayList<>();
+        this.topings=new HashSet<>();
     }
 
     @Override
@@ -46,18 +47,16 @@ public class HotChocolate extends CanAddSugar implements NeedPreparation {
         this.withMilk = withMilk;
     }
 
-    public ArrayList<Toping> getTopings() {
+    public HashSet<Toping> getTopings() {
         return topings;
     }
 
-    public void setTopings(ArrayList<Toping> topings) {
+    public void setTopings(HashSet<Toping> topings) {
         this.topings = topings;
     }
 
     public void addToping( Toping toping){
-        if(!this.topings.contains(toping)){
-            this.topings.add(toping);
-        }
+        this.topings.add(toping);
     }
 
     public void deleteToping(Toping toping){

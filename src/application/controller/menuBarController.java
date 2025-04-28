@@ -3,6 +3,9 @@ package application.controller;
 import application.Main;
 import application.model.distrib.panier.Panier;
 import application.model.distrib.panier.ProductForPanier;
+import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,15 +13,19 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class menuBarController {
     @FXML
@@ -31,6 +38,9 @@ public class menuBarController {
     public Button fx_id_acceuilButton;
 
     private Panier panier;
+
+    private ProgressBar progressBar=new ProgressBar();
+    private ProgressIndicator progressIndicator=new ProgressIndicator();
 
 
     @FXML
@@ -112,15 +122,11 @@ public class menuBarController {
 
         borderPane.setCenter(panierGrid);
 
-        Button btnCancel = new Button("Cancel");
-        btnCancel.setOnAction(closeEvent -> {
-            // Ferme la fenêtre en cours
-            Stage stage = (Stage) btnCancel.getScene().getWindow();
-            stage.close();
-        });
+        Button btnAchat = new Button("Payer");
+        byAllPanier(btnAchat);
 
-        borderPane.setBottom(btnCancel);
-        BorderPane.setAlignment(btnCancel, Pos.CENTER);
+        borderPane.setBottom(btnAchat);
+        BorderPane.setAlignment(btnAchat, Pos.CENTER);
 
         Stage newStage = new Stage();
         newStage.setTitle(" Panier ");
@@ -136,4 +142,78 @@ public class menuBarController {
         newStage.show();
 
     }
+
+
+    private void byAllPanier(Button button){
+        button.setOnAction(closeEvent -> {
+            VBox vBox=new VBox();
+            Label label=new Label("Votre panier contient : ");
+
+
+            // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
+            Label nameLabel = new Label();
+            nameLabel.setStyle("-fx-font-weight: bold");
+            vBox.getChildren().addAll(label,nameLabel,progressBar,progressIndicator);
+
+
+            for (ProductForPanier productForPanier : this.panier.getProducts()) {
+                runOneProduct(productForPanier,vBox);
+                nameLabel.setText(productForPanier.getNameProduct());
+            }
+            vBox.setAlignment(Pos.CENTER);
+            vBox.setSpacing(10);
+
+            Scene scene = new Scene(vBox,400,200);
+            Stage stage = new Stage();
+            stage.setTitle("Realisation des produits du panier");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+        });
+    }
+
+    private void runOneProduct(ProductForPanier productForPanier,VBox vBox){
+      int length = productForPanier.getQuantityML()*100_000_000;
+      int nbrRepetitions = productForPanier.getAskingQuantity();
+
+
+        Service service = new Service() {
+            @Override
+            protected Task<Integer> createTask() {
+                return new Task<Integer>() {
+                    @Override
+                    protected Integer call() throws Exception {
+                        for(int i=0;i<nbrRepetitions;i++){
+                            updateProgress(i,nbrRepetitions);
+                            Thread.sleep(productForPanier.getQuantityML() * 100L);
+                            updateMessage("Progression : " + (i + 1) + " / " + nbrRepetitions);
+
+                        }
+                        return null;
+                    }
+                };
+            }
+        };
+        progressBar.progressProperty().bind(service.progressProperty());
+        progressIndicator.progressProperty().bind(service.progressProperty());
+        //vBox.getChildren().addAll(progressBar,progressIndicator);
+
+        Label progressLabel = new Label();
+        progressLabel.textProperty().bind(service.messageProperty());
+
+        // Gestion des états du service (facultatif)
+        service.setOnRunning(e -> System.out.println("Tâche démarrée..."));
+        service.setOnSucceeded(e -> System.out.println("Tâche terminée avec succès."));
+        service.setOnFailed(e -> System.out.println("Une erreur est survenue."));
+
+        // Lance l'exécution
+        service.start();
+
+
+
+
+
+    }
+
 }

@@ -12,4 +12,8 @@ public class ProductController {
     public ProductsModel getProductsModel() {
         return productsModel;
     }
+
+    public void createChocolate(){
+
+    }
 }
