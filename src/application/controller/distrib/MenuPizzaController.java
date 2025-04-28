@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -62,12 +64,20 @@ public class MenuPizzaController {
         flowPane_margherita.setHgap(10);
         flowPane_margherita.setVgap(10);
 
+        Image image = new Image(getClass().getResource("../../ressources/images/margherita.jpg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
         Button orderButton = new Button("Order");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Margherita", orderButton));
-        flowPane_margherita.getChildren().add(orderButton);
+        flowPane_margherita.getChildren().addAll(imageView, orderButton);
 
         this.tab_margherita.setContent(flowPane_margherita);
     }
+
 
 
     private void initAllPepperoni() {
@@ -75,9 +85,16 @@ public class MenuPizzaController {
         flowPane_pepperoni.setHgap(10);
         flowPane_pepperoni.setVgap(10);
 
+        Image image = new Image(getClass().getResource("../../ressources/images/pepperoni.jpg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
         Button orderButton = new Button("Order");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Pepperoni", orderButton));
-        flowPane_pepperoni.getChildren().add(orderButton);
+        flowPane_pepperoni.getChildren().addAll(imageView, orderButton);
 
         this.tab_pepperoni.setContent(flowPane_pepperoni);
     }
@@ -88,9 +105,16 @@ public class MenuPizzaController {
         flowPane_veggie.setHgap(10);
         flowPane_veggie.setVgap(10);
 
+        Image image = new Image(getClass().getResource("../../ressources/images/veggie.jpg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
         Button orderButton = new Button("Order");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Veggie", orderButton));
-        flowPane_veggie.getChildren().add(orderButton);
+        flowPane_veggie.getChildren().addAll(imageView, orderButton);
 
         this.tab_veggie.setContent(flowPane_veggie);
     }
@@ -101,9 +125,16 @@ public class MenuPizzaController {
         flowPane_bbq.setHgap(10);
         flowPane_bbq.setVgap(10);
 
+        Image image = new Image(getClass().getResource("../../ressources/images/bbq.jpg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
         Button orderButton = new Button("Order");
         orderButton.setOnAction(event -> openSelectPizzaDialog("BBQ", orderButton));
-        flowPane_bbq.getChildren().add(orderButton);
+        flowPane_bbq.getChildren().addAll(imageView, orderButton);
 
         this.tab_bbq.setContent(flowPane_bbq);
     }
@@ -114,9 +145,16 @@ public class MenuPizzaController {
         flowPane_hawaiian.setHgap(10);
         flowPane_hawaiian.setVgap(10);
 
+        Image image = new Image(getClass().getResource("../../ressources/images/hawaiian.jpg").toExternalForm());
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setPreserveRatio(true);
+        imageView.setSmooth(true);
+        imageView.setCache(true);
+
         Button orderButton = new Button("Order");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Hawaiian", orderButton));
-        flowPane_hawaiian.getChildren().add(orderButton);
+        flowPane_hawaiian.getChildren().addAll(imageView, orderButton);
 
         this.tab_hawaiian.setContent(flowPane_hawaiian);
     }

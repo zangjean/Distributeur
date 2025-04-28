@@ -43,7 +43,7 @@ public class SnackController {
                     case "chips":
                         menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_chips);
                         break;
-                    case "nuggets":
+                    case "chocolate":
                         menuSnackController.tabPane.getSelectionModel().select(menuSnackController.tab_chocolate);
                         break;
                     case "sandwich":

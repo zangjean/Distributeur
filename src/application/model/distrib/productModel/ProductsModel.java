@@ -156,7 +156,40 @@ public class ProductsModel {
         cookies.addOneQuantityPrice(1, 3.00);
         cookies.addOneQuantityPrice(2, 5.00);
         this.products.add(cookies);
+
+        // Added missing chocolate snacks
+        Snacks milkChocolate = new Snacks("Milk", 5);
+        milkChocolate.addOneQuantityPrice(1, 2.50);
+        milkChocolate.addOneQuantityPrice(2, 4.00);
+        this.products.add(milkChocolate);
+
+        Snacks darkChocolate = new Snacks("Dark", 5);
+        darkChocolate.addOneQuantityPrice(1, 2.50);
+        darkChocolate.addOneQuantityPrice(2, 4.00);
+        this.products.add(darkChocolate);
+
+        Snacks whiteChocolate = new Snacks("White", 5);
+        whiteChocolate.addOneQuantityPrice(1, 2.50);
+        whiteChocolate.addOneQuantityPrice(2, 4.00);
+        this.products.add(whiteChocolate);
+
+        // Added missing sandwich snacks
+        Snacks hamSandwich = new Snacks("Ham", 5);
+        hamSandwich.addOneQuantityPrice(1, 3.00);
+        hamSandwich.addOneQuantityPrice(2, 5.00);
+        this.products.add(hamSandwich);
+
+        Snacks cheeseSandwich = new Snacks("Cheese", 5);
+        cheeseSandwich.addOneQuantityPrice(1, 3.00);
+        cheeseSandwich.addOneQuantityPrice(2, 5.00);
+        this.products.add(cheeseSandwich);
+
+        Snacks veggieSandwich = new Snacks("Veggie", 5);
+        veggieSandwich.addOneQuantityPrice(1, 3.00);
+        veggieSandwich.addOneQuantityPrice(2, 5.00);
+        this.products.add(veggieSandwich);
     }
+
 
 
     public ArrayList<Product> getProductsByName(String name){

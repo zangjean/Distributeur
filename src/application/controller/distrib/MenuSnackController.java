@@ -89,9 +89,31 @@ public class MenuSnackController {
         flowPane_chocolate.setHgap(10);
         flowPane_chocolate.setVgap(10);
 
-        Button orderButton = new Button("Order");
-        orderButton.setOnAction(event -> openSelectSnackDialog("Chocolate", orderButton));
-        flowPane_chocolate.getChildren().add(orderButton);
+        String[] chocolateTypes = {"Milk", "Dark", "White"};
+        String[] chocolateImages = {"../../ressources/images/chocolate/milk.jpg", "../../ressources/images/chocolate/dark.jpg", "../../ressources/images/chocolate/white.jpg"};
+
+        for (int i = 0; i < chocolateTypes.length; i++) {
+            String type = chocolateTypes[i];
+            Button typeButton = new Button(type);
+            try {
+                String imagePath = chocolateImages[i];
+                java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
+                if (imageStream == null) {
+                    System.out.println("Image not found for chocolate type: " + type + " at path: " + imagePath);
+                } else {
+                    Image image = new Image(imageStream);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(40);
+                    imageView.setFitHeight(40);
+                    imageView.setPreserveRatio(true);
+                    typeButton.setGraphic(imageView);
+                }
+            } catch (Exception e) {
+                System.out.println("Error loading image for chocolate type: " + type + " - " + e.getMessage());
+            }
+            typeButton.setOnAction(event -> openSelectSnackDialog(type, typeButton));
+            flowPane_chocolate.getChildren().add(typeButton);
+        }
 
         this.tab_chocolate.setContent(flowPane_chocolate);
     }
@@ -101,12 +123,35 @@ public class MenuSnackController {
         flowPane_sandwich.setHgap(10);
         flowPane_sandwich.setVgap(10);
 
-        Button orderButton = new Button("Order");
-        orderButton.setOnAction(event -> openSelectSnackDialog("Sandwich", orderButton));
-        flowPane_sandwich.getChildren().add(orderButton);
+        String[] sandwichTypes = {"Ham", "Cheese", "Veggie"};
+        String[] sandwichImages = {"../../ressources/images/sandwich/ham.jpg", "../../ressources/images/sandwich/cheese.jpg", "../../ressources/images/sandwich/veggie.jpg"};
+
+        for (int i = 0; i < sandwichTypes.length; i++) {
+            String type = sandwichTypes[i];
+            Button typeButton = new Button(type);
+            try {
+                String imagePath = sandwichImages[i];
+                java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
+                if (imageStream == null) {
+                    System.out.println("Image not found for sandwich type: " + type + " at path: " + imagePath);
+                } else {
+                    Image image = new Image(imageStream);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(40);
+                    imageView.setFitHeight(40);
+                    imageView.setPreserveRatio(true);
+                    typeButton.setGraphic(imageView);
+                }
+            } catch (Exception e) {
+                System.out.println("Error loading image for sandwich type: " + type + " - " + e.getMessage());
+            }
+            typeButton.setOnAction(event -> openSelectSnackDialog(type, typeButton));
+            flowPane_sandwich.getChildren().add(typeButton);
+        }
 
         this.tab_sandwich.setContent(flowPane_sandwich);
     }
+
 
     private void openSelectSnackDialog(String snackName, Button button) {
         ArrayList<Snacks> snacks = returnSnacks();
