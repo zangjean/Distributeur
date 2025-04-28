@@ -13,6 +13,8 @@ public class ProductCardLoader extends VBox {
 
     public ProductCardLoader() throws IOException {
         System.out.println("ProductCardLoader created");
+        // Set the style of the VBox
+
 
         // Load the FXML file and create the controller
         try {

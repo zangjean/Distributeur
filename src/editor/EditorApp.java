@@ -21,5 +21,4 @@ public class EditorApp extends Application {
         primaryStage.show();
     }
 
-
 }

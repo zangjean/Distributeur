@@ -1,5 +1,6 @@
 package editor.composants.templates.controller;
 
+import editor.composants.templates.composants.colddrink.model.ColdDrinkLoader;
 import editor.composants.templates.composants.hotdrink.model.HotDrinkLoader;
 import editor.controller.EditorController;
 import javafx.fxml.FXML;
@@ -54,17 +55,11 @@ public class TemplateController {
     }
 
     private void setUpEditor(MouseEvent event) {
-        System.out.println("Image clicked");
         // Set up the editor to drag and drop the components
         // editorController.setUpDragAndDrop();
         // Load the template
         editorController.setTemplate("HotDrink");
-        // Close the current window
-        Window window = imgView1.getScene().getWindow();
-        if (window != null) {
-            Stage stage = (Stage) window;
-            stage.close();
-        }
+        System.out.println("Editor is set");
 
     }
 
@@ -84,6 +79,17 @@ public class TemplateController {
     private void displayCoca(MouseEvent event)
     {
         System.out.println("Display Coca clicked");
+
+        final Stage cocaStage = new Stage();
+        cocaStage.setTitle("Cold Drink Template");
+        // Load the template
+        ColdDrinkLoader coldDrinkLoader = new ColdDrinkLoader();
+        coldDrinkLoader.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px; -fx-border-color: #000000; -fx-border-width: 2px;");
+        // Set the scene and show the stage
+        Scene scene = new Scene(coldDrinkLoader);
+        cocaStage.setScene(scene);
+        cocaStage.showAndWait();
+
     }
 
     public void setEditorController(EditorController editorController) {

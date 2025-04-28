@@ -130,7 +130,6 @@ public class EditorController{
         newStage.setScene(scene);
         newStage.show();
 
-
     }
 
     @FXML
@@ -218,6 +217,9 @@ public class EditorController{
         else{
             showAlert("Save ");
         }
+
+        // Vider le contenu de rightSide
+        rightSide.setContent(null);
     }
 
     @FXML
@@ -269,7 +271,4 @@ public class EditorController{
             showAlert("Load");
         }
     }
-
-
-
 }

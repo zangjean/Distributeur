@@ -55,7 +55,6 @@ public class HotDrinkPresetController {
         slotMap.put("slot11", slot11);
         slotMap.put("slot12", slot12);
 
-
     }
 
     private void setUpDgragAndDrop(StackPane slot) {
@@ -69,7 +68,6 @@ public class HotDrinkPresetController {
             event.consume(); // consume the event to prevent it from being handled by other nodes
         }
         );
-
         // Drag dropped on the slot
 
         slot.setOnDragDropped(event -> {
@@ -101,7 +99,7 @@ public class HotDrinkPresetController {
                     slot.getChildren().add(loader);
                     DragProduct.clear();
 
-                    slot.setStyle("-fx-background-color: #fae0e0; -fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 5px");
+                    //slot.setStyle("-fx-background-color: #fae0e0; -fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 5px");
 
                     System.out.println("Added loader to slot");
 
@@ -145,7 +143,6 @@ public class HotDrinkPresetController {
         System.out.println("✅ Total saved slots: " + layout.getSlots().size());
         return layout;
     }
-
 
     public void applyLayout(SaveLoad saveLoad) {
 
