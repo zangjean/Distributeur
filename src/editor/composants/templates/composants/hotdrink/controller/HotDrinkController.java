@@ -173,10 +173,5 @@ public class HotDrinkController {
                 new ProductCard("Expresso", 2.50, "/editor/composants/templates/ressources/images/hotdrink/expresso.jpg")
         ));
 
-
-
-
-
-
     }
 }

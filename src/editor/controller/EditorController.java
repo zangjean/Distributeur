@@ -1,13 +1,12 @@
 package editor.controller;
 
+import editor.composants.colddrink.model.ColdDrinksLoader;
 import editor.composants.hotdrink.model.HotDrinksLoader;
 import editor.composants.savegarde.SaveLoad;
+import editor.composants.templates.composants.colddrink.model.ColdDrinkLoader;
 import editor.composants.templates.controller.HotDrinkPresetController;
 import editor.composants.templates.controller.TemplateController;
-import editor.composants.templates.model.HotDrinkPresetLoader;
-import editor.composants.templates.model.Saveable;
-import editor.composants.templates.model.Template;
-import editor.composants.templates.model.TemplateLoader;
+import editor.composants.templates.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -135,6 +134,27 @@ public class EditorController{
     @FXML
     private void displayColdDrink(ActionEvent event) {
         System.out.println("Display Cold Drink");
+
+        // Get the current stage
+        Stage currentStage = (Stage) root.getScene().getWindow();
+        // Get the current stage's position
+        double x = currentStage.getX();
+        double y = currentStage.getY();
+        // Set the new stage's position to the left of the current stage
+        ColdDrinksLoader coldDrinksLoader = new ColdDrinksLoader();
+        // Create a new scene with the HotdrinkLoader as the root
+        Scene scene = new Scene(coldDrinksLoader);
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setX(x - 400);
+        newStage.setY(y);
+        newStage.setTitle("Cold Drink List");
+        newStage.setScene(scene);
+        newStage.show();
+        // add an listener to close the stage when the main stage is closed
+        currentStage.setOnCloseRequest(event1 -> {
+            newStage.close();
+        });
     }
 
     @FXML
@@ -173,7 +193,14 @@ public class EditorController{
                 //temp = new SnackPresetLoader();
             }
             case "ColdDrink" -> {
-                //temp = new ColdDrinkPresetLoader();
+                // Create a new template loader
+                ColdDrinkPresetLoader temp = new ColdDrinkPresetLoader();
+                // Get the template controller from the loader
+                rightSide.setContent(temp);
+                rightSide.setFitToWidth(true);
+                rightSide.setFitToHeight(true);
+
+                System.out.println("Template ColdDrink");
             }
         }
     }

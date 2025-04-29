@@ -33,6 +33,7 @@ public class TemplateController {
 
         // When click on the image, choose this template and set up the editor to drag and drop the components
         imgView1.setOnMouseClicked(this::setUpEditor);
+        imgView4.setOnMouseClicked(this::setUpCoca);
 
     }
 
@@ -75,6 +76,14 @@ public class TemplateController {
         System.out.println("Display Snack clicked");
     }
 
+    //
+    private  void setUpCoca(MouseEvent event) {
+        // Set up the editor to drag and drop the components
+        // editorController.setUpDragAndDrop();
+        // Load the template
+        editorController.setTemplate("ColdDrink");
+        System.out.println("Editor is set");
+    }
     @FXML
     private void displayCoca(MouseEvent event)
     {
@@ -95,5 +104,7 @@ public class TemplateController {
     public void setEditorController(EditorController editorController) {
         this.editorController = editorController;
     }
+
+
 }
 

@@ -99,8 +99,6 @@ public class HotDrinkPresetController {
                     slot.getChildren().add(loader);
                     DragProduct.clear();
 
-                    //slot.setStyle("-fx-background-color: #fae0e0; -fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-border-radius: 5px");
-
                     System.out.println("Added loader to slot");
 
                     isSucceeded = true;
@@ -113,13 +111,10 @@ public class HotDrinkPresetController {
             event.setDropCompleted(isSucceeded); // set the drop completed to true or false based on the result
             event.consume(); // consume the event to prevent it from being handled by other nodes
         });
-
-
     }
 
     public SaveLoad getCurrentLayout() {
         SaveLoad layout = new SaveLoad("HotDrink");
-
         for (Map.Entry<String, StackPane> entry : slotMap.entrySet()) {
             String slotId = entry.getKey();
             StackPane slot = entry.getValue();
@@ -134,12 +129,11 @@ public class HotDrinkPresetController {
                         layout.addSlot(slotId, product);
                         System.out.println("📦 Added to layout: " + slotId + " → " + product.getName());
                     } else {
-                        System.out.println("⚠️ ProductCard is null in " + slotId);
+                        System.out.println(" ProductCard is null in " + slotId);
                     }
                 }
             }
         }
-
         System.out.println("✅ Total saved slots: " + layout.getSlots().size());
         return layout;
     }
