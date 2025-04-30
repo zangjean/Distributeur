@@ -9,8 +9,8 @@ public class Soup extends CanAddSugar implements NeedPreparation {
     }
 
     @Override
-    public int getPrice() {
-        return 0;
+    public double getPrice() {
+        return 0.0;
     }
 
     @Override

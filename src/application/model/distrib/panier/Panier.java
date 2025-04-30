@@ -1,18 +1,22 @@
 package application.model.distrib.panier;
 
 import application.model.distrib.productModel.product.Product;
+import application.model.distrib.saveFav.FavoriteProductForSaveManager;
 import application.model.user.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Panier {
+public class Panier implements Serializable {
     private ArrayList<ProductForPanier> products;
     private User user;
+    private FavoriteProductForSaveManager favoriteProductForSaveManager;
 
 
     public Panier() {
         products = new ArrayList<>();
         user = null;
+        favoriteProductForSaveManager = new FavoriteProductForSaveManager();
     }
 
     public ArrayList<ProductForPanier> getProducts() {
@@ -32,8 +36,11 @@ public class Panier {
                 }
             }
         }
+
         if(!inProducts){
-            products.add(new ProductForPanier(product.getName(),quantity,price));
+            ProductForPanier productForPanier = new ProductForPanier(product.getName(),quantity,price);
+            productForPanier.setOriginaClassName(product.getClass().getSimpleName());
+            products.add(productForPanier);
         }
 
     }
@@ -52,5 +59,9 @@ public class Panier {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void updateFavorite(Panier panier){
+        this.favoriteProductForSaveManager.run(panier);
     }
 }

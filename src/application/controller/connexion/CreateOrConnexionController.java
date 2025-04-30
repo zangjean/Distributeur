@@ -1,7 +1,9 @@
 package application.controller.connexion;
 
+import application.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -17,18 +19,50 @@ import java.io.IOException;
 
 public class CreateOrConnexionController {
 
-    public Button fx_id_connexion;
-    public Button fx_id_creer_un_compte;
+    @FXML
+    public Button fx_id_button1;
+    @FXML
+    public Button fx_id_button2;
 
-    public CreateOrConnexionController(){
+    @FXML
+    public void initialize() {
+        if(Main.connexion.is_connected()){
+            fx_id_button1.setText("DECONNEXION");
+            fx_id_button2.setText("EDITER COMPTE");
+
+        }else{
+            fx_id_button1.setText("CONNEXION");
+            fx_id_button2.setText("CREER UN COMPTE");
+
+        }
 
     }
 
-    public void onMousePressedConnexion(MouseEvent mouseEvent) throws IOException {
+    @FXML
+    public void on_action_button1(ActionEvent actionEvent) throws IOException {
+        if(Main.connexion.is_connected()){
+            deconnexion(actionEvent);
+        }else{
+            connexion(actionEvent);
+        }
+
 
     }
 
-    public void on_action_connexion(ActionEvent actionEvent) throws IOException {
+
+
+    @FXML
+    public void on_action_button2(ActionEvent actionEvent) throws IOException {
+        if(Main.connexion.is_connected()){
+            editAccount(actionEvent);
+        }else{
+            createAccount(actionEvent);
+        }
+
+    }
+
+
+    private void connexion(ActionEvent actionEvent) throws IOException {
         // Fermer la fenêtre actuelle
         //Window currentStage = ((Node) actionEvent.getSource()).getScene().getWindow();
         //attend que le fenetre soit completement chargé avant de fermer l'ancienne
@@ -46,10 +80,9 @@ public class CreateOrConnexionController {
 
         Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
-
     }
 
-    public void on_action_creer_un_compte(ActionEvent actionEvent) throws IOException {
+    private void createAccount(ActionEvent actionEvent) throws IOException {
         // Charger la vue pour la création de compte
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/connexion/createAccount.fxml"));
         Scene scene = new Scene(loader.load());
@@ -67,6 +100,14 @@ public class CreateOrConnexionController {
         // Fermer la fenêtre actuelle après la fermeture de la nouvelle fenêtre
         Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
+    }
 
+    private void deconnexion(ActionEvent actionEvent) {
+        System.out.println("deconnexion");
+        Main.connexion.disconnect();
+    }
+
+    private void editAccount(ActionEvent actionEvent) {
+        System.out.println("editAccount");
     }
 }

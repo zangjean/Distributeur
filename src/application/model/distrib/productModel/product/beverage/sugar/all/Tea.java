@@ -9,7 +9,7 @@ public class Tea extends CanAddSugar implements NeedPreparation {
     }
 
     @Override
-    public int getPrice() {
+    public double getPrice() {
         return 0;
     }
 

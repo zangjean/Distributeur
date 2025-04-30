@@ -3,16 +3,37 @@ package application.model.distrib.productModel;
 import application.controller.distrib.ProductController;
 import application.model.distrib.productModel.product.Product;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
+import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.Aroma;
 import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
+import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.Toping;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
 
 public class ProductsModel {
 
     private ProductController productController;
 
     private ArrayList<Product> products;
+
+    //VANILLA,HAZELNUT,CARAMEL,ALMOND
+    private Map<String, Aroma> aromaMap = Map.of(
+            "VANILLA", Aroma.VANILLA,
+            "HAZELNUT", Aroma.HAZELNUT,
+            "CARAMEL", Aroma.CARAMEL,
+            "ALMOND", Aroma.ALMOND
+    );
+
+    //MARSHMALLOW,CHANTILLY,SPECULOS,OREO
+    private Map<String, Toping> toppingMap = Map.of(
+            "MARSHMALLOW", Toping.MARSHMALLOW,
+            "CHANTILLY", Toping.CHANTILLY,
+            "SPECULOS", Toping.SPECULOS,
+            "OREO", Toping.OREO
+    );
+
 
     public ProductsModel(ProductController controller){
         this.productController = controller;
@@ -127,5 +148,56 @@ public class ProductsModel {
 
     public ProductController getProductController(String name){
         return this.productController;
+    }
+
+    public Product createProduct(String type, String size, String base, String aroma, ArrayList<String> toppings) {
+        Product product = null;
+        if(type.equals("CHOCOLATE")){
+            String name =size+ " Hot Chocolate with "+base;
+            String aromaString = " and "+aroma;
+            String topingsString = " topped by ";
+
+
+            HotChocolate chocolate = new HotChocolate("");
+
+
+            if(base.equals("MILK")){
+                chocolate.setWithMilk(true);
+            }else{
+                chocolate.setWithMilk(false);
+            }
+
+            if (this.aromaMap.containsKey(aroma)) {
+                chocolate.setAroma(this.aromaMap.get(aroma));
+                name = name + aromaString;
+            }
+
+            if(!toppings.isEmpty()){
+                HashSet<Toping> toppingHashSet = new HashSet<>();
+                for (String topping : toppings) {
+                    if(this.toppingMap.containsKey(topping)){
+                        toppingHashSet.add(this.toppingMap.get(topping));
+                        topingsString = topingsString+", " + topping ;
+                    }
+                }
+                name = name + topingsString;
+                chocolate.setTopings(toppingHashSet);
+            }
+            chocolate.setName(name);
+            product = chocolate;
+            chocolate.addOneQuantityPrice(chocolate.getSize(size),1.20+chocolate.getPrice());
+            //this.products.add(chocolate);
+
+        }
+
+        return product;
+    }
+
+
+    public void printAllProducts(){
+        System.out.println("Liste des produits : ");
+        for (Product product:products){
+            product.toString();
+        }
     }
 }

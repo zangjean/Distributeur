@@ -6,7 +6,7 @@ import java.util.Map;
 
 public abstract class Product {
 
-    private final String name;
+    private String name;
     private ArrayList<String> foodAllergen;
 
     private Map<Integer, Double> quantityPriceMap;
@@ -88,5 +88,9 @@ public abstract class Product {
 
     public Map<Integer, Double> getPriceMap(){
         return this.quantityPriceMap;
+    }
+
+    public void setName(String name) {
+        this.name=name;
     }
 }

@@ -1,9 +1,12 @@
 package application.controller;
 
 import application.Main;
+import application.controller.connexion.ConnexionController;
+import application.controller.distrib.ProductController;
 import application.model.distrib.panier.Panier;
 import application.model.distrib.panier.ProductForPanier;
-import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
+import application.model.distrib.productModel.product.Product;
+import javafx.beans.binding.Bindings;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -25,9 +28,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
+import java.util.ArrayList;
 
-public class menuBarController {
+public class MenuBarController {
     @FXML
     public Label fx_id_label_hello;
     @FXML
@@ -41,11 +44,25 @@ public class menuBarController {
 
     private ProgressBar progressBar=new ProgressBar();
     private ProgressIndicator progressIndicator=new ProgressIndicator();
+    private ProductController productController;
+    private int panierType =0;
+    private int panierNomProduit=1;
+    private int panierTaille=2;
+    private int panierPrix=3;
+    private int panierQuantiteDemande=4;
+    private int panierDelete=5;
+
+    private ConnexionController connexionController;
 
 
     @FXML
     public void initialize() {
         this.panier = Main.getPanier();
+        this.productController = Main.productController;
+        System.out.println("menuBarController initialisé.");
+
+
+
     }
     @FXML
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
@@ -72,13 +89,20 @@ public class menuBarController {
         stage.initModality(Modality.APPLICATION_MODAL); // Empêche l'interaction avec d'autres fenêtres de l'application
 
         stage.setResizable(false);
-        stage.setTitle(" CREATE OR CONNEXION ");
+        if(Main.connexion.is_connected()){
+            stage.setTitle(" DECONNEXION OR EDIT ");
+        }else{
+            stage.setTitle(" CREATE OR CONNEXION ");
+        }
         stage.setScene(scene);
         stage.showAndWait(); // Affiche la fenêtre et attend sa fermeture avant de continuer
 
 
 
+
     }
+
+
 
     @FXML
     public void onActionAcceuil(ActionEvent actionEvent) {
@@ -103,18 +127,24 @@ public class menuBarController {
         BorderPane borderPane = new BorderPane();
         GridPane panierGrid = new GridPane();
         panierGrid.setGridLinesVisible(true);
-        panierGrid.add(new Label(" Nom Produit "), 0, 0);
-        panierGrid.add(new Label(" Taille (ml) "), 1, 0);
-        panierGrid.add(new Label(" Prix (€) "), 2, 0);
-        panierGrid.add(new Label(" Quantite demandé "), 3, 0);
-        panierGrid.add(new Label(" Delete "), 4, 0);
+        panierGrid.add(new Label(" Type  "), this.panierType, 0);
+        panierGrid.add(new Label(" Nom Produit "), this.panierNomProduit, 0);
+        panierGrid.add(new Label(" Taille (ml) "), this.panierTaille, 0);
+        panierGrid.add(new Label(" Prix (€) "), this.panierPrix, 0);
+        panierGrid.add(new Label(" Quantite demandé "), this.panierQuantiteDemande, 0);
+        panierGrid.add(new Label(" Delete "), this.panierDelete, 0);
 
         int rowIndex = 1;
         for (ProductForPanier productForPanier : this.panier.getProducts()) {
-            panierGrid.add(new Label(productForPanier.getNameProduct()+""), 0, rowIndex);
-            panierGrid.add(new Label(productForPanier.getQuantityML()+""),1,rowIndex);
-            panierGrid.add(new Label(productForPanier.getPrice()+""),2,rowIndex);
-            panierGrid.add(new Label(productForPanier.getAskingQuantity()+""),3,rowIndex);
+            panierGrid.add(new Label(productForPanier.getOriginaClassName()), this.panierType, rowIndex);
+            panierGrid.add(new Label(productForPanier.getNameProduct()+""), this.panierNomProduit, rowIndex);
+            panierGrid.add(new Label(productForPanier.getQuantityML()+""),this.panierTaille,rowIndex);
+            panierGrid.add(new Label(productForPanier.getPrice()+""),this.panierPrix,rowIndex);
+            panierGrid.add(new Label(productForPanier.getAskingQuantity()+""),this.panierQuantiteDemande,rowIndex);
+
+            Button btnDeleteFromPanier = new Button("Delete");
+            deleteProductFromPanier(btnDeleteFromPanier);
+            panierGrid.add(btnDeleteFromPanier, this.panierDelete, rowIndex);
 
             rowIndex++;
 
@@ -130,7 +160,7 @@ public class menuBarController {
 
         Stage newStage = new Stage();
         newStage.setTitle(" Panier ");
-        Scene newScene = new Scene(borderPane, 400, 300);
+        Scene newScene = new Scene(borderPane, 500, 300);
         newStage.setScene(newScene);
         // Rendre la fenêtre modale
         newStage.initModality(Modality.APPLICATION_MODAL);
@@ -143,33 +173,48 @@ public class menuBarController {
 
     }
 
+    private void byAllPanierRun(ActionEvent actionEvent) {
+        VBox vBox=new VBox();
+        Label label=new Label("Votre panier contient : ");
+
+
+        Label nameLabel = new Label();
+        nameLabel.setStyle("-fx-font-weight: bold");
+        vBox.getChildren().addAll(label,nameLabel,progressBar,progressIndicator);
+
+
+        for (ProductForPanier productForPanier : this.panier.getProducts()) {
+            runOneProduct(productForPanier,vBox);
+            nameLabel.setText(productForPanier.getNameProduct());
+        }
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+
+        Scene scene = new Scene(vBox,400,200);
+        Stage stage = new Stage();
+        stage.setTitle("Realisation des produits du panier");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    private void byAllPanierSave(ActionEvent actionEvent) {
+        this.panier.updateFavorite(this.panier);
+    }
+
 
     private void byAllPanier(Button button){
         button.setOnAction(closeEvent -> {
-            VBox vBox=new VBox();
-            Label label=new Label("Votre panier contient : ");
-
-
             // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
-            Label nameLabel = new Label();
-            nameLabel.setStyle("-fx-font-weight: bold");
-            vBox.getChildren().addAll(label,nameLabel,progressBar,progressIndicator);
+            // Et sauvegarder ce qui a ete acheter dans le fichier pour les favoris
+           //byAllPanierRun(closeEvent);
+            System.out.println("Button clicked Sauvgarde du panier DEBUT");
+
+           byAllPanierSave(closeEvent);
+           System.out.println("Button clicked Sauvgarde du panier FIN");
 
 
-            for (ProductForPanier productForPanier : this.panier.getProducts()) {
-                runOneProduct(productForPanier,vBox);
-                nameLabel.setText(productForPanier.getNameProduct());
-            }
-            vBox.setAlignment(Pos.CENTER);
-            vBox.setSpacing(10);
-
-            Scene scene = new Scene(vBox,400,200);
-            Stage stage = new Stage();
-            stage.setTitle("Realisation des produits du panier");
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setResizable(false);
-            stage.show();
         });
     }
 
@@ -214,6 +259,38 @@ public class menuBarController {
 
 
 
+    }
+
+    public void onActionPrintShop(ActionEvent actionEvent) {
+        ArrayList<Product> products = this.productController.getProductsModel().getAllProducts();
+        System.out.println("Print Shop");
+        for (Product product : products) {
+            System.out.println(product.toString());
+        }
+    }
+
+    private void deleteProductFromPanier(Button button){
+        button.setOnAction(closeEvent -> {
+            System.out.println("Button clicked" + " " + "Delete");
+            //this.panier.removeProduct();
+        });
+
+    }
+
+    public void setConnexionController(ConnexionController connexionController) {
+        this.connexionController = connexionController;
+        if (connexionController != null) {
+            System.out.println("ConnexionController injecté avec succès dans MenuBarController.");
+        } else {
+            System.out.println("Attention : ConnexionController n'est pas injecté !");
+        }
+
+
+        fx_id_label_hello.textProperty().bind(
+                Bindings.when(connexionController.isConnectedProperty())
+                        .then("Bienvenue, utilisateur connecté !")
+                        .otherwise("Pas d'utilisateur connecté.")
+        );
     }
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane fx:id="fx_id_header" prefHeight="23.0" prefWidth="900.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.menuBarController">
+<BorderPane fx:id="fx_id_header" prefHeight="23.0" prefWidth="900.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuBarController">
     <right>
         <StackPane onMouseEntered="#onMouseEnteredAccount" onMouseExited="#onMouseExitedAccount" onMousePressed="#onMousePressedAccount" prefHeight="96.0" prefWidth="64.0" BorderPane.alignment="CENTER">
             <children>
@@ -48,12 +48,20 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#onActionPrintShop" prefHeight="32.0" prefWidth="35.0">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/shop.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             </children>
         </StackPane>
     </left>
    <center>
-      <Label fx:id="fx_id_label_hello" text="Invité" BorderPane.alignment="CENTER" />
-   </center>
+       <Label fx:id="fx_id_label_hello" layoutX="50" layoutY="50" text="Bienvenue" />   </center>
 </BorderPane>

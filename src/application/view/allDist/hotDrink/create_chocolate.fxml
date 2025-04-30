@@ -5,18 +5,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.distrib.CreateChocolateController">
    <content>
       <VBox prefHeight="1298.0" prefWidth="872.0">
          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="14.0" prefWidth="872.0">
+               <children>
+                  <Label text="TAILLE : ">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label text=" Un seul choix possible !" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../ressources/images/cups/small.png" />
+                           </image>
+                        </ImageView>
+                        <RadioButton fx:id="small" mnemonicParsing="false" text="SMALL" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../ressources/images/cups/medim.png" />
+                           </image>
+                        </ImageView>
+                        <RadioButton fx:id="medium" mnemonicParsing="false" text="MEDIUM" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../ressources/images/cups/large.png" />
+                           </image>
+                        </ImageView>
+                        <RadioButton fx:id="large" mnemonicParsing="false" text="LARGE" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="598.0">
                <children>
                   <Label text="BASE :">
@@ -24,7 +68,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="17.0" stroke="BLACK" strokeType="INSIDE" width="480.0" />
+                  <Label text=" Un seul choix possible !" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="162.0" prefWidth="598.0">
@@ -58,7 +102,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="17.0" stroke="BLACK" strokeType="INSIDE" width="449.0" />
+                  <Label text=" Un seul choix possible !  (Prix à l'unité:    )" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="112.0" prefWidth="899.0">
@@ -126,7 +170,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="17.0" stroke="BLACK" strokeType="INSIDE" width="429.0" />
+                  <Label text="Plusieur choix possible !  (Prix à l'unité:   )" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="162.0" prefWidth="598.0">
@@ -183,6 +227,20 @@
                   </VBox>
                </children>
             </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="598.0">
+               <children>
+                  <Label text="SUGAR LEVEL:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Slider majorTickUnit="1.0" max="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+               </children>
+            </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onActionCreateChocolate" text="CREATE MY CHOCOLATE" />

@@ -1,34 +1,26 @@
 package application;
 
+import application.controller.connexion.ConnexionController;
 import application.controller.distrib.ProductController;
+import application.controller.MenuBarController;
+import application.model.connexion.Connexion;
 import application.model.distrib.panier.Panier;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
     public static final ProductController productController = new ProductController();
     public static final Panier panier = new Panier();
-
+    public static final Connexion connexion = new Connexion();
 
     @Override
     public void start(Stage stage) throws Exception {
-
-
-        /*
-        HomePage homePage = new HomePage();
-
-        int width = 900; int height = 900 ;
-
-        Scene scene = new Scene(homePage.getLoader().load(), width, height);
-        stage.setResizable(false); // Empêche le redimensionnement
-        stage.setTitle(homePage.getTitle());
-        stage.setScene(scene);
-        stage.show();
-
-         */
-
+        setupAllListener();
         int width = 900; int height = 800 ;
 
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"))).load(), width, height);
@@ -56,6 +48,41 @@ public class Main extends Application {
     public static Panier getPanier() {
         return panier;
     }
+
+    private void executeBeforeClosing() {
+        // Logique à exécuter avant la fermeture
+        System.out.println("Exécution de la logique avant fermeture...");
+        //si il n'y apas d'utiisateur, pas besoin de sauvegarderle panier a la fermeture
+        // si il y a un utilisateur il faut sauvegarder le contenu du panieraffin de le sauvegarder
+        if(panier.getUser()== null){
+            System.out.println("Pas d'utilisateur");
+        }else {
+            System.out.println("Il y a un utilisateur courant -> il faut save le panier");
+        }
+    }
+
+    @Override
+    public void stop() {
+        // Code à exécuter avant la fermeture
+        executeBeforeClosing();
+    }
+
+
+    private void setupAllListener() throws IOException {
+        // Main.java ou autre gestionnaire principal
+        FXMLLoader connexionLoader = new FXMLLoader(getClass().getResource("/application/view/connexion/connexion.fxml"));
+        Parent connexionRoot = connexionLoader.load(); // Charge la vue
+        ConnexionController connexionController = connexionLoader.getController(); // Récupère le contrôleur
+
+        FXMLLoader menuBarLoader = new FXMLLoader(getClass().getResource("/application/view/menuBar.fxml"));
+        Parent menuBarRoot = menuBarLoader.load();
+
+        MenuBarController menuBarController = menuBarLoader.getController();
+
+// Partage du contrôleur connexion avec le menuBarController
+        menuBarController.setConnexionController(connexionController);
+    }
+
 
 
 }

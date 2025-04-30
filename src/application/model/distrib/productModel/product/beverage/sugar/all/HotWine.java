@@ -10,7 +10,7 @@ public class HotWine extends CanAddSugar implements NeedPreparation {
     }
 
     @Override
-    public int getPrice() {
+    public double getPrice() {
         return 0;
     }
 

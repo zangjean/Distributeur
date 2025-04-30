@@ -2,7 +2,7 @@ package application.model.distrib.productModel.product.beverage.sugar.all.chocol
 
 import application.model.distrib.productModel.product.NeedPreparation;
 import application.model.distrib.productModel.product.beverage.sugar.CanAddSugar;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 
 public class HotChocolate extends CanAddSugar implements NeedPreparation {
@@ -11,6 +11,8 @@ public class HotChocolate extends CanAddSugar implements NeedPreparation {
     private Boolean withMilk;
     private Aroma aroma;
     private HashSet<Toping> topings;
+
+
     public HotChocolate(String name) {
         super(name);
         this.topings=new HashSet<>();
@@ -27,8 +29,8 @@ public class HotChocolate extends CanAddSugar implements NeedPreparation {
     }
 
     @Override
-    public int getPrice(){
-        return 0;
+    public double getPrice(){
+        return allTopingsPice()+aromaPrice();
     }
 
     public Aroma getAroma() {
@@ -61,5 +63,26 @@ public class HotChocolate extends CanAddSugar implements NeedPreparation {
 
     public void deleteToping(Toping toping){
         this.topings.remove(toping);
+    }
+
+    public int getSize(String size){
+        switch (size){
+            case "SMALL":return 240;
+            case "MEDIUM": return 350;
+            case "LARGE":return 450;
+        }
+        return 0;
+    }
+
+    private double allTopingsPice(){
+        return 0.20 * this.topings.size();
+    }
+
+    private double aromaPrice(){
+        if(this.aroma==null){
+            return 0;
+        }else {
+            return 0.30;
+        }
     }
 }

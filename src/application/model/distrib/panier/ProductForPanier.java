@@ -6,6 +6,7 @@ public class ProductForPanier {
     private int quantityML;
     private double price;
     private int askingQuantity;
+    private String originaClassName;
 
     public ProductForPanier(String nameProduct, int quantityML, double price) {
         this.nameProduct = nameProduct;
@@ -14,7 +15,13 @@ public class ProductForPanier {
         this.askingQuantity = 1;
     }
 
+    public String getOriginaClassName() {
+        return originaClassName;
+    }
 
+    public void setOriginaClassName(String originaClassName) {
+        this.originaClassName = originaClassName;
+    }
     public String getNameProduct() {
         return nameProduct;
     }

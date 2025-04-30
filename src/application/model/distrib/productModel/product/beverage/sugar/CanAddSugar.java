@@ -35,5 +35,5 @@ public abstract class CanAddSugar extends Beverage {
         }
     }
 
-    public abstract int getPrice();
+    public abstract double getPrice();
 }

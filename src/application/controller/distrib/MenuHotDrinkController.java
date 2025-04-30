@@ -218,6 +218,7 @@ public class MenuHotDrinkController {
             newStage.show();
 
             buttonValidate.setOnAction(actionEvent -> {
+                coffee.addSugar((int) sucreSlider.getValue());
                 this.panier.addProduct(coffee,entry.getKey(),entry.getValue());
                 newStage.close();
             });

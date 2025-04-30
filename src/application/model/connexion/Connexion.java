@@ -35,13 +35,12 @@ public class Connexion {
     public boolean userCanConnect(String login, String password) {
         boolean canConnect = false;
         for(User user: userManager.getAll_users()){
-            System.out.println(user.toString());
-            User userTest = new User(login,password);
-            if(user.equals(userTest)){
+            if(user.getUsername().equals(login) && user.getPassword().equals(password)){
                 canConnect = true;
                 setupConnexion(user);
                 break;
             }
+
         }
         return canConnect;
     }
