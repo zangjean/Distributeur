@@ -71,7 +71,7 @@ public class MenuPizzaController {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Button orderButton = new Button("Order");
+        Button orderButton = new Button("Commander");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Margherita", orderButton));
         flowPane_margherita.getChildren().addAll(imageView, orderButton);
 
@@ -92,7 +92,7 @@ public class MenuPizzaController {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Button orderButton = new Button("Order");
+        Button orderButton = new Button("Commander");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Pepperoni", orderButton));
         flowPane_pepperoni.getChildren().addAll(imageView, orderButton);
 
@@ -112,7 +112,7 @@ public class MenuPizzaController {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Button orderButton = new Button("Order");
+        Button orderButton = new Button("Commander");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Veggie", orderButton));
         flowPane_veggie.getChildren().addAll(imageView, orderButton);
 
@@ -132,7 +132,7 @@ public class MenuPizzaController {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Button orderButton = new Button("Order");
+        Button orderButton = new Button("Commander");
         orderButton.setOnAction(event -> openSelectPizzaDialog("BBQ", orderButton));
         flowPane_bbq.getChildren().addAll(imageView, orderButton);
 
@@ -152,7 +152,7 @@ public class MenuPizzaController {
         imageView.setSmooth(true);
         imageView.setCache(true);
 
-        Button orderButton = new Button("Order");
+        Button orderButton = new Button("Commander");
         orderButton.setOnAction(event -> openSelectPizzaDialog("Hawaiian", orderButton));
         flowPane_hawaiian.getChildren().addAll(imageView, orderButton);
 
@@ -172,7 +172,7 @@ public class MenuPizzaController {
         if (targetPizza != null) {
             showSelectPizzaWindow(targetPizza, button);
         } else {
-            System.out.println(pizzaName + " pizza not found.");
+            System.out.println(pizzaName + " pizza non trouvé.");
         }
     }
 
@@ -180,22 +180,22 @@ public class MenuPizzaController {
     private void showSelectPizzaWindow(Pizza pizza, Button button) {
         GridPane select = new GridPane();
         select.setGridLinesVisible(true);
-        select.add(new Label(" Size "), 0, 0);
-        select.add(new Label(" Price (€) "), 1, 0);
+        select.add(new Label(" Taille "), 0, 0);
+        select.add(new Label(" Prix (€) "), 1, 0);
         select.add(new Label(" Select "), 2, 0);
 
         Map<Integer, Double> prices = pizza.getSizePriceMap();
 
         // Define fixed sizes and their labels
-        String[] sizeLabels = {"Small", "Large", "Extra Large"};
-        int[] sizeValues = {25, 30, 35}; // example sizes in cm
-        double[] fixedPrices = {8.0, 12.0, 15.0}; // fixed prices for sizes
+        String[] sizeLabels = {"Petit", "Grand", "Très Grand"};
+        int[] sizeValues = {25, 30, 35}; // en cm
+        double[] fixedPrices = {8.0, 12.0, 15.0}; 
 
         int rowIndex = 1;
         for (int i = 0; i < sizeLabels.length; i++) {
             String sizeLabel = sizeLabels[i];
             int sizeValue = sizeValues[i];
-            Double price = fixedPrices[i]; // use fixed price instead of map
+            Double price = fixedPrices[i]; 
 
             select.add(new Label(sizeLabel), 0, rowIndex);
             select.add(new Label(String.format("%.2f", price)), 1, rowIndex);
@@ -233,15 +233,9 @@ public class MenuPizzaController {
         newStage.show();
     }
 
-
-
-
-
-
-
     private void addOnPanier(Button button, Map.Entry<Integer, Double> entry, Pizza pizza) {
         button.setOnAction(event -> {
-            System.out.println("Button clicked for size " + entry.getKey() + "cm");
+            System.out.println("Bouton cliqué pour la taille " + entry.getKey() + "cm");
             this.panier.addProduct(pizza, entry.getKey(), entry.getValue());
         });
     }
@@ -256,8 +250,5 @@ public class MenuPizzaController {
         }
         return pizzas;
     }
-
-
-
 
 }

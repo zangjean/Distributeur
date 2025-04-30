@@ -18,7 +18,7 @@ public class SnackController {
 
     @FXML
     public void onActionNuggets(ActionEvent actionEvent) {
-        loadMenuSnackView(actionEvent, "Chocolate");
+        loadMenuSnackView(actionEvent, "Chocolat");
     }
 
     @FXML

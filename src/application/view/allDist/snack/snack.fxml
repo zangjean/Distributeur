@@ -48,7 +48,7 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="90.0" prefWidth="121.0">
                                              <children>
-                                                <Label text="Chocolate" />
+                                                <Label text="Chocolat" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -83,7 +83,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Label text="Delicious Snacks" />
+            <Label text="Délicieux snacks" />
             <VBox prefHeight="193.0" prefWidth="800.0" />
          </children>
       </VBox>

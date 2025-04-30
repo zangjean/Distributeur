@@ -52,15 +52,15 @@ public class MenuSnackController {
         flowPane_chips.setHgap(10);
         flowPane_chips.setVgap(10);
 
-        String[] chipFlavors = {"Original", "BBQ", "Chicken", "Beef"};
+        String[] chipFlavors = {"Original", "BBQ", "Poulet", "Boeuf"};
         for (String flavor : chipFlavors) {
             Button flavorButton = new Button(flavor);
             try {
-                // Load image with fallback for missing images
+                // Charger l'image avec solution de secours pour les images manquantes
                 String imagePath = "../../ressources/images/chips/" + flavor.toLowerCase() + ".jpg";
                 java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
                 if (imageStream == null) {
-                    System.out.println("Image not found for flavor: " + flavor + " at path: " + imagePath);
+                    System.out.println("Image non trouvée pour la saveur: " + flavor + " sur le chemin: " + imagePath);
                 } else {
                     Image image = new Image(imageStream);
                     ImageView imageView = new ImageView(image);
@@ -70,7 +70,7 @@ public class MenuSnackController {
                     flavorButton.setGraphic(imageView);
                 }
             } catch (Exception e) {
-                System.out.println("Error loading image for flavor: " + flavor + " - " + e.getMessage());
+                System.out.println("Erreur lors du chargement de l'image pour la saveur: " + flavor + " - " + e.getMessage());
             }
 
             flavorButton.setOnAction(event -> openSelectSnackDialog(flavor, flavorButton));
@@ -89,7 +89,7 @@ public class MenuSnackController {
         flowPane_chocolate.setHgap(10);
         flowPane_chocolate.setVgap(10);
 
-        String[] chocolateTypes = {"Milk", "Dark", "White"};
+        String[] chocolateTypes = {"Lait", "Noir", "Blanc"};
         String[] chocolateImages = {"../../ressources/images/chocolate/milk.jpg", "../../ressources/images/chocolate/dark.jpg", "../../ressources/images/chocolate/white.jpg"};
 
         for (int i = 0; i < chocolateTypes.length; i++) {
@@ -99,7 +99,7 @@ public class MenuSnackController {
                 String imagePath = chocolateImages[i];
                 java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
                 if (imageStream == null) {
-                    System.out.println("Image not found for chocolate type: " + type + " at path: " + imagePath);
+                    System.out.println("Image non trouvée pour le type de chocolat : " + type + " sur le chemin : " + imagePath);
                 } else {
                     Image image = new Image(imageStream);
                     ImageView imageView = new ImageView(image);
@@ -109,7 +109,7 @@ public class MenuSnackController {
                     typeButton.setGraphic(imageView);
                 }
             } catch (Exception e) {
-                System.out.println("Error loading image for chocolate type: " + type + " - " + e.getMessage());
+                System.out.println("Erreur lors du chargement de l'image pour le type de chocolat : " + type + " - " + e.getMessage());
             }
             typeButton.setOnAction(event -> openSelectSnackDialog(type, typeButton));
             flowPane_chocolate.getChildren().add(typeButton);
@@ -123,7 +123,7 @@ public class MenuSnackController {
         flowPane_sandwich.setHgap(10);
         flowPane_sandwich.setVgap(10);
 
-        String[] sandwichTypes = {"Ham", "Cheese", "Veggie"};
+        String[] sandwichTypes = {"Jambon", "Fromage", "Végétarien"};
         String[] sandwichImages = {"../../ressources/images/sandwich/ham.jpg", "../../ressources/images/sandwich/cheese.jpg", "../../ressources/images/sandwich/veggie.jpg"};
 
         for (int i = 0; i < sandwichTypes.length; i++) {
@@ -133,7 +133,7 @@ public class MenuSnackController {
                 String imagePath = sandwichImages[i];
                 java.io.InputStream imageStream = getClass().getResourceAsStream(imagePath);
                 if (imageStream == null) {
-                    System.out.println("Image not found for sandwich type: " + type + " at path: " + imagePath);
+                    System.out.println("Image non trouvée pour le type de sandwich : " + type + " sur le chemin: " + imagePath);
                 } else {
                     Image image = new Image(imageStream);
                     ImageView imageView = new ImageView(image);
@@ -143,7 +143,7 @@ public class MenuSnackController {
                     typeButton.setGraphic(imageView);
                 }
             } catch (Exception e) {
-                System.out.println("Error loading image for sandwich type: " + type + " - " + e.getMessage());
+                System.out.println("Erreur lors du chargement de l'image pour le type de sandwich : " + type + " - " + e.getMessage());
             }
             typeButton.setOnAction(event -> openSelectSnackDialog(type, typeButton));
             flowPane_sandwich.getChildren().add(typeButton);
@@ -165,29 +165,28 @@ public class MenuSnackController {
         if (targetSnack != null) {
             showSelectSnackWindow(targetSnack, button);
         } else {
-            System.out.println(snackName + " snack not found.");
+            System.out.println(snackName + " snack non trouvée.");
         }
     }
 
     private void showSelectSnackWindow(Snacks snack, Button button) {
         GridPane select = new GridPane();
         select.setGridLinesVisible(true);
-        select.add(new Label(" Size "), 0, 0);
-        select.add(new Label(" Price (€) "), 1, 0);
+        select.add(new Label(" Taille "), 0, 0);
+        select.add(new Label(" Prix (€) "), 1, 0);
         select.add(new Label(" Select "), 2, 0);
 
         Map<Integer, Double> prices = snack.getQuantityPriceMap();
 
-        // Define fixed sizes and their labels
-        String[] sizeLabels = {"Small", "Large"};
-        int[] sizeValues = {1, 2}; // example size codes for snacks
-        double[] fixedPrices = {3.0, 5.0}; // fixed prices for sizes
+        String[] sizeLabels = {"Petit", "Grand"};
+        int[] sizeValues = {1, 2}; 
+        double[] fixedPrices = {3.0, 5.0}; 
 
         int rowIndex = 1;
         for (int i = 0; i < sizeLabels.length; i++) {
             String sizeLabel = sizeLabels[i];
             int sizeValue = sizeValues[i];
-            Double price = fixedPrices[i]; // use fixed price instead of map
+            Double price = fixedPrices[i];
 
             select.add(new Label(sizeLabel), 0, rowIndex);
             select.add(new Label(String.format("%.2f", price)), 1, rowIndex);
@@ -226,7 +225,7 @@ public class MenuSnackController {
 
     private void addOnPanier(Button button, Map.Entry<Integer, Double> entry, Snacks snack) {
         button.setOnAction(event -> {
-            System.out.println("Button clicked for size " + entry.getKey());
+            System.out.println("Bouton cliqué pour la taille " + entry.getKey());
             this.panier.addProduct(snack, entry.getKey(), entry.getValue());
         });
     }

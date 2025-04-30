@@ -50,7 +50,7 @@
                                              <children>
                                                 <Label text="Pepperoni" />
                                                 <Label text="&amp;" />
-                                                <Label text="Sausage" />
+                                                <Label text="Saucisson" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -121,7 +121,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Label text="Delicious Pizzas" />
+            <Label text="Délicieuses pizzas" />
             <VBox prefHeight="193.0" prefWidth="800.0" />
          </children>
       </VBox>

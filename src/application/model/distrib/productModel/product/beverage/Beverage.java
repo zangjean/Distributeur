@@ -17,7 +17,7 @@ public abstract class Beverage extends Product {
         StringBuilder string = new StringBuilder();
         if (!this.getQuantityPriceMap().isEmpty()){
             for (Map.Entry<Integer, Double> entry : this.getQuantityPriceMap().entrySet()) {
-                string.append("Quantity (ml): ").append(entry.getKey()).append(", Price €: ").append(entry.getValue()).append("\n");
+                string.append("Quantité (ml): ").append(entry.getKey()).append(", Prix €: ").append(entry.getValue()).append("\n");
                 //string.append("Preparation Time : ").append(this.getPre)
             }
         }else {

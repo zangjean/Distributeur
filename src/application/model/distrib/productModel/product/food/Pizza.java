@@ -55,11 +55,11 @@ public class Pizza extends Product {
         StringBuilder string = new StringBuilder();
         if (!this.sizePriceMap.isEmpty()) {
             for (var entry : this.sizePriceMap.entrySet()) {
-                string.append("Size (code): ").append(entry.getKey()).append(", Price €: ").append(entry.getValue()).append("\n");
+                string.append("Taille (code): ").append(entry.getKey()).append(", Prix €: ").append(entry.getValue()).append("\n");
             }
         } else if (!this.getQuantityPriceMap().isEmpty()) {
             for (var entry : this.getQuantityPriceMap().entrySet()) {
-                string.append("Size (code): ").append(entry.getKey()).append(", Price €: ").append(entry.getValue()).append("\n");
+                string.append("Taille (code): ").append(entry.getKey()).append(", Prix €: ").append(entry.getValue()).append("\n");
             }
         } else {
             string.append("");
