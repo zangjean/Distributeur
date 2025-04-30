@@ -35,20 +35,13 @@ public class MenuHotDrinkController {
     public Tab tab_the;
     @FXML
     public Tab tab_soupes;
-    @FXML
-    public GridPane grid_cappu;
-    @FXML
-    public GridPane grid_choco;
-    @FXML
-    public GridPane grid_the;
-    @FXML
-    public GridPane grid_soupes;
+
     @FXML
     public TabPane tabPaneID;
 
     private ProductController productController;
     private Panier panier;
-    private GridPane grid_cafe = new GridPane();
+
 
     @FXML
     public void initialize() throws IOException {

@@ -61,6 +61,14 @@ public class MenuBarController {
         this.productController = Main.productController;
         System.out.println("menuBarController initialisé.");
 
+        fx_id_label_hello.textProperty().bind(
+                Bindings.when(Main.connexion.isConnectedProperty())
+                        .then("Bienvenue, utilisateur connecté !")
+                        .otherwise("Pas d'utilisateur connecté.")
+        );
+
+
+
 
 
     }
@@ -286,11 +294,6 @@ public class MenuBarController {
         }
 
 
-        fx_id_label_hello.textProperty().bind(
-                Bindings.when(connexionController.isConnectedProperty())
-                        .then("Bienvenue, utilisateur connecté !")
-                        .otherwise("Pas d'utilisateur connecté.")
-        );
     }
 
 }

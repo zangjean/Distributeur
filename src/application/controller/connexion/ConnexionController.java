@@ -28,11 +28,6 @@ public class ConnexionController {
 
     private Panier panier=Main.panier;
 
-    // Création d'une propriété observable
-    private BooleanProperty isConnected = new SimpleBooleanProperty(false); // Propriété observable pour la connexion
-
-
-
     public void on_action_valider(javafx.event.ActionEvent actionEvent) {
         System.out.println("Username: "+ fx_id_username.getText());
         System.out.println("Password: "+ fx_id_password.getText());
@@ -45,9 +40,6 @@ public class ConnexionController {
             fx_id_connexion_message.setStyle("-fx-font-size: 20; -fx-text-fill: green ");
             this.panier.setUser(connexion.getConnectedUser());
 
-            // Mise à jour du statut de connexion via la propriété observable
-            setConnected(true); // Mise à jour du statut de connexion
-
             // Fermer la fenêtre de connexion
             Stage stage = (Stage) fx_id_valider.getScene().getWindow();
             stage.close();
@@ -58,27 +50,10 @@ public class ConnexionController {
             fx_id_connexion_message.setText("!! Username or Password incorrect !!");
             fx_id_connexion_message.setStyle("-fx-font-size: 20; -fx-text-fill: red ");
 
-            // Actualisation du statut pour échec
-            setConnected(false); // Connexion échouée
-
         }
 
 
 
     }
-
-    public BooleanProperty isConnectedProperty() {
-        return isConnected; // Permet d'accéder à la propriété observable de partout
-    }
-
-    public boolean isConnected() {
-        return isConnected.get();
-    }
-
-    public void setConnected(boolean connected) {
-        System.out.println("Changing isConnectedProperty to: " + connected);
-        this.isConnected.set(connected); // Met à jour l'état
-    }
-
 
 }

@@ -124,7 +124,28 @@
                </children>
             </VBox>
             <Label text="Vous les adorez" />
-            <VBox prefHeight="193.0" prefWidth="800.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <ImageView fx:id="imageFav1" fitHeight="61.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelFav1" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <ImageView fx:id="imageFav2" fitHeight="61.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelFav2" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <ImageView fx:id="imageFav3" fitHeight="61.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelFav3" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

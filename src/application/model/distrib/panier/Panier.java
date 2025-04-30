@@ -1,6 +1,7 @@
 package application.model.distrib.panier;
 
 import application.model.distrib.productModel.product.Product;
+import application.model.distrib.saveFav.FavoriteProductForSave;
 import application.model.distrib.saveFav.FavoriteProductForSaveManager;
 import application.model.user.User;
 
@@ -63,5 +64,9 @@ public class Panier implements Serializable {
 
     public void updateFavorite(Panier panier){
         this.favoriteProductForSaveManager.run(panier);
+    }
+
+    public ArrayList<String> return3FavoriteProduct() {
+        return this.favoriteProductForSaveManager.return3MostFavProd();
     }
 }

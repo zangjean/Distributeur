@@ -1,18 +1,67 @@
 package application.controller.distrib;
 
 
+import application.Main;
+import application.model.distrib.panier.Panier;
+import application.model.distrib.saveFav.FavoriteProductForSave;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HotDrinkController {
+
+    @FXML
+    public ImageView imageFav1;
+    @FXML
+    public Label labelFav1;
+    @FXML
+    public ImageView imageFav2;
+    @FXML
+    public Label labelFav2;
+    @FXML
+    public ImageView imageFav3;
+    @FXML
+    public Label labelFav3;
+
+    private Panier panier;
+
+    @FXML
+    public void initialize() {
+        //Main.productController.getProductsModel().get
+        this.panier = Main.panier;
+        initAllFavProd(panier.return3FavoriteProduct());
+    }
+
+    private void initAllFavProd(ArrayList<String> list) {
+        if(list.size()==0){
+            System.out.println("Aucun produit favoris");
+        }else{
+            System.out.println("Voici le nom des Produits Favoris : ");
+            if(list.size()>=1){
+                this.labelFav1.setText(list.getFirst());
+                System.out.println(list.getFirst());
+            }
+            if(list.size()>=2) {
+                this.labelFav2.setText(list.get(1));
+                System.out.println(list.get(1));
+            }
+            if (list.size()>=3){
+                this.labelFav3.setText(list.get(2));
+                System.out.println(list.get(2));
+            }
+        }
+    }
+
 
     private void onActionHotDrink(ActionEvent actionEvent, String name) {
         try {

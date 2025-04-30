@@ -3,6 +3,7 @@ import application.model.distrib.panier.Panier;
 import application.model.distrib.panier.ProductForPanier;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class FavoriteProductForSaveManager{
 
@@ -27,7 +28,7 @@ public class FavoriteProductForSaveManager{
         }
     }
 
-    public FavoriteProductForSave loadFaveProd(){
+    public void loadFaveProd(){
         try {
             FileInputStream fis = new FileInputStream(FAVEPROD_FILE);
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -37,7 +38,6 @@ public class FavoriteProductForSaveManager{
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return this.favoriteProductForSave;
     }
 
     public FavoriteProductForSave getFavoriteProductForSave(){
@@ -67,5 +67,48 @@ public class FavoriteProductForSaveManager{
             }
         }
     }
+
+    private ArrayList<String> returnAllFavProdNames() {
+        loadFaveProd();
+        ArrayList<String> favProdNames = new ArrayList<>();
+        // Parcours des clés de la HashMap représentant les noms des produits favoris
+        for (String prodName : this.favoriteProductForSave.getFavProds().keySet()) {
+            favProdNames.add(prodName);
+        }
+        return favProdNames;
+    }
+
+    public ArrayList<String> return3MostFavProd(){
+        ArrayList<String> favProdNames = returnAllFavProdNames();
+        ArrayList<String> res = new ArrayList<>();
+
+        if(favProdNames.size()<3){
+            ArrayList<String> favProdNamesTemps = favProdNames;
+            for(int i=0;i<3;i++){
+                String temp=returnMostFavProd(favProdNamesTemps);
+                res.add(temp);
+                favProdNamesTemps.remove(temp);
+            }
+            return res;
+
+        }else {
+            return favProdNames;
+        }
+    }
+
+    private String returnMostFavProd(ArrayList<String> favProdNames){
+        int max =0;
+        String mostFavProdName="";
+        for(String prodName:favProdNames){
+            if(max<this.favoriteProductForSave.getFavProds().get(prodName)){
+                max=this.favoriteProductForSave.getFavProds().get(prodName);
+                mostFavProdName=prodName;
+            }
+        }
+        return mostFavProdName;
+
+    }
+
+
 
 }

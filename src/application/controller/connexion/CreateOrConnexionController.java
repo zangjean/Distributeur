@@ -63,11 +63,6 @@ public class CreateOrConnexionController {
 
 
     private void connexion(ActionEvent actionEvent) throws IOException {
-        // Fermer la fenêtre actuelle
-        //Window currentStage = ((Node) actionEvent.getSource()).getScene().getWindow();
-        //attend que le fenetre soit completement chargé avant de fermer l'ancienne
-        //Platform.runLater(currentStage::hide);
-
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/connexion/connexion.fxml"))).load());
         Stage stage = new Stage();
 
@@ -76,7 +71,7 @@ public class CreateOrConnexionController {
         stage.setResizable(false);
         stage.setTitle(" CONNEXION ");
         stage.setScene(scene);
-        stage.show(); // Affiche la fenêtre et attend sa fermeture avant de continuer
+        stage.show();
 
         Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         currentStage.close();
@@ -105,6 +100,9 @@ public class CreateOrConnexionController {
     private void deconnexion(ActionEvent actionEvent) {
         System.out.println("deconnexion");
         Main.connexion.disconnect();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+
     }
 
     private void editAccount(ActionEvent actionEvent) {

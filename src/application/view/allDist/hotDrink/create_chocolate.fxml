@@ -31,7 +31,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedSmallCup" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/cups/small.png" />
                            </image>
@@ -41,7 +41,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedMediumCup" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/cups/medim.png" />
                            </image>
@@ -51,7 +51,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedLargeCup" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/cups/large.png" />
                            </image>
@@ -75,7 +75,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedMilk" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/lait.png" />
                            </image>
@@ -85,7 +85,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedWater" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/eau.png" />
                            </image>
@@ -111,7 +111,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedNothingArome" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../ressources/images/rien1.png" />
                                  </image>
@@ -121,7 +121,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedVanilla" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../ressources/images/vanille.png" />
                                  </image>
@@ -131,7 +131,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedAlmond" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../ressources/images/amande.png" />
                                  </image>
@@ -141,7 +141,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedHazelnut" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../ressources/images/noisette.png" />
                                  </image>
@@ -151,7 +151,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedCaramel" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../ressources/images/caramel.png" />
                                  </image>
@@ -177,7 +177,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedNothingToppings" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/rien1.png" />
                            </image>
@@ -187,7 +187,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" onMousePressed="#pressedMarshmallow" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/marshmallows.png" />
                            </image>
@@ -197,7 +197,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedChantilly" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/chantilly.gif" />
                            </image>
@@ -207,7 +207,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedSpeculos" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/speculoos.png" />
                            </image>
@@ -217,7 +217,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="193.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="193.0" fitWidth="151.0" onMousePressed="#pressedOreo" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../ressources/images/oreo.png" />
                            </image>

@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -51,6 +53,7 @@ public class CreateChocolateController {
     public RadioButton medium;
     @FXML
     public RadioButton large;
+
 
 
     private ProductController productController;
@@ -193,5 +196,84 @@ public class CreateChocolateController {
         else return "LARGE";
     }
 
+    @FXML
+    public void pressedMediumCup(MouseEvent mouseEvent) {
+        this.medium.setSelected(true);
+    }
+
+    @FXML
+    public void pressedSmallCup(MouseEvent mouseEvent) {
+        this.small.setSelected(true);
+    }
+
+    @FXML
+    public void pressedLargeCup(MouseEvent mouseEvent) {
+        this.large.setSelected(true);
+    }
+
+    @FXML
+    public void pressedVanilla(MouseEvent mouseEvent) {
+        this.vanilla.setSelected(true);
+    }
+    @FXML
+    public void pressedHazelnut(MouseEvent mouseEvent) {
+        this.hazelnut.setSelected(true);
+    }
+    @FXML
+    public void pressedCaramel(MouseEvent mouseEvent) {
+        this.caramel.setSelected(true);
+    }
+    @FXML
+    public void pressedAlmond(MouseEvent mouseEvent) {
+        this.almond.setSelected(true);
+    }
+    @FXML
+    public void pressedNothingArome(MouseEvent mouseEvent) {
+        this.rienArome.setSelected(true);
+    }
+    @FXML
+    public void pressedMilk(MouseEvent mouseEvent) {
+        this.milk.setSelected(true);
+    }
+    @FXML
+    public void pressedWater(MouseEvent mouseEvent) {
+        this.water.setSelected(true);
+    }
+
+    @FXML
+    public void pressedNothingToppings(MouseEvent mouseEvent) {
+        this.rienTopping.setSelected(true);
+        this.marshmallow.setSelected(false);
+        this.chantilly.setSelected(false);
+        this.speculos.setSelected(false);
+        this.oreo.setSelected(false);
+
+    }
+
+    @FXML
+    public void pressedMarshmallow(MouseEvent mouseEvent) {
+        this.marshmallow.setSelected(true);
+        this.rienTopping.setSelected(false);
+    }
+
+    @FXML
+    public void pressedChantilly(MouseEvent mouseEvent) {
+        this.chantilly.setSelected(true);
+        this.rienTopping.setSelected(false);
+
+    }
+
+    @FXML
+    public void pressedSpeculos(MouseEvent mouseEvent) {
+        this.speculos.setSelected(true);
+        this.rienTopping.setSelected(false);
+
+    }
+
+    @FXML
+    public void pressedOreo(MouseEvent mouseEvent) {
+        this.oreo.setSelected(true);
+        this.rienTopping.setSelected(false);
+    }
 
 }

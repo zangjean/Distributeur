@@ -20,7 +20,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        setupAllListener();
         int width = 900; int height = 800 ;
 
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"))).load(), width, height);
@@ -65,22 +64,6 @@ public class Main extends Application {
     public void stop() {
         // Code à exécuter avant la fermeture
         executeBeforeClosing();
-    }
-
-
-    private void setupAllListener() throws IOException {
-        // Main.java ou autre gestionnaire principal
-        FXMLLoader connexionLoader = new FXMLLoader(getClass().getResource("/application/view/connexion/connexion.fxml"));
-        Parent connexionRoot = connexionLoader.load(); // Charge la vue
-        ConnexionController connexionController = connexionLoader.getController(); // Récupère le contrôleur
-
-        FXMLLoader menuBarLoader = new FXMLLoader(getClass().getResource("/application/view/menuBar.fxml"));
-        Parent menuBarRoot = menuBarLoader.load();
-
-        MenuBarController menuBarController = menuBarLoader.getController();
-
-// Partage du contrôleur connexion avec le menuBarController
-        menuBarController.setConnexionController(connexionController);
     }
 
 
