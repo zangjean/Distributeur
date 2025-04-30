@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
 import java.util.Objects;
@@ -23,13 +24,16 @@ public class ProductCardController {
 
     }
 
-//    @FXML
-//    public void initialize() {
-//        // Initialize the controller
-//        // You can set default values or perform any setup here
-//        // For example, you can set the default image and text for the labels
-//
-//    }
+    @FXML
+    public void initialize() {
+        // Initialize the controller
+        // You can set default values or perform any setup here
+        // For example, you can set the default image and text for the labels
+
+
+
+
+    }
 
     public void setProductCard(ProductCard productCard) {
 

@@ -1,19 +1,19 @@
 package editor.composants.templates.model;
 
 import editor.composants.savegarde.SaveLoad;
-import editor.composants.templates.controller.ColdDrinkPresetController;
+import editor.composants.templates.controller.PizzaPresetController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public  class ColdDrinkPresetLoader extends HBox implements Saveable {
+public class PizzaPresetLoader extends AnchorPane implements Saveable  {
 
-    private ColdDrinkPresetController controller;
-    public ColdDrinkPresetLoader() {
+    private PizzaPresetController controller;
+    public PizzaPresetLoader()
+    {
         try {
-            FXMLLoader loader = new FXMLLoader(ColdDrinkPresetLoader.class.getResource("/editor/composants/templates/view/colddrink_preset.fxml"));
+            FXMLLoader loader = new FXMLLoader(PizzaPresetLoader.class.getResource("/editor/composants/templates/view/pizza_preset.fxml"));
             loader.setRoot(this);
             loader.load();
 
@@ -24,7 +24,6 @@ public  class ColdDrinkPresetLoader extends HBox implements Saveable {
         }
     }
 
-
     @Override
     public SaveLoad getLayout() {
         return controller.getCurrentLayout();
@@ -32,7 +31,9 @@ public  class ColdDrinkPresetLoader extends HBox implements Saveable {
 
     @Override
     public void applySaveLoad(SaveLoad saveLoad) {
+
         controller.applyLayout(saveLoad);
+
 
     }
 }

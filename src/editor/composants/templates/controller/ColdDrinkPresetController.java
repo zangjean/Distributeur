@@ -1,138 +1,172 @@
 package editor.composants.templates.controller;
 
 import editor.composants.hotdrink.model.DragProduct;
+import editor.composants.savegarde.SaveLoad;
 import editor.composants.templates.composants.hotdrink.model.ProductCard;
 import editor.composants.templates.composants.hotdrink.model.ProductCardLoader;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ColdDrinkPresetController {
 
-    @FXML
-    private Label counterLabel;  // Create this Label in your FXML
+    @FXML private HBox hboxContainer;           // your fx:id="hboxContainer"
+    @FXML private ScrollPane scrollPane1,
+            scrollPane2,
+            scrollPane3;
+    @FXML private VBox vbox1, vbox2, vbox3;     // the three columns
 
+    private final Map<String, List<StackPane>> columnSlots = new LinkedHashMap<>();
 
-    private final List<StackPane> placedProducts = new ArrayList<>();
-    @FXML
-    private TilePane tilePane;
+    private static final int MAX_PER_COLUMN = 15;
+    private static final int SLOTS_PER_COLUMN = 10;
 
-
-    public ColdDrinkPresetController() {
-        // Constructor
-    }
-
-    private final int MAX_SLOTS = 15; //  You control how many products user can place
+    /** keep an ordered map of column‐keys → vbox so save/load is deterministic */
+    private final Map<String, VBox> columns = new LinkedHashMap<>();
 
     @FXML
     public void initialize() {
-        System.out.println("ColdDrinkPresetController initialized");
+        // 1) set up your map of columns
+        columnSlots.put("col1", new ArrayList<>());
+        columnSlots.put("col2", new ArrayList<>());
+        columnSlots.put("col3", new ArrayList<>());
 
-        tilePane.setPrefColumns(3); // 3 columns
-        tilePane.setHgap(10);
-        tilePane.setVgap(10);
-        tilePane.setAlignment(Pos.CENTER);
+        // 2) for each column, add fixed slots
+        int colIndex = 1;
+        for (VBox vbox : List.of(vbox1, vbox2, vbox3)) {
+            String columnKey = "col" + colIndex++;
+            List<StackPane> slots = columnSlots.get(columnKey);
 
-        for (int i = 0; i < MAX_SLOTS; i++) {
-            StackPane emptySlot = new StackPane();
-            emptySlot.setPrefSize(150, 150);
-            emptySlot.setStyle("-fx-border-color: #aaa; -fx-background-color: #f0f8ff;");
+            for (int i = 0; i < SLOTS_PER_COLUMN; i++) {
+                StackPane slot = new StackPane();
+                slot.setId(columnKey + "_slot" + i);
+                slot.setPrefSize(150, 150);
+                slot.setStyle(
+                        "-fx-border-color: #aaa; " +
+                                "-fx-background-color: white;"
+                );
 
-            setupDropHandlers(emptySlot);
-
-            tilePane.getChildren().add(emptySlot);
-            placedProducts.add(emptySlot); // Save slots
+                setupDropHandlers(slot);
+                vbox.getChildren().add(slot);
+                slots.add(slot);
+            }
         }
+
+
+    }
+    private void setupDropHandlers(StackPane slot) {
+        slot.setOnDragOver(e -> {
+            if (e.getDragboard().hasString()) {
+                e.acceptTransferModes(TransferMode.COPY);
+            }
+            e.consume();
+        });
+        slot.setOnDragDropped(e -> {
+            ProductCard p = DragProduct.getCurrentProduct();
+            if (p == null) return;
+            try {
+                ProductCardLoader loader = new ProductCardLoader();
+                loader.getController().setProductCard(p);
+                slot.getChildren().setAll(loader);
+                slot.setStyle(
+                        "-fx-border-color: #3399ff; " +
+                                "-fx-background-color: #d0f0ff;"
+                );
+                e.setDropCompleted(true);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                e.setDropCompleted(false);
+            }
+            e.consume();
+        });
+        slot.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                slot.getChildren().clear();
+                slot.setStyle(
+                        "-fx-border-color: #aaa; " +
+                                "-fx-background-color: white;"
+                );
+            }
+        });
     }
 
-    private void setupDropHandlers(StackPane slot) {
-        slot.setOnDragOver(event -> {
-            if (event.getGestureSource() != slot && event.getDragboard().hasString()) {
-                event.acceptTransferModes(TransferMode.COPY);
-            }
-            event.consume();
-        });
-
-        slot.setOnDragDropped(event -> {
-
-            ProductCard product = DragProduct.getCurrentProduct();
-            if (product == null) {
-                System.out.println(" No product to drop!");
-                return;
-            }
-
-            System.out.println("Product dropped: " + product.getName());
 
 
-            Dragboard db = event.getDragboard();
-            boolean success = false;
+    private void showWarning(String msg) {
+        Alert a = new Alert(Alert.AlertType.WARNING, msg);
+        a.setHeaderText(null);
+        a.showAndWait();
+    }
 
+    // === Saveable  ===
 
-            if (db.hasString()) {
-                String productName = db.getString();
-                try {
-                    ProductCardLoader loader = new ProductCardLoader();
-                    loader.getController().setProductCard(product);
-
-                    slot.getChildren().clear();
-                    slot.getChildren().add(loader);
-
-                    success = true;
-                    System.out.println("✅ Product " + productName + " placed!");
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+    /** Serialize each column under keys "col1","col2","col3" */
+    public SaveLoad getCurrentLayout() {
+        SaveLoad layout = new SaveLoad("ColdDrink");
+        columnSlots.forEach((colKey, slots) -> {
+            for (StackPane slot : slots) {
+                if (!slot.getChildren().isEmpty()) {
+                    ProductCardLoader ld = (ProductCardLoader)slot.getChildren().get(0);
+                    layout.addSlot(slot.getId(), ld.getController().getProductCard());
                 }
             }
-            event.setDropCompleted(success);
-            event.consume();
         });
-
-        // Highlight when drag over
-        slot.setOnDragEntered(event -> {
-            if (event.getGestureSource() != slot && event.getDragboard().hasString()) {
-                slot.setStyle("-fx-background-color: #d0f0ff; -fx-border-color: #3399ff; -fx-border-width: 2;");
-            }
-            event.consume();
-        });
-
-        // Remove highlight when drag exits
-        slot.setOnDragExited(event -> {
-            slot.setStyle("-fx-background-color: #f0f8ff; -fx-border-color: #aaa; -fx-border-width: 1;");
-            event.consume();
-        });
-
-        // 🗑️ Double-click to remove
-        slot.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2 && !slot.getChildren().isEmpty()) {
-                slot.getChildren().clear();
-                System.out.println("🗑️ Product removed from slot!");
-            }
-        });
+        return layout;
     }
 
+    /** Clear all columns, then re-add from saved map */
+    public void applyLayout(SaveLoad saved) {
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Limit reached");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        // clear all
+        columnSlots.values().forEach(slots ->
+                slots.forEach(s -> {
+                    s.getChildren().clear();
+                    s.setStyle(
+                            "-fx-border-color: #aaa; " +
+                                    "-fx-background-color: white;"
+                    );
+                })
+        );
+
+        // populate saved
+
+        saved.getSlots().forEach((slotId, product) -> {
+            columnSlots.values().stream()
+                    .flatMap(List::stream)
+                    .filter(s -> s.getId().equals(slotId))
+                    .findFirst()
+                    .ifPresent(slot -> {
+                        try {
+                            ProductCardLoader ld = new ProductCardLoader();
+                            ld.getController().setProductCard(product);
+                            slot.getChildren().setAll(ld);
+                            slot.setStyle(
+                                    "-fx-border-color: #3399ff; " +
+                                            "-fx-background-color: #d0f0ff;"
+                            );
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    });
+        });
     }
-
-
-
-
-
-
 
 }
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root fx:id="root" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="editor.composants.templates.controller.PizzaPresetController"
+         prefHeight="400.0" prefWidth="400.0">
+    <children>
+        <AnchorPane fx:id="myOverlay">
+
+        </AnchorPane>
+
+        <!-- the hover‐info label, initially hidden -->
+        <Label fx:id="hoverInfo"
+               visible="false"
+               style="-fx-font-size:18px;
+                  -fx-text-fill:white;
+                  -fx-padding:8px;
+                  -fx-background-radius:5px;"
+
+               alignment="CENTER"/>
+    </children>
+
+</fx:root>

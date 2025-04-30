@@ -14,6 +14,7 @@ public class HotDrinkLoader extends VBox {
             loader.load();
         } catch (IOException e) {
             e.printStackTrace();
+
         }
 
     }

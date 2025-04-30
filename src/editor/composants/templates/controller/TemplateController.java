@@ -2,6 +2,7 @@ package editor.composants.templates.controller;
 
 import editor.composants.templates.composants.colddrink.model.ColdDrinkLoader;
 import editor.composants.templates.composants.hotdrink.model.HotDrinkLoader;
+import editor.composants.templates.composants.pizza.model.PizzaLoader;
 import editor.controller.EditorController;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -33,9 +34,13 @@ public class TemplateController {
 
         // When click on the image, choose this template and set up the editor to drag and drop the components
         imgView1.setOnMouseClicked(this::setUpEditor);
+        imgView2.setOnMouseClicked(this::setUpPizza);;
         imgView4.setOnMouseClicked(this::setUpCoca);
 
+
     }
+
+
 
     @FXML
     private void displayCafe(MouseEvent event)
@@ -64,10 +69,29 @@ public class TemplateController {
 
     }
 
+    private void setUpPizza(MouseEvent mouseEvent) {
+        // Set up the editor to drag and drop the components
+        // editorController.setUpDragAndDrop();
+        // Load the template
+        editorController.setTemplate("Pizza");
+        System.out.println("Editor is set");
+    }
     @FXML
     private void displayPizza(MouseEvent event)
     {
         System.out.println("Display Pizza clicked");
+
+        final Stage pizzaStage = new Stage();
+        pizzaStage.setTitle("Pizza Template");
+        // Load the template
+        PizzaLoader pizzaLoader = new PizzaLoader();
+        pizzaLoader.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px; -fx-border-color: #000000; -fx-border-width: 2px;");
+        // Set the scene and show the stage
+         Scene scene = new Scene(pizzaLoader);
+         pizzaStage.setScene(scene);
+         pizzaStage.showAndWait();
+
+
     }
 
     @FXML

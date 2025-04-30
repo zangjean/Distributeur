@@ -187,7 +187,14 @@ public class EditorController{
             }
             // On ajoute d'autres templates ici
             case "Pizza" -> {
-                //temp = new PizzaPresetLoader();
+                PizzaPresetLoader temp = new PizzaPresetLoader();
+
+                // Get the template controller from the loader
+                rightSide.setContent(temp);
+                rightSide.setFitToWidth(true);
+                rightSide.setFitToHeight(true);
+                System.out.println("Template Pizza");
+
             }
             case "Snack" -> {
                 //temp = new SnackPresetLoader();
@@ -249,53 +256,115 @@ public class EditorController{
         rightSide.setContent(null);
     }
 
+   // @FXML
+//    private void loadLayout(ActionEvent event) {
+//        Node content = rightSide.getContent();
+//
+//        if (content instanceof Saveable saveable) {
+//            FileChooser fileChooser = new FileChooser();
+//            fileChooser.setTitle("Load Layout");
+//            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Layout Files", "*.layout"));
+//
+//            File file = fileChooser.showOpenDialog(root.getScene().getWindow());
+//
+//            if (file != null) {
+//                System.out.println("Load Layout: " + file.getAbsolutePath());
+//
+//                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+//                    SaveLoad loadedLayout = (SaveLoad) in.readObject();
+//
+//                    if (loadedLayout == null || loadedLayout.getSlots().isEmpty()) {
+//                        System.out.println("⚠ File is empty or layout is blank");
+//                        showAlert("Load Empty");
+//                        return;
+//                    }
+//
+//                    System.out.println("✅ Layout has " + loadedLayout.getSlots().size() + " slots");
+//
+//                    // apply the layout
+//                    saveable.applySaveLoad(loadedLayout);
+//                    System.out.println("✅ Layout applied successfully");
+//
+//                    // Optional success message
+//                    Alert success = new Alert(Alert.AlertType.INFORMATION);
+//                    success.setTitle("Layout Loaded");
+//                    success.setHeaderText(null);
+//                    success.setContentText("Layout successfully loaded!");
+//                    success.showAndWait();
+//
+//                } catch (IOException | ClassNotFoundException e) {
+//                    e.printStackTrace();
+//                    showAlert("Load Failed");
+//                }
+//
+//            } else {
+//                System.out.println("❌ Load canceled or no file selected.");
+//            }
+//
+//        } else {
+//            showAlert("Load");
+//        }
+//    }
+
     @FXML
     private void loadLayout(ActionEvent event) {
-        Node content = rightSide.getContent();
+        // 1) Pick the file
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Load Layout");
+        chooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Layout Files", "*.layout"));
+        File file = chooser.showOpenDialog(root.getScene().getWindow());
+        if (file == null) return;
 
-        if (content instanceof Saveable saveable) {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Load Layout");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Layout Files", "*.layout"));
-
-            File file = fileChooser.showOpenDialog(root.getScene().getWindow());
-
-            if (file != null) {
-                System.out.println("Load Layout: " + file.getAbsolutePath());
-
-                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-                    SaveLoad loadedLayout = (SaveLoad) in.readObject();
-
-                    if (loadedLayout == null || loadedLayout.getSlots().isEmpty()) {
-                        System.out.println("⚠ File is empty or layout is blank");
-                        showAlert("Load Empty");
-                        return;
-                    }
-
-                    System.out.println("✅ Layout has " + loadedLayout.getSlots().size() + " slots");
-
-                    // apply the layout
-                    saveable.applySaveLoad(loadedLayout);
-                    System.out.println("✅ Layout applied successfully");
-
-                    // Optional success message
-                    Alert success = new Alert(Alert.AlertType.INFORMATION);
-                    success.setTitle("Layout Loaded");
-                    success.setHeaderText(null);
-                    success.setContentText("Layout successfully loaded!");
-                    success.showAndWait();
-
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                    showAlert("Load Failed");
-                }
-
-            } else {
-                System.out.println("❌ Load canceled or no file selected.");
-            }
-
-        } else {
-            showAlert("Load");
+        // 2) Deserialize SaveLoad
+        SaveLoad loaded;
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            loaded = (SaveLoad) in.readObject();
+        } catch (IOException|ClassNotFoundException e) {
+            e.printStackTrace();
+            showAlert("Load Failed");
+            return;
         }
+
+        if (loaded.getSlots().isEmpty()) {
+            showAlert("Load Empty");
+            return;
+        }
+
+        // 3) Based on the template name, create the proper loader
+        Saveable presetLoader = null;
+        switch (loaded.getNameTemplate()) {
+            case "HotDrink" ->
+                    presetLoader = new HotDrinkPresetLoader();
+            case "ColdDrink" ->
+                    presetLoader = new ColdDrinkPresetLoader();
+            case "Pizza" ->
+                    System.out.println("Pizza");
+                    //presetLoader = new PizzaPresetLoader();
+
+            case "Snack" ->
+                    //presetLoader = new SnackPresetLoader();
+                    System.out.println("Snack");
+            default -> {
+                showAlert("Unknown template: " + loaded.getNameTemplate());
+                return;
+            }
+        }
+
+        // 4) Display it in the right pane
+        Node node = (Node) presetLoader;
+        rightSide.setContent(node);
+        rightSide.setFitToWidth(true);
+        rightSide.setFitToHeight(true);
+
+        // 5) Apply the saved slots
+        presetLoader.applySaveLoad(loaded);
+
+        // 6) Notify success
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setHeaderText(null);
+        info.setContentText("Layout “" + loaded.getNameTemplate() + "” loaded!");
+        info.showAndWait();
     }
+
 }
