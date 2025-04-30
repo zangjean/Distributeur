@@ -7,7 +7,8 @@
 # Chemin absolu du dossier contenant les fichiers sources
 # Exemple : SRC_DIR="/le/chemin/absolu/vers/POO-IHM2_CM_2025/src"
 
-SRC_DIR="/home/jean/Documents/S6/RE/POO/PROJET/distrib/src" # à mettre à jour
+SRC_DIR="/home/minh/minh_quan/Documents/New_year/S2/learning/JAVAFX/projet/Distributeur/src/
+" # à mettre à jour
 
 cd ${SRC_DIR}
 
@@ -23,7 +24,7 @@ while read -r string; do
 		
 		# Attention : la version de Java doit être au moins égale à 21.
 		# Pour supporter JavaFX, il est recommandé d'utiliser une version JavaFX SDK de Azul : https://www.azul.com/downloads/
-		javac -Xlint:all -Xdiags:verbose ${string_without_leading_chars}
+		/home/minh/Téléchargements/zulu21.38.21-ca-fx-jdk21.0.5-linux_x64/bin/javac -Xlint:all -Xdiags:verbose ${string_without_leading_chars}
 		{ set +x; } &> /dev/null
 done < tempo
 

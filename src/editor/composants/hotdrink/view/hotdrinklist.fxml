@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<fx:root hbarPolicy="NEVER" type="ScrollPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editor.composants.hotdrink.controller.HotDrinksController">
+   <content>
+      <javafx.scene.layout.TilePane fx:id="tilePane" alignment="CENTER" hgap="10.0" vgap="10.0">
+      </javafx.scene.layout.TilePane>
+   </content>
+
+</fx:root>
