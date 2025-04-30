@@ -3,6 +3,7 @@ package editor.composants.templates.composants.pizza.controller;
 import editor.composants.hotdrink.model.DragProduct;
 import editor.composants.templates.composants.hotdrink.model.ProductCard;
 import editor.composants.templates.composants.hotdrink.model.ProductCardLoader;
+import editor.composants.templates.controller.PizzaPresetController;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaController {
+
 
     @FXML
     private Label hoverInfo;
@@ -51,6 +54,7 @@ public class PizzaController {
                 "-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffe29f, #ffa99f);"
         );
         hoverInfo.mouseTransparentProperty().setValue(true);
+        hoverInfo.setTextFill(Color.DARKCYAN);
 
         // anchor the overlay to all four sides
         AnchorPane.setTopAnchor(   myOverlay, 0.0);
@@ -98,6 +102,7 @@ public class PizzaController {
             try {
                 ProductCardLoader loader = new ProductCardLoader();
 
+
                 loader.getController().setProductCard(pizzas.get(i));
 
                 String info = String.format("%s — €%.2f",
@@ -122,6 +127,9 @@ public class PizzaController {
                     hoverInfo.setText(info);
                     hoverInfo.toFront();
                     hoverInfo.setVisible(true);
+
+
+
                 });
                 loader.setOnMouseExited(e -> {
                     down.playFromStart();

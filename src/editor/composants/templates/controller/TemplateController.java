@@ -34,13 +34,9 @@ public class TemplateController {
 
         // When click on the image, choose this template and set up the editor to drag and drop the components
         imgView1.setOnMouseClicked(this::setUpEditor);
-        imgView2.setOnMouseClicked(this::setUpPizza);;
+        //imgView3.setOnMouseClicked(this::setUpPizza);;
         imgView4.setOnMouseClicked(this::setUpCoca);
-
-
     }
-
-
 
     @FXML
     private void displayCafe(MouseEvent event)
@@ -69,19 +65,24 @@ public class TemplateController {
 
     }
 
-    private void setUpPizza(MouseEvent mouseEvent) {
-        // Set up the editor to drag and drop the components
-        // editorController.setUpDragAndDrop();
-        // Load the template
-        editorController.setTemplate("Pizza");
-        System.out.println("Editor is set");
-    }
     @FXML
     private void displayPizza(MouseEvent event)
     {
+        //setUpPizza(event);
+
         System.out.println("Display Pizza clicked");
 
+        // Current stage
+        Stage currentStage = (Stage) root.getScene().getWindow();
+        double x = currentStage.getX();
+        double y = currentStage.getY();
         final Stage pizzaStage = new Stage();
+
+        pizzaStage.setResizable(false);
+        // Set the position of the new stage
+        pizzaStage.setX(x - 400);
+        pizzaStage.setY(y - 200);
+
         pizzaStage.setTitle("Pizza Template");
         // Load the template
         PizzaLoader pizzaLoader = new PizzaLoader();
@@ -89,9 +90,17 @@ public class TemplateController {
         // Set the scene and show the stage
          Scene scene = new Scene(pizzaLoader);
          pizzaStage.setScene(scene);
+
+         setUpPizza(event);
+
          pizzaStage.showAndWait();
-
-
+    }
+    private void setUpPizza(MouseEvent mouseEvent) {
+        // Set up the editor to drag and drop the components
+        // editorController.setUpDragAndDrop();
+        // Load the template
+        System.out.println("Editor pizza is set");
+        editorController.setTemplate("Pizza");
     }
 
     @FXML

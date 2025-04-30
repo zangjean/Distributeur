@@ -3,6 +3,7 @@ package editor.composants.templates.composants.hotdrink.model;
 import editor.composants.templates.composants.hotdrink.controller.ProductCardController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -36,5 +37,6 @@ public class ProductCardLoader extends VBox {
     public ProductCardController getController() {
         return controller;
     }
+
 
 }

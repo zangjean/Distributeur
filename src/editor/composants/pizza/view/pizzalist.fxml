@@ -6,9 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="editor.composants.pizza.controller.PizzaListController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import editor.composants.pizza.model.SpiralPane?>
+<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="editor.composants.pizza.controller.PizzaListController"
+        fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+    <content>
+        <TilePane fx:id="tilePane"
 
-</AnchorPane>
+
+                  prefTileWidth="150" prefTileHeight="200"
+                  style="-fx-padding:20; -fx-background-color: #f5f5f5;"/>
+
+    </content>
+
+</fx:root>

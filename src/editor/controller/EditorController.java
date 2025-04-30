@@ -2,6 +2,7 @@ package editor.controller;
 
 import editor.composants.colddrink.model.ColdDrinksLoader;
 import editor.composants.hotdrink.model.HotDrinksLoader;
+import editor.composants.pizza.model.PizzaListLoader;
 import editor.composants.savegarde.SaveLoad;
 import editor.composants.templates.composants.colddrink.model.ColdDrinkLoader;
 import editor.composants.templates.controller.HotDrinkPresetController;
@@ -164,6 +165,26 @@ public class EditorController{
     @FXML
     private void displayPizza(ActionEvent event) {
         System.out.println("Display Pizza");
+        // Get the current stage
+        Stage currentStage = (Stage) root.getScene().getWindow();
+        // Get the current stage's position
+        double x = currentStage.getX();
+        double y = currentStage.getY();
+        // Set the new stage's position to the left of the current stage
+        // Create a new scene with the HotdrinkLoader as the root
+        PizzaListLoader pizzaListLoader = new PizzaListLoader();
+        Scene scene = new Scene(pizzaListLoader);
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setX(x - 400);
+        newStage.setY(y);
+        newStage.setTitle("Pizza List");
+        newStage.setScene(scene);
+        newStage.show();
+        // add an listener to close the stage when the main stage is closed
+        currentStage.setOnCloseRequest(event1 -> {
+            newStage.close();
+        });
     }
     @FXML
     private void displaySnack(ActionEvent event) {
@@ -187,13 +208,14 @@ public class EditorController{
             }
             // On ajoute d'autres templates ici
             case "Pizza" -> {
+                // Create a new template loader
                 PizzaPresetLoader temp = new PizzaPresetLoader();
 
                 // Get the template controller from the loader
                 rightSide.setContent(temp);
                 rightSide.setFitToWidth(true);
                 rightSide.setFitToHeight(true);
-                System.out.println("Template Pizza");
+                System.out.println("Template Pizza Preset");
 
             }
             case "Snack" -> {
@@ -339,9 +361,7 @@ public class EditorController{
             case "ColdDrink" ->
                     presetLoader = new ColdDrinkPresetLoader();
             case "Pizza" ->
-                    System.out.println("Pizza");
-                    //presetLoader = new PizzaPresetLoader();
-
+                    presetLoader = new PizzaPresetLoader();
             case "Snack" ->
                     //presetLoader = new SnackPresetLoader();
                     System.out.println("Snack");

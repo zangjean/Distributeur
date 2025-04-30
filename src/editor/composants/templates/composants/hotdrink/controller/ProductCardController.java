@@ -51,4 +51,7 @@ public class ProductCardController {
         return currentProductCard;
     }
 
+    public ImageView getImgView() {
+        return imgView;
+    }
 }

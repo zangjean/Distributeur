@@ -12,6 +12,8 @@ public class PizzaPresetLoader extends AnchorPane implements Saveable  {
     private PizzaPresetController controller;
     public PizzaPresetLoader()
     {
+        // Constructor
+        System.out.println("PizzaPresetLoader created");
         try {
             FXMLLoader loader = new FXMLLoader(PizzaPresetLoader.class.getResource("/editor/composants/templates/view/pizza_preset.fxml"));
             loader.setRoot(this);
