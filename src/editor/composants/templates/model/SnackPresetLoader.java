@@ -1,5 +1,6 @@
 package editor.composants.templates.model;
 
+import editor.composants.savegarde.SaveLoad;
 import editor.composants.templates.controller.SnackPresetController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -7,11 +8,11 @@ import javafx.scene.layout.BorderPane;
 import javax.swing.border.Border;
 import java.io.IOException;
 
-public class SnackPresetLoader extends BorderPane {
+public class SnackPresetLoader extends BorderPane implements Saveable {
 
+    private SnackPresetController controller;
     public SnackPresetLoader() {
 
-        SnackPresetController controller = new SnackPresetController();
         // Load the FXML file and set the root
         try {
             FXMLLoader loader = new FXMLLoader(SnackPresetLoader.class.getResource("/editor/composants/templates/view/snack_preset.fxml"));
@@ -21,5 +22,17 @@ public class SnackPresetLoader extends BorderPane {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+
+
+    @Override
+    public SaveLoad getLayout() {
+        return controller.getCurrentLayout();
+    }
+    @Override
+    public void applySaveLoad(SaveLoad saveLoad) {
+        controller.applyLayout(saveLoad);
     }
 }

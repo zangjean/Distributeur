@@ -4,11 +4,18 @@ import application.model.distrib.productModel.product.Product;
 import editor.composants.templates.composants.hotdrink.model.Alergene;
 import editor.composants.templates.composants.hotdrink.model.ProductCard;
 import editor.composants.templates.composants.hotdrink.model.ProductCardLoader;
+import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -37,103 +44,301 @@ public class HotDrinkController {
 
     }
 
-    @FXML
-    public void initialize() throws IOException {
-        // Initialize a liste of products
+//    @FXML
+//    public void initialize() throws IOException {
+//        // Initialize a liste of products
+//
+//        // set the size of the tilePane
+//        tilePane.setPrefColumns(3);
+//        tilePane.setPrefRows(2);
+//
+//        loadProductCard(productCards);
+//
+//        displayPage(currentPage);
+//
+//        btnPre.setOnAction(event -> {
+//            try {
+//                displayPage(currentPage - 1);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+//        btnSuiv.setOnAction(event -> {
+//            try {
+//                displayPage(currentPage + 1);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+//    }
+//
+//    private void displayPage(int pageIndex) throws IOException {
+//        // Get the total number of pages
+//        int totalPages = (int) Math.ceil((double) productCards.size() / ITEM_PAGE);
+//        // get the current page
+//        currentPage = Math.max(0, Math.min(pageIndex, totalPages - 1));
+//
+//
+//        // Display the product cards for the current page
+//        tilePane.getChildren().clear();
+//        int start = currentPage * ITEM_PAGE;
+//        int end = Math.min(start + ITEM_PAGE, productCards.size());
+//
+//        // Get a subset of product cards for the current page between start and end
+//        Set<ProductCard> productCardsForPage = new HashSet<>();
+//        int index = 0;
+//        for (ProductCard productCard : productCards) {
+//            if (index >= start && index < end) {
+//                productCardsForPage.add(productCard);
+//                ProductCardLoader productCardLoader = new ProductCardLoader();
+//                productCardLoader.getController().setProductCard(productCard);
+//                tilePane.getChildren().add(productCardLoader);
+//            }
+//            index++;
+//        }
+//
+//
+//
+//        // Update the button states
+////        btnPre.setDisable(currentPage == 0);
+//        if(currentPage == 0){
+//            // button disapears
+//            btnPre.setVisible(false);
+//        }
+//        else{
+//            btnPre.setVisible(true);
+//        }
+//
+//
+//        //btnSuiv.setDisable(currentPage == totalPages - 1);
+//        if(currentPage == totalPages - 1){
+//            // button disapears
+//            btnSuiv.setVisible(false);
+//        }
+//        else{
+//            btnSuiv.setVisible(true);
+//        }
+//
+//
+//    }
+//
+//    private void displayProductCards(Set<ProductCard> productCards) throws IOException {
+//        // Clear the TilePane before adding new product cards
+//        tilePane.getChildren().clear();
+//
+//        // Calculate the start and end indices for the current page
+//        int startIndex = currentPage * ITEM_PAGE;
+//        int endIndex = Math.min(startIndex + ITEM_PAGE, productCards.size());
+//
+//        // Add product cards for the current page
+//        int index = 0;
+//        for (ProductCard productCard : productCards) {
+//            if (index >= startIndex && index < endIndex) {
+//                ProductCardLoader productCardLoader = new ProductCardLoader();
+//                productCardLoader.getController().setProductCard(productCard);
+//                tilePane.getChildren().add(productCardLoader);
+//            }
+//            index++;
+//        }
+//
+//    }
 
-        // set the size of the tilePane
-        tilePane.setPrefColumns(3);
-        tilePane.setPrefRows(2);
+@FXML
+public void initialize() throws IOException {
+    // Configuration du TilePane avec effet de fond
+    tilePane.setPrefColumns(3);
+    tilePane.setPrefRows(2);
+    tilePane.setHgap(15);
+    tilePane.setVgap(15);
+    tilePane.setStyle("-fx-background-color: rgba(50, 50, 50, 0.1); -fx-background-radius: 10px; -fx-padding: 15px;");
 
-        loadProductCard(productCards);
+    // Style des boutons de navigation
+    String buttonStyle = "-fx-background-color: #6b4226; -fx-text-fill: white; " +
+            "-fx-font-size: 16px; -fx-background-radius: 30px; " +
+            "-fx-padding: 10px 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 2);";
 
-        displayPage(currentPage);
+    btnPre.setStyle(buttonStyle);
+    btnSuiv.setStyle(buttonStyle);
 
-        btnPre.setOnAction(event -> {
+    // Effets hover sur les boutons
+    btnPre.setOnMouseEntered(e -> btnPre.setStyle(buttonStyle + "-fx-background-color: #8b5d3a;"));
+    btnPre.setOnMouseExited(e -> btnPre.setStyle(buttonStyle));
+    btnSuiv.setOnMouseEntered(e -> btnSuiv.setStyle(buttonStyle + "-fx-background-color: #8b5d3a;"));
+    btnSuiv.setOnMouseExited(e -> btnSuiv.setStyle(buttonStyle));
+
+    loadProductCard(productCards);
+    displayPage(currentPage);
+
+    // Actions des boutons avec animations
+    btnPre.setOnAction(event -> {
+        try {
+            animatePageChange(false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    });
+
+    btnSuiv.setOnAction(event -> {
+        try {
+            animatePageChange(true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    });
+
+    // Animation d'apparition initiale
+    FadeTransition fadeIn = new FadeTransition(Duration.millis(800), tilePane);
+    fadeIn.setFromValue(0);
+    fadeIn.setToValue(1);
+    fadeIn.play();
+}
+
+    private void animatePageChange(boolean forward) throws IOException {
+        // Animation de sortie
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(250), tilePane);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+
+        // Translation pour effet de défilement
+        TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), tilePane);
+        slideOut.setByX(forward ? -100 : 100);
+
+        ParallelTransition parallelOut = new ParallelTransition(fadeOut, slideOut);
+        parallelOut.setOnFinished(e -> {
             try {
-                displayPage(currentPage - 1);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                // Change page
+                displayPage(currentPage + (forward ? 1 : -1));
+
+                // Animation d'entrée
+                FadeTransition fadeIn = new FadeTransition(Duration.millis(250), tilePane);
+                fadeIn.setFromValue(0);
+                fadeIn.setToValue(1);
+
+                TranslateTransition slideIn = new TranslateTransition(Duration.millis(250), tilePane);
+                slideIn.setFromX(forward ? 100 : -100);
+                slideIn.setToX(0);
+
+                ParallelTransition parallelIn = new ParallelTransition(fadeIn, slideIn);
+                parallelIn.play();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         });
-        btnSuiv.setOnAction(event -> {
-            try {
-                displayPage(currentPage + 1);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        parallelOut.play();
     }
 
     private void displayPage(int pageIndex) throws IOException {
-        // Get the total number of pages
         int totalPages = (int) Math.ceil((double) productCards.size() / ITEM_PAGE);
-        // get the current page
         currentPage = Math.max(0, Math.min(pageIndex, totalPages - 1));
 
-
-        // Display the product cards for the current page
         tilePane.getChildren().clear();
         int start = currentPage * ITEM_PAGE;
         int end = Math.min(start + ITEM_PAGE, productCards.size());
 
-        // Get a subset of product cards for the current page between start and end
-        Set<ProductCard> productCardsForPage = new HashSet<>();
+        // Création d'une animation séquentielle pour les cartes
+        SequentialTransition sequentialAppear = new SequentialTransition();
+
         int index = 0;
         for (ProductCard productCard : productCards) {
             if (index >= start && index < end) {
-                productCardsForPage.add(productCard);
                 ProductCardLoader productCardLoader = new ProductCardLoader();
                 productCardLoader.getController().setProductCard(productCard);
+
+                // Style de base et dimensions
+                productCardLoader.setPrefSize(200, 250);
+                productCardLoader.setStyle("-fx-background-color: white; -fx-background-radius: 8px; " +
+                        "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 3);");
+
+                // Ajouter l'effet de hover
+                applyHoverEffect(productCardLoader);
                 tilePane.getChildren().add(productCardLoader);
+
+                // Animation d'apparition individuelle
+                FadeTransition cardFade = new FadeTransition(Duration.millis(200), productCardLoader);
+                cardFade.setFromValue(0);
+                cardFade.setToValue(1);
+
+                ScaleTransition cardScale = new ScaleTransition(Duration.millis(200), productCardLoader);
+                cardScale.setFromX(0.8);
+                cardScale.setFromY(0.8);
+                cardScale.setToX(1);
+                cardScale.setToY(1);
+
+                ParallelTransition cardAnim = new ParallelTransition(cardFade, cardScale);
+
+                // Ajouter un délai pour chaque carte
+                PauseTransition delay = new PauseTransition(Duration.millis(50 * (index - start)));
+                SequentialTransition cardSequence = new SequentialTransition(delay, cardAnim);
+                sequentialAppear.getChildren().add(cardSequence);
             }
             index++;
         }
 
+        sequentialAppear.play();
 
+        // Gestion visibilité des boutons
+        btnPre.setVisible(currentPage > 0);
+        btnSuiv.setVisible(currentPage < totalPages - 1);
 
-        // Update the button states
-//        btnPre.setDisable(currentPage == 0);
-        if(currentPage == 0){
-            // button disapears
-            btnPre.setVisible(false);
-        }
-        else{
-            btnPre.setVisible(true);
-        }
-
-
-        //btnSuiv.setDisable(currentPage == totalPages - 1);
-        if(currentPage == totalPages - 1){
-            // button disapears
-            btnSuiv.setVisible(false);
-        }
-        else{
-            btnSuiv.setVisible(true);
-        }
-
-
+        // Ajouter un indicateur de pagination
+        updatePaginationIndicator(root, currentPage, totalPages);
     }
 
-    private void displayProductCards(Set<ProductCard> productCards) throws IOException {
-        // Clear the TilePane before adding new product cards
-        tilePane.getChildren().clear();
+    private void updatePaginationIndicator(VBox parent, int currentPage, int totalPages) {
+        // Rechercher s'il existe déjà un indicateur
+        parent.getChildren().removeIf(node -> node.getId() != null && node.getId().equals("paginationIndicator"));
 
-        // Calculate the start and end indices for the current page
-        int startIndex = currentPage * ITEM_PAGE;
-        int endIndex = Math.min(startIndex + ITEM_PAGE, productCards.size());
+        // Créer un nouvel indicateur
+        HBox indicator = new HBox(5);
+        indicator.setId("paginationIndicator");
+        indicator.setAlignment(Pos.CENTER);
+        indicator.setPadding(new Insets(10, 0, 0, 0));
 
-        // Add product cards for the current page
-        int index = 0;
-        for (ProductCard productCard : productCards) {
-            if (index >= startIndex && index < endIndex) {
-                ProductCardLoader productCardLoader = new ProductCardLoader();
-                productCardLoader.getController().setProductCard(productCard);
-                tilePane.getChildren().add(productCardLoader);
-            }
-            index++;
+        for (int i = 0; i < totalPages; i++) {
+            Circle dot = new Circle(5);
+            dot.setFill(i == currentPage ? Color.web("#6b4226") : Color.LIGHTGRAY);
+            indicator.getChildren().add(dot);
         }
 
+        parent.getChildren().add(indicator);
+    }
+
+    private void applyHoverEffect(ProductCardLoader cardLoader) {
+        // Effet d'échelle et d'ombre pour le hover
+        cardLoader.setOnMouseEntered(event -> {
+            // Animation d'agrandissement
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(150), cardLoader);
+            scaleTransition.setToX(1.05);
+            scaleTransition.setToY(1.05);
+
+            // Effet d'ombre
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.rgb(107, 66, 38, 0.7));
+            shadow.setRadius(15);
+            cardLoader.setEffect(shadow);
+
+            // Bordure colorée
+            cardLoader.setStyle("-fx-background-color: white; -fx-background-radius: 8px; " +
+                    "-fx-border-color: #6b4226; -fx-border-width: 2px; -fx-border-radius: 8px;");
+
+            scaleTransition.play();
+        });
+
+        cardLoader.setOnMouseExited(event -> {
+            // Animation de retour à la taille normale
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(150), cardLoader);
+            scaleTransition.setToX(1.0);
+            scaleTransition.setToY(1.0);
+
+            // Supprimer l'effet d'ombre
+            cardLoader.setEffect(null);
+
+            // Rétablir le style normal
+            cardLoader.setStyle("-fx-background-color: white; -fx-background-radius: 8px; " +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 3);");
+
+            scaleTransition.play();
+        });
     }
 
     public void loadProductCard(Set<ProductCard> productCards) {
