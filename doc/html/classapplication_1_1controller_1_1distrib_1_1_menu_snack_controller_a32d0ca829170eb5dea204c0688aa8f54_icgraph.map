@@ -1,0 +1,15 @@
+<map id="application.controller.distrib.MenuSnackController.returnSnacks" name="application.controller.distrib.MenuSnackController.returnSnacks">
+<area shape="rect" id="Node000001" title=" " alt="" coords="877,72,1105,115"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#a5f597ee11d345c01b405e09f2dbe2c8e" title=" " alt="" coords="540,72,829,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="862,96,830,96,830,91,862,91"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#a86b8e1227242583cb223dab5531629d3" title=" " alt="" coords="263,5,480,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="566,71,474,51,475,46,567,66"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#af9334c6af051159a9eabf7f1791be718" title=" " alt="" coords="251,72,492,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="524,96,492,96,492,91,524,91"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#aa72cf0172bf7c1d49ee73979a04a2375" title=" " alt="" coords="252,139,491,181"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="567,121,475,141,474,135,566,116"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#af92fc785a4143c61b9fe4270dcd82222" title=" " alt="" coords="5,72,203,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="269,55,193,74,192,69,268,50"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="235,96,203,96,203,91,235,91"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="268,137,192,118,193,113,269,132"/>
+</map>

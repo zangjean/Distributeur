@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['name_0',['name',['../classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html#acdf8c9aed0de79d4fd76177e3362fed1',1,'main::java::editormvc::model::productModel::product::Product']]],
-  ['needpreparation_1',['NeedPreparation',['../interfacemain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1NeedPreparation.html',1,'main::java::editormvc::model::productModel::product']]],
-  ['needpreparation_2ejava_2',['NeedPreparation.java',['../NeedPreparation_8java.html',1,'']]],
-  ['noisette_3',['NOISETTE',['../enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1Toping.html#ad2097a66d80e1f597e1c04b8162dc4d8',1,'main::java::editormvc::model::productModel::product::beverage::sugar::all::chocolate::Toping']]],
-  ['nutriscore_4',['nutriscore',['../enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Nutriscore.html',1,'main.java.editormvc.model.productModel.product.Nutriscore'],['../classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html#af869631064ce8a8f36b20b5a75b643da',1,'main.java.editormvc.model.productModel.product.Product.nutriscore']]],
-  ['nutriscore_2ejava_5',['Nutriscore.java',['../Nutriscore_8java.html',1,'']]]
+  ['name_0',['name',['../classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a41e731fc17fd45556e672b5f2d8a0958',1,'application::model::distrib::productModel::product::Product']]],
+  ['nameproduct_1',['nameProduct',['../classapplication_1_1model_1_1distrib_1_1panier_1_1_product_for_panier.html#a2c0b4d0e690992b7c8d426c1afaf0bee',1,'application::model::distrib::panier::ProductForPanier']]],
+  ['needpreparation_2',['NeedPreparation',['../interfaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_need_preparation.html',1,'application::model::distrib::productModel::product']]],
+  ['needpreparation_2ejava_3',['NeedPreparation.java',['../_need_preparation_8java.html',1,'']]],
+  ['nutriscore_4',['Nutriscore',['../enumapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_nutriscore.html',1,'application::model::distrib::productModel::product']]],
+  ['nutriscore_5',['nutriscore',['../classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a7c698f901d4918aa7b414fb498f7cda8',1,'application::model::distrib::productModel::product::Product']]],
+  ['nutriscore_2ejava_6',['Nutriscore.java',['../_nutriscore_8java.html',1,'']]]
 ];

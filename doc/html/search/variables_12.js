@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['withmilk_0',['withMilk',['../classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1HotChocolate.html#aadc1af1d0b1709728d07ac16e0185098',1,'main::java::editormvc::model::productModel::product::beverage::sugar::all::chocolate::HotChocolate']]]
+  ['user_0',['user',['../classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#ab968c713e9f7d500738f7c7957d1d50a',1,'application::model::distrib::panier::Panier']]],
+  ['usermanager_1',['userManager',['../classapplication_1_1model_1_1connexion_1_1_connexion.html#a72239e2d28ee1c4e1f1d91457cf43883',1,'application::model::connexion::Connexion']]],
+  ['username_2',['username',['../classapplication_1_1model_1_1user_1_1_user.html#a8d6b95029dcfcdea18ab76299bb2ad2e',1,'application::model::user::User']]],
+  ['users_5ffile_3',['USERS_FILE',['../classapplication_1_1model_1_1user_1_1_user_manager.html#a3a38830d51575c286635c222a59aee07',1,'application::model::user::UserManager']]]
 ];

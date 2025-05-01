@@ -4,8 +4,16 @@ var searchData=
   ['application_3a_3acontroller_1',['controller',['../namespaceapplication_1_1controller.html',1,'application']]],
   ['application_3a_3acontroller_3a_3aconnexion_2',['connexion',['../namespaceapplication_1_1controller_1_1connexion.html',1,'application::controller']]],
   ['application_3a_3acontroller_3a_3adistrib_3',['distrib',['../namespaceapplication_1_1controller_1_1distrib.html',1,'application::controller']]],
-  ['application_3a_3acontroller_3a_3ahomepage_4',['homePage',['../namespaceapplication_1_1controller_1_1homePage.html',1,'application::controller']]],
+  ['application_3a_3acontroller_3a_3ahomepage_4',['homePage',['../namespaceapplication_1_1controller_1_1home_page.html',1,'application::controller']]],
   ['application_3a_3amodel_3a_3aconnexion_5',['connexion',['../namespaceapplication_1_1model_1_1connexion.html',1,'application::model']]],
-  ['application_3a_3amodel_3a_3ahomepage_6',['homePage',['../namespaceapplication_1_1model_1_1homePage.html',1,'application::model']]],
-  ['application_3a_3amodel_3a_3auser_7',['user',['../namespaceapplication_1_1model_1_1user.html',1,'application::model']]]
+  ['application_3a_3amodel_3a_3adistrib_3a_3apanier_6',['panier',['../namespaceapplication_1_1model_1_1distrib_1_1panier.html',1,'application::model::distrib']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_7',['productModel',['../namespaceapplication_1_1model_1_1distrib_1_1product_model.html',1,'application::model::distrib']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_8',['product',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product.html',1,'application::model::distrib::productModel']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_3a_3abeverage_9',['beverage',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage.html',1,'application::model::distrib::productModel::product']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_3a_3abeverage_3a_3asugar_10',['sugar',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar.html',1,'application::model::distrib::productModel::product::beverage']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_3a_3abeverage_3a_3asugar_3a_3aall_11',['all',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1all.html',1,'application::model::distrib::productModel::product::beverage::sugar']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_3a_3abeverage_3a_3asugar_3a_3aall_3a_3achocolate_12',['chocolate',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate.html',1,'application::model::distrib::productModel::product::beverage::sugar::all']]],
+  ['application_3a_3amodel_3a_3adistrib_3a_3aproductmodel_3a_3aproduct_3a_3afood_13',['food',['../namespaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food.html',1,'application::model::distrib::productModel::product']]],
+  ['application_3a_3amodel_3a_3ahomepage_14',['homePage',['../namespaceapplication_1_1model_1_1home_page.html',1,'application::model']]],
+  ['application_3a_3amodel_3a_3auser_15',['user',['../namespaceapplication_1_1model_1_1user.html',1,'application::model']]]
 ];

@@ -1,0 +1,15 @@
+<map id="application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate" name="application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1252,64,1530,123"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1_can_add_sugar.html" title=" " alt="" coords="866,5,1147,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1149,49,1253,67,1252,72,1148,54"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1_beverage.html" title=" " alt="" coords="580,5,800,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="815,24,866,24,866,29,815,29"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html" title=" " alt="" coords="323,5,531,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="547,24,580,24,580,29,547,29"/>
+<area shape="rect" id="Node000005" href="$enumapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_nutriscore.html" title=" " alt="" coords="5,5,214,48"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="230,24,323,24,323,29,230,29"/>
+<area shape="rect" id="Node000006" href="$interfaceapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_need_preparation.html" title=" " alt="" coords="902,72,1111,115"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1126,91,1252,91,1252,96,1126,96"/>
+<area shape="rect" id="Node000007" href="$enumapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1_aroma.html" title=" " alt="" coords="849,139,1164,181"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1148,133,1252,115,1253,120,1149,138"/>
+</map>

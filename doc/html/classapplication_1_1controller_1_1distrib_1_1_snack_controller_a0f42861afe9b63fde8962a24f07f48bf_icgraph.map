@@ -1,0 +1,9 @@
+<map id="application.controller.distrib.SnackController.loadMenuSnackView" name="application.controller.distrib.SnackController.loadMenuSnackView">
+<area shape="rect" id="Node000001" title=" " alt="" coords="280,72,520,115"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_snack_controller.html#a86ea16dfb20034060e2d6641c9ed2626" title=" " alt="" coords="17,5,220,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,71,211,51,212,46,293,65"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_snack_controller.html#acef11774d4a16dd424f90cf80442c6d7" title=" " alt="" coords="9,72,228,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,96,228,96,228,91,264,91"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_snack_controller.html#a95e14197a9f4237f626e02180d81b0ed" title=" " alt="" coords="5,139,232,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="293,121,212,141,211,135,292,116"/>
+</map>

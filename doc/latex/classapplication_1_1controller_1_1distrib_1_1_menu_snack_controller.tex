@@ -1,0 +1,259 @@
+\doxysection{application.\+controller.\+distrib.\+Menu\+Snack\+Controller Class Reference}
+\hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller}{}\label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+
+
+Collaboration diagram for application.\+controller.\+distrib.\+Menu\+Snack\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af92fc785a4143c61b9fe4270dcd82222}{initialize}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Tab\+Pane \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_adbdc5f9543baa5fe0b76cdaa88b83bc3}{tab\+Pane}}
+\item 
+Tab \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_ab3ab53de8bc0574c0696d91f93b87dfe}{tab\+\_\+chips}}
+\item 
+Tab \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_acd6a3773d64d3ba52b6047a894166342}{tab\+\_\+chocolate}}
+\item 
+Tab \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a99fb1698a1c603a13d587a6ab61cbd03}{tab\+\_\+sandwich}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a86b8e1227242583cb223dab5531629d3}{init\+All\+Chips}} ()
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af9334c6af051159a9eabf7f1791be718}{init\+All\+Chocolate}} ()
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_aa72cf0172bf7c1d49ee73979a04a2375}{init\+All\+Sandwich}} ()
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5f597ee11d345c01b405e09f2dbe2c8e}{open\+Select\+Snack\+Dialog}} (String snack\+Name, Button button)
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5ad16b07ac9de097520547b39ec0931a}{show\+Select\+Snack\+Window}} (\mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}} snack, Button button)
+\item 
+void \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_abeb8f80bd82231f64581ccbe23f319ec}{add\+On\+Panier}} (Button button, Map.\+Entry$<$ Integer, Double $>$ entry, \mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}} snack)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}} $>$ \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a32d0ca829170eb5dea204c0688aa8f54}{return\+Snacks}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_product_controller}{Product\+Controller}} \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a3e2824e56b4a441189fa6bf42579b1a2}{product\+Controller}}
+\item 
+\mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1panier_1_1_panier}{Panier}} \mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a2b8a1a67d2e26d1cffd7c78f50e75c8e}{panier}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_abeb8f80bd82231f64581ccbe23f319ec}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!addOnPanier@{addOnPanier}}
+\index{addOnPanier@{addOnPanier}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{addOnPanier()}{addOnPanier()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_abeb8f80bd82231f64581ccbe23f319ec} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+add\+On\+Panier (\begin{DoxyParamCaption}\item[{Button}]{button}{, }\item[{Map.\+Entry$<$ Integer, Double $>$}]{entry}{, }\item[{\mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}}}]{snack}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_abeb8f80bd82231f64581ccbe23f319ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_abeb8f80bd82231f64581ccbe23f319ec_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a86b8e1227242583cb223dab5531629d3}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!initAllChips@{initAllChips}}
+\index{initAllChips@{initAllChips}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{initAllChips()}{initAllChips()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a86b8e1227242583cb223dab5531629d3} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+init\+All\+Chips (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a86b8e1227242583cb223dab5531629d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a86b8e1227242583cb223dab5531629d3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af9334c6af051159a9eabf7f1791be718}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!initAllChocolate@{initAllChocolate}}
+\index{initAllChocolate@{initAllChocolate}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{initAllChocolate()}{initAllChocolate()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af9334c6af051159a9eabf7f1791be718} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+init\+All\+Chocolate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af9334c6af051159a9eabf7f1791be718_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af9334c6af051159a9eabf7f1791be718_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_aa72cf0172bf7c1d49ee73979a04a2375}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!initAllSandwich@{initAllSandwich}}
+\index{initAllSandwich@{initAllSandwich}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{initAllSandwich()}{initAllSandwich()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_aa72cf0172bf7c1d49ee73979a04a2375} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+init\+All\+Sandwich (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_aa72cf0172bf7c1d49ee73979a04a2375_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_aa72cf0172bf7c1d49ee73979a04a2375_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af92fc785a4143c61b9fe4270dcd82222}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!initialize@{initialize}}
+\index{initialize@{initialize}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af92fc785a4143c61b9fe4270dcd82222} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_af92fc785a4143c61b9fe4270dcd82222_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5f597ee11d345c01b405e09f2dbe2c8e}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!openSelectSnackDialog@{openSelectSnackDialog}}
+\index{openSelectSnackDialog@{openSelectSnackDialog}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{openSelectSnackDialog()}{openSelectSnackDialog()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5f597ee11d345c01b405e09f2dbe2c8e} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+open\+Select\+Snack\+Dialog (\begin{DoxyParamCaption}\item[{String}]{snack\+Name}{, }\item[{Button}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5f597ee11d345c01b405e09f2dbe2c8e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5f597ee11d345c01b405e09f2dbe2c8e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a32d0ca829170eb5dea204c0688aa8f54}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!returnSnacks@{returnSnacks}}
+\index{returnSnacks@{returnSnacks}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{returnSnacks()}{returnSnacks()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a32d0ca829170eb5dea204c0688aa8f54} 
+Array\+List$<$ \mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}} $>$ application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+return\+Snacks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a32d0ca829170eb5dea204c0688aa8f54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5ad16b07ac9de097520547b39ec0931a}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!showSelectSnackWindow@{showSelectSnackWindow}}
+\index{showSelectSnackWindow@{showSelectSnackWindow}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{showSelectSnackWindow()}{showSelectSnackWindow()}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5ad16b07ac9de097520547b39ec0931a} 
+void application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+show\+Select\+Snack\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_snacks}{Snacks}}}]{snack}{, }\item[{Button}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5ad16b07ac9de097520547b39ec0931a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a5ad16b07ac9de097520547b39ec0931a_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a2b8a1a67d2e26d1cffd7c78f50e75c8e}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!panier@{panier}}
+\index{panier@{panier}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{panier}{panier}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a2b8a1a67d2e26d1cffd7c78f50e75c8e} 
+\mbox{\hyperlink{classapplication_1_1model_1_1distrib_1_1panier_1_1_panier}{Panier}} application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+panier\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a3e2824e56b4a441189fa6bf42579b1a2}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!productController@{productController}}
+\index{productController@{productController}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{productController}{productController}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a3e2824e56b4a441189fa6bf42579b1a2} 
+\mbox{\hyperlink{classapplication_1_1controller_1_1distrib_1_1_product_controller}{Product\+Controller}} application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+product\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_ab3ab53de8bc0574c0696d91f93b87dfe}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!tab\_chips@{tab\_chips}}
+\index{tab\_chips@{tab\_chips}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{tab\_chips}{tab\_chips}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_ab3ab53de8bc0574c0696d91f93b87dfe} 
+Tab application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+tab\+\_\+chips}
+
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_acd6a3773d64d3ba52b6047a894166342}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!tab\_chocolate@{tab\_chocolate}}
+\index{tab\_chocolate@{tab\_chocolate}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{tab\_chocolate}{tab\_chocolate}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_acd6a3773d64d3ba52b6047a894166342} 
+Tab application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+tab\+\_\+chocolate}
+
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a99fb1698a1c603a13d587a6ab61cbd03}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!tab\_sandwich@{tab\_sandwich}}
+\index{tab\_sandwich@{tab\_sandwich}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{tab\_sandwich}{tab\_sandwich}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_a99fb1698a1c603a13d587a6ab61cbd03} 
+Tab application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+tab\+\_\+sandwich}
+
+\Hypertarget{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_adbdc5f9543baa5fe0b76cdaa88b83bc3}\index{application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}!tabPane@{tabPane}}
+\index{tabPane@{tabPane}!application.controller.distrib.MenuSnackController@{application.controller.distrib.MenuSnackController}}
+\doxysubsubsection{\texorpdfstring{tabPane}{tabPane}}
+{\footnotesize\ttfamily \label{classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller_adbdc5f9543baa5fe0b76cdaa88b83bc3} 
+Tab\+Pane application.\+controller.\+distrib.\+Menu\+Snack\+Controller.\+tab\+Pane}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/application/controller/distrib/\mbox{\hyperlink{_menu_snack_controller_8java}{Menu\+Snack\+Controller.\+java}}\end{DoxyCompactItemize}

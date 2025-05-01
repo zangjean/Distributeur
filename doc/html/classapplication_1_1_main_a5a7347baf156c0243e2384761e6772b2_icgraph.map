@@ -1,0 +1,11 @@
+<map id="application.Main.getProductController" name="application.Main.getProductController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="280,105,462,148"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_create_chocolate_controller.html#acf67664d8a181d5bd71ece998c560ecd" title=" " alt="" coords="5,5,232,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,100,231,62,198,51,200,46,233,58,316,95"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_menu_hot_drink_controller.html#ae41101dd28335719d23a0f9c945e3365" title=" " alt="" coords="12,72,225,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="264,115,225,110,226,105,264,110"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a7ef762f304e56437b0e858ee268529f2" title=" " alt="" coords="22,139,215,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="264,143,216,150,215,145,263,138"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_menu_snack_controller.html#af92fc785a4143c61b9fe4270dcd82222" title=" " alt="" coords="20,205,217,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="316,158,233,196,200,207,198,202,231,191,314,153"/>
+</map>

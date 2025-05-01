@@ -1,0 +1,14 @@
+<map id="application.controller.menuBarController.onActionPanier" name="application.controller.menuBarController.onActionPanier">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,195,77"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1menu_bar_controller.html#a6282984d503e6357503d7568db670ab0" title=" " alt="" coords="243,64,419,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,65,227,70,227,75,194,71"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#abb08566378a75b9db7623c65c9b6d196" title=" " alt="" coords="467,5,671,48"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="195,47,451,31,452,37,195,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,61,465,50,466,55,420,66"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1menu_bar_controller.html#ae21b4109d8726c7c9202eab91cdb5dee" title=" " alt="" coords="475,72,663,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="420,86,460,87,460,92,419,91"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_product_for_panier.html#a07b766bb4501f737b84da41bd76ef260" title=" " alt="" coords="719,39,953,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="663,79,703,74,704,79,664,84"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_product_for_panier.html#aa7b8b4542d38939bbbe7876d798d779b" title=" " alt="" coords="730,105,942,148"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="664,102,715,109,714,114,663,108"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="application.controller.distrib.MenuHotDrinkController.initAllCoffee" name="application.controller.distrib.MenuHotDrinkController.initAllCoffee">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,241,81"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_hot_drink_controller.html#a15ae5ba76999467849797e1b70087480" title=" " alt="" coords="290,5,526,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,44,274,40,275,45,241,49"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_menu_hot_drink_controller.html#ad962d7569b252462a3c00f430485c2fc" title=" " alt="" coords="289,72,527,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,71,274,75,273,80,241,76"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_menu_hot_drink_controller.html#af712bbac67404d57ad299ab97bb0a399" title=" " alt="" coords="594,13,834,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="522,69,584,57,585,62,523,74"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a6c448792af91792d8918dfbd194d292e" title=" " alt="" coords="1154,43,1363,85"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="527,87,1138,65,1138,71,528,92"/>
+<area shape="rect" id="Node000007" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#aa081486392bb689382caefc19dec48c6" title=" " alt="" coords="575,131,853,173"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="523,113,585,125,584,130,522,118"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#a85823ec403b6574bbb19e23dcbd3879c" title=" " alt="" coords="901,13,1106,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="835,32,886,32,886,37,835,37"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1107,44,1139,48,1138,53,1106,49"/>
+</map>

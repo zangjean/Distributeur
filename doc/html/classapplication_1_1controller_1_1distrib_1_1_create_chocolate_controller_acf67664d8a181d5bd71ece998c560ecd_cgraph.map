@@ -1,0 +1,11 @@
+<map id="application.controller.distrib.CreateChocolateController.initialize" name="application.controller.distrib.CreateChocolateController.initialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,232,99"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1_main.html#a0810adeb77772ac223366f40ba4cbff3" title=" " alt="" coords="315,5,490,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,53,318,33,320,38,225,58"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1_main.html#a5a7347baf156c0243e2384761e6772b2" title=" " alt="" coords="311,56,494,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,75,296,75,296,80,232,80"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_create_chocolate_controller.html#a615f8e39883fd7ccf565521da7c8f7c8" title=" " alt="" coords="280,123,525,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,97,275,116,273,121,202,102"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_create_chocolate_controller.html#a86c92273866c979d00a0eaafde92ba2c" title=" " alt="" coords="573,131,845,173"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="526,149,557,149,557,155,526,155"/>
+</map>

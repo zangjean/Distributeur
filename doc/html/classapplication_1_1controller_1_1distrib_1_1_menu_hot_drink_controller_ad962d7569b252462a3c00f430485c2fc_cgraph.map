@@ -1,0 +1,12 @@
+<map id="application.controller.distrib.MenuHotDrinkController.selectCoffee" name="application.controller.distrib.MenuHotDrinkController.selectCoffee">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,244,107"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_hot_drink_controller.html#af712bbac67404d57ad299ab97bb0a399" title=" " alt="" coords="311,5,551,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,61,300,49,301,54,240,66"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a6c448792af91792d8918dfbd194d292e" title=" " alt="" coords="870,35,1080,77"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="244,79,855,57,855,63,244,84"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#aa081486392bb689382caefc19dec48c6" title=" " alt="" coords="292,123,570,165"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="240,105,301,117,300,122,239,110"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#a85823ec403b6574bbb19e23dcbd3879c" title=" " alt="" coords="618,5,822,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="552,24,603,24,603,29,552,29"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="823,36,855,40,855,45,823,41"/>
+</map>

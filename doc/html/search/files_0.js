@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['aroma_2ejava_0',['Aroma.java',['../Aroma_8java.html',1,'']]]
+  ['aroma_2ejava_0',['Aroma.java',['../_aroma_8java.html',1,'']]]
 ];

@@ -1,0 +1,9 @@
+<map id="src/application/model/distrib/panier/Panier.java" name="src/application/model/distrib/panier/Panier.java">
+<area shape="rect" id="Node000001" title=" " alt="" coords="245,5,414,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,214,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,51,176,92,174,87,277,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="238,104,421,131"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,48,332,88,327,88,327,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="446,104,568,131"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,46,469,94,467,99,370,51"/>
+</map>

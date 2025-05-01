@@ -1,0 +1,23 @@
+<map id="application.model.distrib.productModel.product.food.Pizza.getSizePriceMap" name="application.model.distrib.productModel.product.food.Pizza.getSizePriceMap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1206,139,1478,181"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#aa6f0b29bd3d862cffb48c0f43e52b668" title=" " alt="" coords="863,139,1158,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1190,163,1158,163,1158,157,1190,157"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a26905fa91a7d522021a4d80cc962f1ad" title=" " alt="" coords="534,139,815,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="848,163,816,163,816,157,848,157"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a32955234f3cb1f8c149468917cab8360" title=" " alt="" coords="266,5,467,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="624,133,559,97,485,62,453,51,455,46,487,58,561,92,626,128"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#aa789efc4708a8860b9003f6404963b13" title=" " alt="" coords="250,72,482,115"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="557,137,468,118,469,113,559,132"/>
+<area shape="rect" id="Node000007" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a4f72f19995a38259092a4a7f7a739290" title=" " alt="" coords="247,139,486,181"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="518,163,486,163,486,157,518,157"/>
+<area shape="rect" id="Node000008" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a47e990d0dfa727d56296cbc7c2257b00" title=" " alt="" coords="248,205,484,248"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="559,188,469,207,468,202,557,183"/>
+<area shape="rect" id="Node000009" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a71152e6265761acab0e9ecbaf3258dee" title=" " alt="" coords="258,272,475,315"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="626,192,561,228,487,262,455,274,453,269,485,258,559,223,624,187"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a7ef762f304e56437b0e858ee268529f2" title=" " alt="" coords="5,139,199,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="262,56,248,62,183,101,130,140,127,136,180,96,245,58,260,51"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="265,122,190,141,189,135,264,116"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="231,163,199,163,199,157,231,157"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="264,204,189,185,190,179,265,198"/>
+<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="260,269,245,262,180,224,127,184,130,180,183,219,248,258,262,264"/>
+</map>

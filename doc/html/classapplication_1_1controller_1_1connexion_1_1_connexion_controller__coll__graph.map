@@ -1,0 +1,11 @@
+<map id="application.controller.connexion.ConnexionController" name="application.controller.connexion.ConnexionController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="97,295,305,337"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1connexion_1_1_connexion.html" title=" " alt="" coords="106,188,296,231"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,246,204,294,198,294,198,246"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1user_1_1_user.html" title=" " alt="" coords="5,89,189,116"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,125,182,186,179,189,118,129"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="53,5,141,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="100,47,100,89,94,89,94,47"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1user_1_1_user_manager.html" title=" " alt="" coords="213,81,397,124"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="281,137,255,166,228,190,225,186,251,162,277,134"/>
+</map>

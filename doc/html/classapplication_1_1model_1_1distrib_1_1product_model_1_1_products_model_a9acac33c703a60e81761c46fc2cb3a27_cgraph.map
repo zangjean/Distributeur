@@ -1,0 +1,13 @@
+<map id="application.model.distrib.productModel.ProductsModel.initAllProducts" name="application.model.distrib.productModel.ProductsModel.initAllProducts">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,241,115"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1_products_model.html#a8fe325c3cac53425539129317a802929" title=" " alt="" coords="289,5,517,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,69,295,50,296,55,216,74"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1_products_model.html#a44bb971df5dcf175426ce7c2abcb2203" title=" " alt="" coords="291,72,514,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,91,276,91,276,96,241,96"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1_products_model.html#a8c00410ca7a20a5d19bf636775dd68a9" title=" " alt="" coords="289,139,516,181"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="216,113,296,132,295,137,215,118"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a35a99c7fd819fe4c09de30fcb518baef" title=" " alt="" coords="565,72,845,115"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="503,46,591,65,590,71,502,51"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="515,91,549,91,549,96,515,96"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="502,135,590,116,591,121,503,141"/>
+</map>

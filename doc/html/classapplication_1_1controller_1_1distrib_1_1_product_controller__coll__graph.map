@@ -1,0 +1,8 @@
+<map id="application.controller.distrib.ProductController" name="application.controller.distrib.ProductController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,112,189,155"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1_products_model.html" title=" " alt="" coords="113,5,321,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,58,115,74,105,92,101,112,96,111,100,90,111,70,130,54"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_product_controller.html" title=" " alt="" coords="229,112,413,155"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="210,63,211,76,216,87,227,99,241,109,238,114,223,103,211,89,206,77,205,64"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,98,305,74,293,61,277,51,280,46,296,57,310,70,321,96"/>
+</map>

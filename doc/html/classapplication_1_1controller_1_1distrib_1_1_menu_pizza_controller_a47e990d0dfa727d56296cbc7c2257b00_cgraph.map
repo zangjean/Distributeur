@@ -1,0 +1,18 @@
+<map id="application.controller.distrib.MenuPizzaController.initAllPepperoni" name="application.controller.distrib.MenuPizzaController.initAllPepperoni">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,242,81"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a26905fa91a7d522021a4d80cc962f1ad" title=" " alt="" coords="290,39,571,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,57,274,57,274,63,242,63"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#aa654a765caeb77771e06159850d31a05" title=" " alt="" coords="660,5,872,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="571,43,645,36,645,41,572,49"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#aa6f0b29bd3d862cffb48c0f43e52b668" title=" " alt="" coords="619,72,913,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="572,71,604,75,603,80,571,77"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a040d7aa8b7a34a2b5ef03a9f0b075882" title=" " alt="" coords="987,13,1208,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="890,69,971,54,972,60,891,74"/>
+<area shape="rect" id="Node000007" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a6c448792af91792d8918dfbd194d292e" title=" " alt="" coords="1534,43,1743,85"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="913,86,1518,65,1519,71,914,91"/>
+<area shape="rect" id="Node000008" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_pizza.html#ad1db5991c72006604959136b2de1f8a6" title=" " alt="" coords="961,131,1234,173"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="891,113,959,125,958,130,890,118"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#a85823ec403b6574bbb19e23dcbd3879c" title=" " alt="" coords="1282,13,1486,56"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1209,32,1266,32,1266,37,1209,37"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1487,44,1519,48,1518,53,1486,49"/>
+</map>

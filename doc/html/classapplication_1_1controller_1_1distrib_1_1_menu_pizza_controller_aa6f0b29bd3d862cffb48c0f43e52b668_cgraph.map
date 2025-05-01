@@ -1,0 +1,12 @@
+<map id="application.controller.distrib.MenuPizzaController.showSelectPizzaWindow" name="application.controller.distrib.MenuPizzaController.showSelectPizzaWindow">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,300,107"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_menu_pizza_controller.html#a040d7aa8b7a34a2b5ef03a9f0b075882" title=" " alt="" coords="373,5,594,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="276,61,357,46,358,52,277,66"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a6c448792af91792d8918dfbd194d292e" title=" " alt="" coords="920,35,1130,77"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="300,78,905,57,905,63,300,83"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1food_1_1_pizza.html#ad1db5991c72006604959136b2de1f8a6" title=" " alt="" coords="348,123,620,165"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="277,105,345,117,344,122,276,110"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#a85823ec403b6574bbb19e23dcbd3879c" title=" " alt="" coords="668,5,872,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="595,24,652,24,652,29,595,29"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="873,36,905,40,905,45,873,41"/>
+</map>

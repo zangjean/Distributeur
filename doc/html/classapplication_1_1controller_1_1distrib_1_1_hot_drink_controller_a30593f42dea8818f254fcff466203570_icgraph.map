@@ -1,0 +1,13 @@
+<map id="application.controller.distrib.HotDrinkController.onActionHotDrink" name="application.controller.distrib.HotDrinkController.onActionHotDrink">
+<area shape="rect" id="Node000001" title=" " alt="" coords="336,139,572,181"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1controller_1_1distrib_1_1_hot_drink_controller.html#aa5d36020af4792fbca88ea4a5b1a86be" title=" " alt="" coords="40,5,253,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="409,132,352,96,287,62,252,51,254,46,289,58,355,91,412,127"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1controller_1_1distrib_1_1_hot_drink_controller.html#a24b9d7270335b307d0393cf792d78238" title=" " alt="" coords="5,72,288,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="337,137,248,118,249,113,338,132"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1controller_1_1distrib_1_1_hot_drink_controller.html#ae4fe298d264ce4e481942452ae59e75d" title=" " alt="" coords="35,139,258,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="320,163,259,163,259,157,320,157"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1controller_1_1distrib_1_1_hot_drink_controller.html#a59c3b4f9080431752d7dfda8a4747d36" title=" " alt="" coords="32,205,261,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="338,188,249,207,248,202,337,183"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1controller_1_1distrib_1_1_hot_drink_controller.html#a79e3a5ce8fbdaea9085cb93f8b46a629" title=" " alt="" coords="43,272,250,315"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="412,193,355,229,289,262,251,275,249,270,287,258,352,224,409,188"/>
+</map>

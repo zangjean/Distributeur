@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['a_0',['A',['../enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Nutriscore.html#a975472a8b0847bbb8b4bcf5b918e2d09',1,'main::java::editormvc::model::productModel::product::Nutriscore']]],
-  ['actualdose_1',['actualDose',['../classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1CanAddSugar.html#a838e3e1c24b950daf3798019c13a03ea',1,'main::java::editormvc::model::productModel::product::beverage::sugar::CanAddSugar']]],
-  ['all_5fusers_2',['all_users',['../classapplication_1_1model_1_1user_1_1UserManager.html#a0672836ae646e4c7ee17ba2400a10e80',1,'application::model::user::UserManager']]],
-  ['almond_3',['ALMOND',['../enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1Aroma.html#afb0091ce2edb70b4a4e6ccab3fa743ef',1,'main::java::editormvc::model::productModel::product::beverage::sugar::all::chocolate::Aroma']]],
-  ['aroma_4',['aroma',['../classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1HotChocolate.html#a6487083c52510e6f96093c0bb91366d2',1,'main::java::editormvc::model::productModel::product::beverage::sugar::all::chocolate::HotChocolate']]]
+  ['a_0',['A',['../enumapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_nutriscore.html#a6408662e4bb2187ab88eb40e73a05838',1,'application::model::distrib::productModel::product::Nutriscore']]],
+  ['actualdose_1',['actualDose',['../classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1_can_add_sugar.html#a6a00997768a2126418d9f496d36a8bfe',1,'application::model::distrib::productModel::product::beverage::sugar::CanAddSugar']]],
+  ['all_5fusers_2',['all_users',['../classapplication_1_1model_1_1user_1_1_user_manager.html#a0672836ae646e4c7ee17ba2400a10e80',1,'application::model::user::UserManager']]],
+  ['almond_3',['ALMOND',['../enumapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1_aroma.html#adf910fb9670ba796772c7f1a09b21655',1,'application::model::distrib::productModel::product::beverage::sugar::all::chocolate::Aroma']]],
+  ['almond_4',['almond',['../classapplication_1_1controller_1_1distrib_1_1_create_chocolate_controller.html#a051a74e9900ef938de27fae0b16d14f3',1,'application::controller::distrib::CreateChocolateController']]],
+  ['aroma_5',['aroma',['../classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1_hot_chocolate.html#aad54bc393db210198740294418529c8f',1,'application::model::distrib::productModel::product::beverage::sugar::all::chocolate::HotChocolate']]],
+  ['askingquantity_6',['askingQuantity',['../classapplication_1_1model_1_1distrib_1_1panier_1_1_product_for_panier.html#a27f3218e1c390de55370efbaf9070d84',1,'application::model::distrib::panier::ProductForPanier']]]
 ];

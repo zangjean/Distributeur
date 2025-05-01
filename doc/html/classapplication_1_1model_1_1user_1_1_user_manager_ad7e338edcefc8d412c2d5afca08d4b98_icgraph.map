@@ -1,0 +1,10 @@
+<map id="application.model.user.UserManager.loadUsers" name="application.model.user.UserManager.loadUsers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="699,5,883,48"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1user_1_1_user_manager.html#a29bd745d7e046ec801288966c70aa30a" title=" " alt="" coords="237,5,420,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="684,26,651,25,468,25,420,26,420,21,468,20,651,20,684,21"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1user_1_1_user_manager.html#a98437587e3b26f2792ca0c1a4586ca3c" title=" " alt="" coords="468,35,651,77"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="684,43,652,47,652,42,684,38"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1user_1_1_user_manager.html#a3a85700321bd4e521dc014378eaa977f" title=" " alt="" coords="5,5,189,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="221,29,189,29,189,24,221,24"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="452,45,420,41,421,36,453,40"/>
+</map>

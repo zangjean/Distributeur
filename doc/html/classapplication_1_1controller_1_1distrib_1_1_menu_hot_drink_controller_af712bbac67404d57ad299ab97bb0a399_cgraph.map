@@ -1,0 +1,7 @@
+<map id="application.controller.distrib.MenuHotDrinkController.addOnPanier" name="application.controller.distrib.MenuHotDrinkController.addOnPanier">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,246,48"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1distrib_1_1panier_1_1_panier.html#a85823ec403b6574bbb19e23dcbd3879c" title=" " alt="" coords="294,5,498,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,24,278,24,278,29,246,29"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1product_model_1_1product_1_1_product.html#a6c448792af91792d8918dfbd194d292e" title=" " alt="" coords="546,5,755,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="499,24,531,24,531,29,499,29"/>
+</map>
