@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root hbarPolicy="NEVER" type="ScrollPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="editor.composants.colddrink.controller.ColdDrinkListController"
+            fitToWidth="true">
+
+    <content>
+        <TilePane fx:id="productTilePane"
+                  hgap="20" vgap="20"
+                  alignment="TOP_CENTER"
+                  prefTileWidth="180" prefTileHeight="220" />
+    </content>
+
+</fx:root>

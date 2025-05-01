@@ -1,0 +1,31 @@
+.
+├── composants
+│   ├── hotdrink
+│   │   ├── controller
+│   │   ├── model
+│   │   ├── ressources
+│   │   │   ├── css
+│   │   │   └── images
+│   │   └── view
+│   ├── savegarde
+│   └── templates
+│       ├── composants
+│       │   ├── colddrink
+│       │   ├── hotdrink
+│       │   │   ├── controller
+│       │   │   ├── model
+│       │   │   └── view
+│       │   ├── pizza
+│       │   └── snacks
+│       ├── controller
+│       ├── model
+│       ├── ressources
+│       │   └── images
+│       │       └── hotdrink
+│       └── view
+├── controller
+├── model
+├── ressources
+└── view
+
+29 directories

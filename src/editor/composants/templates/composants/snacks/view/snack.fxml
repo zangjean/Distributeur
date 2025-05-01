@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root fx:id="root" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editor.composants.templates.composants.snacks.controller.SnackController">
+   <center>
+      <ScrollPane fx:id="topScrollpane" vbarPolicy="NEVER" hbarPolicy="NEVER"  BorderPane.alignment="CENTER" >
+         <content>
+            <TilePane fx:id="centerTilepane" prefHeight="200.0" prefWidth="200.0"  />
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"  BorderPane.alignment="CENTER">
+         <content>
+            <HBox fx:id="topHbox" prefHeight="100.0" prefWidth="200.0" />
+         </content>
+      </ScrollPane>
+   </top>
+   <bottom>
+      <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <HBox fx:id="bottomHbox" prefHeight="100.0" prefWidth="200.0" />
+         </content>
+      </ScrollPane>
+   </bottom>
+   <left>
+      <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="leftVbox" prefHeight="200.0" prefWidth="100.0" />
+         </content>
+      </ScrollPane>
+   </left>
+   <right>
+      <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="rightVbox" prefHeight="200.0" prefWidth="100.0" />
+         </content>
+      </ScrollPane>
+   </right>
+</fx:root>
