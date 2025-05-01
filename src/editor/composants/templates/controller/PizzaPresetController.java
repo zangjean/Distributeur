@@ -509,33 +509,13 @@ public class PizzaPresetController {
         }
     }
 
-//    public SaveLoad getCurrentLayout() {
-//        SaveLoad out = new SaveLoad("Pizza");
-//        slots.forEach((id,slot)->{
-//            if (!slot.getChildren().isEmpty()) {
-//                Node c = slot.getChildren().get(0);
-//                ProductCard card = null;
-//                // if we left a loader
-//                if (c instanceof ProductCardLoader pl) {
-//                    card = pl.getController().getProductCard();
-//                }
-//                // or if it's our image-only pane
-//                else if (c instanceof StackPane sp
-//                        && sp.getUserData() instanceof ProductCard pc) {
-//                    card = pc;
-//                }
-//                if (card!=null) out.addSlot(id, card);
-//            }
-//        });
-//        return out;
-//    }
 
     public SaveLoad getCurrentLayout() {
         SaveLoad saveLoad = new SaveLoad("Pizza");
         slots.forEach((slotId, slot) -> {
             if (!slot.getChildren().isEmpty()) {
                 try {
-                    Node child = slot.getChildren().get(0);
+                    Node child = slot.getChildren().getFirst();
                     ProductCard card = null;
 
                     // Vérifier si le nœud est un ProductCardLoader
@@ -567,13 +547,46 @@ public class PizzaPresetController {
     }
 
     public void applyLayout(SaveLoad save) {
-        // clear all
-        slots.values().forEach(s->s.getChildren().clear());
-        // rebuild each saved
-        save.getSlots().forEach((slotId,card)-> {
+        if (save == null || save.getSlots() == null) {
+            System.err.println("Sauvegarde invalide");
+            return;
+        }
+
+        // S'assurer que les slots sont créés
+        if (slots.isEmpty()) {
+            createSlots();
+            // Si les slots ne peuvent pas être créés maintenant, reportons le chargement
+            if (slots.isEmpty()) {
+                Platform.runLater(() -> {
+                    System.out.println("Report du chargement: attente de la création des slots");
+                    applyLayout(save);
+                });
+                return;
+            }
+        }
+
+        // Vider tous les slots
+        slots.values().forEach(s -> s.getChildren().clear());
+
+        // Reconstruire chaque slot sauvegardé
+        save.getSlots().forEach((slotId, card) -> {
+            if (card == null) {
+                System.err.println("Carte nulle pour le slot: " + slotId);
+                return;
+            }
+
             StackPane slot = slots.get(slotId);
-            if (slot!=null && card!=null) {
+            if (slot == null) {
+                System.err.println("Slot non trouvé: " + slotId + " (slots disponibles: " +
+                        String.join(", ", slots.keySet()) + ")");
+                return;
+            }
+
+            try {
                 placeCardInSlot(slot, card);
+                System.out.println("Carte " + card.getName() + " placée dans le slot " + slotId);
+            } catch (Exception e) {
+                System.err.println("Erreur lors du placement de la carte dans le slot " + slotId + ": " + e.getMessage());
             }
         });
     }
