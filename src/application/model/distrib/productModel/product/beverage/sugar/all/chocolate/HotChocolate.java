@@ -5,7 +5,7 @@ import application.model.distrib.productModel.product.beverage.sugar.CanAddSugar
 
 import java.util.HashSet;
 
-public class HotChocolate extends CanAddSugar implements NeedPreparation {
+public class HotChocolate extends CanAddSugar{
     //on peut choisir un seul arome mais plusieurs toppings
 
     private Boolean withMilk;
@@ -16,16 +16,6 @@ public class HotChocolate extends CanAddSugar implements NeedPreparation {
     public HotChocolate(String name) {
         super(name);
         this.topings=new HashSet<>();
-    }
-
-    @Override
-    public int getPreparationTime(Integer quantity) {
-        if(this.getQuantityPriceMap().containsKey(quantity)){
-            return quantity / 100 * 15;
-        }else {
-            System.out.println("ERROR : getPreparationTime HotChocolate -> la quantité n'existe pas");
-            return 0;
-        }
     }
 
     @Override

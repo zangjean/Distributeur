@@ -6,4 +6,5 @@ public interface NeedPreparation {
     //formule pour la nourriture: dépend pas de la taille mais du produit uniquement
 
     int getPreparationTime(Integer quantity);
+    boolean isPreparationNeeded();
 }

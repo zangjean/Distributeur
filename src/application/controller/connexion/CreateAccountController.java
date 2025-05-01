@@ -39,9 +39,14 @@ public class CreateAccountController {
             Pair<Boolean,String> createAccountResult = MainApp.connexion.createAccount(this.fx_id_username.getText(),this.fx_id_password.getText());
             if(createAccountResult.getKey()){
                 System.out.println("Donnes VALIDE creation POSSIBLE ");
-
                 this.fx_id_messages.setStyle("-fx-font-size: 20; -fx-text-fill: green ");
                 this.fx_id_messages.setText(createAccountResult.getValue());
+
+                /*if(this.fx_id_firstname.getText()!=null){
+                    MainApp.connexion.setUserFirstName(this.fx_id_username,this.fx_id_firstname);
+                }
+
+                 */
             }else{
                 System.out.println("Donnes invalide creation impossible ");
                 this.fx_id_messages.setStyle("-fx-font-size: 20; -fx-text-fill: red ");
