@@ -8,7 +8,11 @@
 
 <fx:root fx:id="root" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editor.composants.templates.composants.snacks.controller.SnackController">
    <center>
-      <TilePane fx:id="centerTilepane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ScrollPane fx:id="topScrollpane" vbarPolicy="NEVER" hbarPolicy="NEVER"  BorderPane.alignment="CENTER" >
+         <content>
+            <TilePane fx:id="centerTilepane" prefHeight="200.0" prefWidth="200.0"  />
+         </content>
+      </ScrollPane>
    </center>
    <top>
       <ScrollPane vbarPolicy="NEVER" hbarPolicy="NEVER"  BorderPane.alignment="CENTER">
