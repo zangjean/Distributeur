@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,7 +19,7 @@ public class ConnexionController {
     @FXML
     public TextField fx_id_username;
     @FXML
-    public TextField fx_id_password;
+    public PasswordField fx_id_password;
     @FXML
     public Button fx_id_valider;
 
@@ -34,8 +35,6 @@ public class ConnexionController {
         boolean connect = connexion.userCanConnect(fx_id_username.getText(),fx_id_password.getText());
 
         if (connect){
-            System.out.println("Connect: "+ connect);
-            System.out.println("Connexion successful !");
             fx_id_connexion_message.setText("Connexion successful !");
             fx_id_connexion_message.setStyle("-fx-font-size: 20; -fx-text-fill: green ");
             this.panier.setUser(connexion.getConnectedUser());

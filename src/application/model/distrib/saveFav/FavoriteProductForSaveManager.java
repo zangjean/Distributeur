@@ -1,24 +1,28 @@
 package application.model.distrib.saveFav;
 import application.model.distrib.panier.Panier;
 import application.model.distrib.panier.ProductForPanier;
+import application.utils.UtilsSaveLoad;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class FavoriteProductForSaveManager{
 
+    private static final String FAVEPROD_FILE = "faveprod.dat";
+    private String FAVPROD_FILE_FULL;
+
+
     FavoriteProductForSave favoriteProductForSave;
 
     public FavoriteProductForSaveManager() {
         this.favoriteProductForSave = new FavoriteProductForSave();
-        createFaveProdFileIfNeeded();
+        this.FAVPROD_FILE_FULL = UtilsSaveLoad.createNewFileIfNotExist(FAVEPROD_FILE);
     }
 
-    private static final String FAVEPROD_FILE = "faveprod.dat";
 
     public void saveFaveProd(){
         try {
-            FileOutputStream fos = new FileOutputStream(FAVEPROD_FILE);
+            FileOutputStream fos = new FileOutputStream(FAVPROD_FILE_FULL);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this.favoriteProductForSave);
             oos.close();
@@ -28,9 +32,16 @@ public class FavoriteProductForSaveManager{
         }
     }
 
+    // java
     public void loadFaveProd(){
+        File file = new File(FAVPROD_FILE_FULL);
+        if (!file.exists() || file.length() == 0) {
+            // Si le fichier n'existe pas ou est vide, il n'y a rien à charger.
+            System.out.println("[INFO] Aucune sauvegarde trouvée (fichier vide ou inexistant).");
+            return;
+        }
         try {
-            FileInputStream fis = new FileInputStream(FAVEPROD_FILE);
+            FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             this.favoriteProductForSave = (FavoriteProductForSave) ois.readObject();
             ois.close();
@@ -54,20 +65,6 @@ public class FavoriteProductForSaveManager{
         System.out.println(this.favoriteProductForSave.toString());
     }
 
-    private void createFaveProdFileIfNeeded() {
-        File file = new File("faveprod.dat");
-        if (!file.exists()) {
-            try {
-                if (file.createNewFile()) {
-                    System.out.println("[INFO] Fichier faveprod.dat créé automatiquement.");
-                }
-            } catch (IOException e) {
-                System.err.println("[ERROR] Impossible de créer faveprod.dat");
-                e.printStackTrace();
-            }
-        }
-    }
-
     private ArrayList<String> returnAllFavProdNames() {
         loadFaveProd();
         ArrayList<String> favProdNames = new ArrayList<>();
@@ -79,10 +76,17 @@ public class FavoriteProductForSaveManager{
     }
 
     public ArrayList<String> return3MostFavProd(){
+        System.out.println("return3MostFavProd");
+        System.out.println("DEBUT LISTE TOT FAV");
         ArrayList<String> favProdNames = returnAllFavProdNames();
+        System.out.println(favProdNames);
+        System.out.println("FIN LISTE TOT FAV");
+
+
+
         ArrayList<String> res = new ArrayList<>();
 
-        if(favProdNames.size()<3){
+        if(favProdNames.size()>3){
             ArrayList<String> favProdNamesTemps = favProdNames;
             for(int i=0;i<3;i++){
                 String temp=returnMostFavProd(favProdNamesTemps);

@@ -8,7 +8,7 @@ import application.model.user.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Panier implements Serializable {
+public class Panier{
     private ArrayList<ProductForPanier> products;
     private User user;
     private FavoriteProductForSaveManager favoriteProductForSaveManager;
@@ -46,12 +46,12 @@ public class Panier implements Serializable {
 
     }
 
-    public void removeProduct(Product product){
-        //products.remove(product);
+    public void removeProduct(ProductForPanier product){
+        products.remove(product);
     }
 
     public void clear(){
-        products.clear();
+        this.products=new ArrayList<>();
     }
 
     public User getUser() {
@@ -68,5 +68,25 @@ public class Panier implements Serializable {
 
     public ArrayList<String> return3FavoriteProduct() {
         return this.favoriteProductForSaveManager.return3MostFavProd();
+    }
+
+    public int howManyPointsUserWin(){
+        int points = 0;
+        for (ProductForPanier productForPanier : products) {
+            points +=(int)( productForPanier.getPrice()*10.0);
+        }
+        return points;
+    }
+
+    public void setPointsForCurrentUser(int points){
+        this.user.addPoints(points);
+    }
+
+    public double getTotalPrice(){
+        double totalPrice = 0;
+        for (ProductForPanier productForPanier : products) {
+            totalPrice += productForPanier.getPrice()*(double)productForPanier.getAskingQuantity() ;
+        }
+        return totalPrice;
     }
 }

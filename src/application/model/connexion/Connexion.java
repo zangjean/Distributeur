@@ -61,4 +61,8 @@ public class Connexion {
     public Pair<Boolean,String> createAccount(String login, String password){
         return this.userManager.createAccount(login, password);
     }
+
+    public UserManager getUserManager() {
+        return userManager;
+    }
 }

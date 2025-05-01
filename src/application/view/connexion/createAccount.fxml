@@ -6,19 +6,30 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.connexion.CreateAccountController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.connexion.CreateAccountController">
    <children>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0">
          <children>
             <Label text="Username : " />
             <TextField fx:id="fx_id_username" />
+            <Label text="*">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0">
          <children>
             <Label text="Password : " />
             <TextField fx:id="fx_id_password" />
+            <Label text="*">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
@@ -45,11 +56,16 @@
             <TextField fx:id="fx_id_mail_adress" />
          </children>
       </HBox>
+      <Label text="(*) -&gt; has to be filled!" textFill="#f00000">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
       <BorderPane prefHeight="48.0" prefWidth="600.0">
          <center>
             <Button fx:id="fx_id_valider" mnemonicParsing="false" onAction="#on_action_valider" text="VALIDER" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
-      <Label fx:id="fx_id_messages" stylesheets="@../../ressources/sheetstyle/errorsMessages.css"  />
+      <Label fx:id="fx_id_messages" stylesheets="@../../ressources/sheetstyle/errorsMessages.css" />
    </children>
 </VBox>

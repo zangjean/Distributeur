@@ -10,12 +10,14 @@ public class User implements Serializable{
     private String lastname;
     private String phoneNumber; // Remplacé par String
     private String mail_address;
-    private int points;
+    private double points;
     private int money;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password; // Hachage si nécessaire
+        this.points = 0;
+        this.money = 0;
     }
 
     @Override
@@ -77,10 +79,10 @@ public class User implements Serializable{
     public void setMail_address(String mail_address) {
         this.mail_address = mail_address;
     }
-    public int getPoints() {
+    public double getPoints() {
         return points;
     }
-    public void setPoints(int points) {
+    public void setPoints(double points) {
         this.points = points;
     }
     public int getMoney() {
@@ -98,7 +100,7 @@ public class User implements Serializable{
     public void removePoints(int remove) {
         if (this.points > 0) {
             if(this.points-remove<0){
-                this.points=0;
+                this.points=0.0;
             }else {
                 this.points -= remove;
             }

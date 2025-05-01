@@ -1,279 +1,297 @@
 package application.controller.distrib;
 
 import application.Main;
-import application.model.distrib.panier.Panier;
 import application.model.distrib.productModel.product.Product;
-import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class CreateChocolateController {
-    @FXML
-    public RadioButton milk;
-    @FXML
-    public RadioButton water;
 
-    @FXML
-    public RadioButton vanilla;
-    @FXML
-    public RadioButton hazelnut;
-    @FXML
-    public RadioButton caramel;
-    @FXML
-    public RadioButton almond;
-
-    @FXML
-    public RadioButton marshmallow;
-    @FXML
-    public RadioButton chantilly;
-    @FXML
-    public RadioButton speculos;
-    @FXML
-    public RadioButton oreo;
-
-    @FXML
-    public RadioButton rienTopping;
-    @FXML
-    public RadioButton rienArome;
     @FXML
     public Label errorMassage;
-
-
+    // Boutons pour la sélection des cups
     @FXML
-    public RadioButton small;
+    private ToggleButton medium;
     @FXML
-    public RadioButton medium;
+    private ToggleButton small;
     @FXML
-    public RadioButton large;
+    private ToggleButton large;
 
+    // Boutons pour la sélection des arômes
+    @FXML
+    private ToggleButton vanilla;
+    @FXML
+    private ToggleButton hazelnut;
+    @FXML
+    private ToggleButton caramel;
+    @FXML
+    private ToggleButton almond;
+    @FXML
+    private ToggleButton rienArome;
 
+    // Boutons pour la sélection de la base liquide
+    @FXML
+    private ToggleButton milk;
+    @FXML
+    private ToggleButton water;
 
-    private ProductController productController;
-    private Panier panier;
+    // Boutons pour les toppings
+    @FXML
+    private ToggleButton marshmallow;
+    @FXML
+    private ToggleButton chantilly;
+    @FXML
+    private ToggleButton speculos;
+    @FXML
+    private ToggleButton oreo;
+    @FXML
+    private ToggleButton rienTopping;
 
     @FXML
     public void initialize() {
-        this.productController = Main.getProductController();
-        this.panier = Main.getPanier();
-        initAllRadioButtons();
-
-    }
-
-    public void onActionCreateChocolate(ActionEvent actionEvent) {
-        if(!checkSizeButtonSelected()){
-            this.errorMassage.setText("Il faut choisir une taille pour le chocolat");
-            this.errorMassage.setStyle("-fx-text-fill: red");
-        } else if (!checkBaseButtonSelected()){
-            this.errorMassage.setText("Il faut choisir une base pour le chocolat");
-            this.errorMassage.setStyle("-fx-text-fill: red");
-        }else {
-            this.errorMassage.setText("");
-            String size = witchSize();
-            String base = witchBase();
-            String aroma = witchAroma();
-            ArrayList<String> toppings = witchTopping();
-
-            Product newProduct = this.productController.createChocolate(size, base, aroma, toppings);
-            Map<Integer, Double> map = newProduct.getQuantityPriceMap();
-
-// Supposons que vous choisissez une quantité/size.
-            HotChocolate hotChocolate = (HotChocolate) newProduct;
-            int selectedQuantity = hotChocolate.getSize(witchSize()); // Exemple : Petite taille
-            if (map.containsKey(selectedQuantity)) {
-                double selectedPrice = map.get(selectedQuantity); // Récupération du prix
-                this.panier.addProduct(newProduct, selectedQuantity, selectedPrice); // Ajouté au panier
-            } else {
-                System.out.println("Quantité " + selectedQuantity + " non disponible pour ce produit !");
-            }
-
-        }
-    }
-
-    private void initAllRadioButtons() {
-
-        // Créer un groupe de boutons (ToggleGroup) exclusif pour milk et water
-        ToggleGroup toggleGroupBase = new ToggleGroup();
-
-        // Ajouter milk et water au groupe
-        this.milk.setToggleGroup(toggleGroupBase);
-        this.water.setToggleGroup(toggleGroupBase);
-
-        ToggleGroup toggleGroupAroma = new ToggleGroup();
-        this.vanilla.setToggleGroup(toggleGroupAroma);
-        this.hazelnut.setToggleGroup(toggleGroupAroma);
-        this.caramel.setToggleGroup(toggleGroupAroma);
-        this.almond.setToggleGroup(toggleGroupAroma);
-        this.rienArome.setToggleGroup(toggleGroupAroma);
-
-        initToppingLogic();
         this.rienTopping.setSelected(true);
         this.rienArome.setSelected(true);
 
-        ToggleGroup toggleGroupSize = new ToggleGroup();
-        this.small.setToggleGroup(toggleGroupSize);
-        this.large.setToggleGroup(toggleGroupSize);
-        this.medium.setToggleGroup(toggleGroupSize);
+        ToggleGroup groupSize = new ToggleGroup();
+        this.medium.setToggleGroup(groupSize);
+        this.small.setToggleGroup(groupSize);
+        this.large.setToggleGroup(groupSize);
 
+        ToggleGroup groupArome = new ToggleGroup();
+        this.vanilla.setToggleGroup(groupArome);
+        this.hazelnut.setToggleGroup(groupArome);
+        this.caramel.setToggleGroup(groupArome);
+        this.almond.setToggleGroup(groupArome);
+        this.rienArome.setToggleGroup(groupArome);
+
+        ToggleGroup groupBase = new ToggleGroup();
+        this.milk.setToggleGroup(groupBase);
+        this.water.setToggleGroup(groupBase);
 
     }
 
-
-    private void initToppingLogic() {
-        // Si "Rien" est coché, décocher les autres
-        this.rienTopping.setOnAction(event -> {
-            if (this.rienTopping.isSelected()) {
-                this.marshmallow.setSelected(false);
-                this.chantilly.setSelected(false);
-                this.speculos.setSelected(false);
-                this.oreo.setSelected(false);
-            }
-        });
-
-        // Si un des toppings est coché, décocher "Rien"
-        this.marshmallow.setOnAction(event -> {
-            if (this.marshmallow.isSelected()) {
-                this.rienTopping.setSelected(false);
-            }
-        });
-        this.chantilly.setOnAction(event -> {
-            if (this.chantilly.isSelected()) {
-                this.rienTopping.setSelected(false);
-            }
-        });
-        this.speculos.setOnAction(event -> {
-            if (this.speculos.isSelected()) {
-                this.rienTopping.setSelected(false);
-            }
-        });
-        this.oreo.setOnAction(event -> {
-            if (this.oreo.isSelected()) {
-                this.rienTopping.setSelected(false);
-            }
-        });
+    /**
+     * Méthode utilitaire pour basculer la sélection d'un bouton.
+     *
+     * @param button Le bouton à basculer.
+     * @param aroma
+     */
+    private void toggleSelection(ToggleButton button, String aroma) {
+        button.setSelected(!button.isSelected());
+        if(aroma.equals("AROMA") && !button.isSelected()){
+            this.rienArome.setSelected(true);
+        }
     }
 
-    private boolean checkBaseButtonSelected (){
-        return this.milk.isSelected() || this.water.isSelected();
+    /**
+     * Méthode utilitaire pour basculer la sélection d'un bouton et
+     * réinitialiser les autres options liées, si nécessaire.
+     *
+     * @param buttonToToggle Le bouton à basculer.
+     * @param buttonsToReset Les boutons à réinitialiser.
+     */
+    private void toggleSelectionWithReset(ToggleButton buttonToToggle, ToggleButton buttonsToReset) {
+        buttonToToggle.setSelected(!buttonToToggle.isSelected());
+        if (buttonToToggle.isSelected()) {
+            buttonsToReset.setSelected(false);
+
+        }
+        nothingToppingIsSelected();
     }
 
-    private boolean checkSizeButtonSelected (){
-        return this.small.isSelected() || this.medium.isSelected() || this.large.isSelected();
-    }
-
-    private String witchBase(){
-        if(this.milk.isSelected()) return "MILK";
-        else return "WATER";
-    }
-
-    private String witchAroma(){
-        if(this.vanilla.isSelected()) return "VANILLA";
-        else if(this.hazelnut.isSelected()) return "HAZELNUT";
-        else if(this.caramel.isSelected()) return "CARAMEL";
-        else if(this.almond.isSelected()) return "ALMOND";
-        else return "RIEN";
-    }
-
-    private ArrayList<String> witchTopping(){
-        ArrayList<String> toppings = new ArrayList<>();
-        if(this.marshmallow.isSelected()) toppings.add("MARSHMALLOW");
-        if(this.chantilly.isSelected()) toppings.add("CHANTILLY");
-        if(this.speculos.isSelected()) toppings.add("SPECULOS");
-        if(this.oreo.isSelected()) toppings.add("OREO");
-        return toppings;
-    }
-
-    private String witchSize(){
-        if(this.small.isSelected()) return "SMALL";
-        else if(this.medium.isSelected()) return "MEDIUM";
-        else return "LARGE";
-    }
-
+    // Sélection des tailles de cup
     @FXML
     public void pressedMediumCup(MouseEvent mouseEvent) {
-        this.medium.setSelected(true);
+        toggleSelection(this.medium,"AROMA");
     }
 
     @FXML
     public void pressedSmallCup(MouseEvent mouseEvent) {
-        this.small.setSelected(true);
+        toggleSelection(this.small, "AROMA");
     }
 
     @FXML
     public void pressedLargeCup(MouseEvent mouseEvent) {
-        this.large.setSelected(true);
+        toggleSelection(this.large, "AROMA");
     }
 
+    // Sélection des arômes
     @FXML
     public void pressedVanilla(MouseEvent mouseEvent) {
-        this.vanilla.setSelected(true);
-    }
-    @FXML
-    public void pressedHazelnut(MouseEvent mouseEvent) {
-        this.hazelnut.setSelected(true);
-    }
-    @FXML
-    public void pressedCaramel(MouseEvent mouseEvent) {
-        this.caramel.setSelected(true);
-    }
-    @FXML
-    public void pressedAlmond(MouseEvent mouseEvent) {
-        this.almond.setSelected(true);
-    }
-    @FXML
-    public void pressedNothingArome(MouseEvent mouseEvent) {
-        this.rienArome.setSelected(true);
-    }
-    @FXML
-    public void pressedMilk(MouseEvent mouseEvent) {
-        this.milk.setSelected(true);
-    }
-    @FXML
-    public void pressedWater(MouseEvent mouseEvent) {
-        this.water.setSelected(true);
+        toggleSelection(this.vanilla, "AROMA");
+
     }
 
+    @FXML
+    public void pressedHazelnut(MouseEvent mouseEvent) {
+        toggleSelection(this.hazelnut, "AROMA");
+    }
+
+    @FXML
+    public void pressedCaramel(MouseEvent mouseEvent) {
+        toggleSelection(this.caramel, "AROMA");
+    }
+
+    @FXML
+    public void pressedAlmond(MouseEvent mouseEvent) {
+        toggleSelection(this.almond, "AROMA");
+    }
+
+    @FXML
+    public void pressedNothingArome(MouseEvent mouseEvent) {
+        toggleSelection(this.rienArome, "AROMA");
+    }
+
+    // Sélection des bases liquides
+    @FXML
+    public void pressedMilk(MouseEvent mouseEvent) {
+        toggleSelection(this.milk, "AROMA");
+    }
+
+    @FXML
+    public void pressedWater(MouseEvent mouseEvent) {
+        toggleSelection(this.water, "AROMA");
+    }
+
+    // Sélection des toppings
     @FXML
     public void pressedNothingToppings(MouseEvent mouseEvent) {
         this.rienTopping.setSelected(true);
+
+        // Réinitialise toutes les autres options de toppings
         this.marshmallow.setSelected(false);
         this.chantilly.setSelected(false);
         this.speculos.setSelected(false);
         this.oreo.setSelected(false);
-
     }
 
     @FXML
     public void pressedMarshmallow(MouseEvent mouseEvent) {
-        this.marshmallow.setSelected(true);
-        this.rienTopping.setSelected(false);
+        toggleSelectionWithReset(this.marshmallow, this.rienTopping);
     }
 
     @FXML
     public void pressedChantilly(MouseEvent mouseEvent) {
-        this.chantilly.setSelected(true);
-        this.rienTopping.setSelected(false);
-
+        toggleSelectionWithReset(this.chantilly, this.rienTopping);
     }
 
     @FXML
     public void pressedSpeculos(MouseEvent mouseEvent) {
-        this.speculos.setSelected(true);
-        this.rienTopping.setSelected(false);
-
+        toggleSelectionWithReset(this.speculos, this.rienTopping);
     }
 
     @FXML
     public void pressedOreo(MouseEvent mouseEvent) {
-        this.oreo.setSelected(true);
-        this.rienTopping.setSelected(false);
+        toggleSelectionWithReset(this.oreo, this.rienTopping);
     }
+
+    @FXML
+    public void onActionCreateChocolate(ActionEvent actionEvent) {
+        System.out.println("Create Chocolate");
+        String selectedSize = witchSize();
+        if(selectedSize.equals("RIEN")){
+            this.errorMassage.setText("Please select a cup size !");
+            this.errorMassage.setStyle("-fx-font-size: 20; -fx-text-fill: red ");
+        }else{
+            String selectedBase = witchBase();
+            if(selectedBase.equals("RIEN")){
+                this.errorMassage.setText("Please select a base !");
+                this.errorMassage.setStyle("-fx-font-size: 20; -fx-text-fill: red ");
+            }else{
+                String selectedAroma = witchAroma();
+                ArrayList<String> selectedToppings = getSelectedToppings();
+                int quantityMl = witchQuantityMl(selectedSize);
+                Product chocolate = Main.productController.createChocolate(selectedSize,selectedBase,selectedAroma,selectedToppings);
+                Main.panier.addProduct(chocolate,quantityMl,chocolate.getOnePrice(quantityMl));
+
+                this.errorMassage.setText("Chocolate created !");
+                this.errorMassage.setStyle("-fx-font-size: 20; -fx-text-fill: green ");
+
+            }
+        }
+
+
+    }
+
+    private String witchAroma(){
+        if(this.vanilla.isSelected()){
+            return "VANILLA";
+        }else if(this.hazelnut.isSelected()){
+            return "HAZELNUT";
+        }else if(this.caramel.isSelected()){
+            return "CARAMEL";
+        }else if(this.almond.isSelected()){
+            return "ALMOND";
+        }else{
+            return "RIEN";
+        }
+    }
+
+    private String witchBase(){
+        if(this.milk.isSelected()){
+            return "MILK";
+        } else if (this.water.isSelected()) {
+            return "WATER";
+        }else {
+            return "RIEN";
+        }
+    }
+
+    private String witchSize(){
+        if(this.medium.isSelected()){
+            return "MEDIUM";
+        }else if(this.small.isSelected()){
+            return "SMALL";
+        } else if (this.large.isSelected()) {
+            return "LARGE";
+        }else {
+            return "RIEN";
+        }
+    }
+
+    private int witchQuantityMl(String size){
+        if(size.equals("SMALL")){
+            return 240;
+        }
+        if(size.equals("MEDIUM")){
+            return 350;
+        }
+        if(size.equals("LARGE")){
+            return 450;
+        }
+        return 0;
+    }
+
+
+    private void nothingToppingIsSelected(){
+        if(!this.marshmallow.isSelected() && !this.chantilly.isSelected() && !this.speculos.isSelected() && !this.oreo.isSelected()){
+            this.rienTopping.setSelected(true);
+        }
+    }
+
+    private ArrayList<String> getSelectedToppings(){
+        ArrayList<String> toppings = new ArrayList<>();
+        if(this.marshmallow.isSelected()){
+            toppings.add("MARSHMALLOW");
+        }
+        if(this.chantilly.isSelected()){
+            toppings.add("CHANTILLY");
+        }
+        if(this.speculos.isSelected()){
+            toppings.add("SPECULOS");
+        }
+        if(this.oreo.isSelected()){
+            toppings.add("OREO");
+        }
+        return toppings;
+    }
+
+
 
 }

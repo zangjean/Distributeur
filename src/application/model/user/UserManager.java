@@ -1,5 +1,6 @@
 package application.model.user;
 
+import application.utils.UtilsSaveLoad;
 import javafx.util.Pair;
 
 import java.io.*;
@@ -12,25 +13,39 @@ public class UserManager {
     private String allSpecialChar = " /!*,?;.:<>#~{'&[(|-_^@)]=}=° ";
     private String allNumber = "0123456789";
     private int minLengthPassword = 6;
+    private static final String USERS_FILE = "users.dat";
+    private static String USERS_FILE_FULL = "";
+    private int compt=0;
+
 
     public UserManager() {
-        this.all_users = new ArrayList<>();
+        USERS_FILE_FULL= UtilsSaveLoad.createNewFileIfNotExist(USERS_FILE);
+        this.all_users = (ArrayList<User>) loadUsers();
         initAdmin_Jean();
+
 
     }
 
-    private static final String USERS_FILE = "users.dat";
 
-    public static void saveUsers(List<User> newUsers) {
+    public void saveUsers(List<User> newUsers, String utils) {
         List<User> existingUsers = loadUsers();
 
         for (User newUser : newUsers) {
             if (!existingUsers.contains(newUser)) {
                 existingUsers.add(newUser);
+            }else{
+                for(User existUser:existingUsers){
+                    if(existUser.equals(newUser)){
+                        if(utils.equals("utils")){
+                            System.out.println("SAVE USER : "+newUser.getUsername()+" Compte existant POINTS_avant: "+existUser.getPoints()+" POINTS_APRES: "+newUser.getPoints());
+                            existUser.setPoints(newUser.getPoints());
+                        }
+                    }
+                }
             }
         }
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USERS_FILE))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USERS_FILE_FULL))) {
             oos.writeObject(existingUsers);
         } catch (IOException e) {
             System.out.println("Erreur lors de la sauvegarde des utilisateurs : " + e.getMessage());
@@ -39,7 +54,7 @@ public class UserManager {
 
     public static List<User> loadUsers() {
         List<User> users = new ArrayList<>();
-        File file = new File(USERS_FILE);
+        File file = new File(USERS_FILE_FULL);
         if (file.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
                 users = (List<User>) ois.readObject();
@@ -61,7 +76,7 @@ public class UserManager {
         admin.setFirstname("Jean");
         admin.setLastname("ZANG");
         users.add(jean);
-        saveUsers(users);
+        saveUsers(users, "userManager");
         this.all_users= (ArrayList<User>) loadUsers();
     }
 
@@ -81,7 +96,7 @@ public class UserManager {
                 message="Compte crée avec succes";
                 accountCreated = true;
                 this.all_users.add(newUser);
-                saveUsers(this.all_users);
+                saveUsers(this.all_users, "UserManager");
 
             }else{
                 System.out.println("Compte NON créé");
@@ -161,6 +176,8 @@ public class UserManager {
         }
         return false;
     }
+
+
 
 
 

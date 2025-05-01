@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -85,16 +87,30 @@ public class MenuHotDrinkController {
         // Récupérer la liste de café
         ArrayList<Coffee> coffees = returnCoffee(type);
 
-        // Parcourir tous les cafés pour générer des boutons
         for (Coffee coffee : coffees) {
+            String name = coffee.getName().toLowerCase();
+            String nameImage = returnStringImage(name);
+
             Button button = new Button(coffee.getName());
 
-            // Configurer une action pour le bouton
-            selectCoffee(coffee, button);
 
-            // Ajouter le bouton au FlowPane
-            flowPane.getChildren().add(button);
+            URL imageUrl = getClass().getResource("/application/ressources/images/allHotDrinks/" + nameImage);
+            if (imageUrl != null) {
+                ImageView imageView = new ImageView(imageUrl.toExternalForm());
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(100);
+                VBox vBox = new VBox(imageView, button);
+                vBox.setAlignment(Pos.CENTER);
+                vBox.setSpacing(5);
+                flowPane.getChildren().add(vBox);
+            } else {
+                System.err.println("Image introuvable : " + nameImage);
+            }
+
+            // Action associée
+            selectCoffee(coffee, button);
         }
+
 
         // Définir le FlowPane comme contenu du tab
         if(type.equals("cafe")){
@@ -102,6 +118,34 @@ public class MenuHotDrinkController {
         }else if(type.equals("cappu")){
             this.tab_cappu.setContent(flowPane);
         }
+    }
+
+    private String returnStringImage(String name){
+        String nameImage="";
+
+        if(name.contains("expresso")){
+            nameImage="expresso.png";
+        }else if(name.contains("ristretto")){
+            nameImage="ristretto.png";
+        }else if(name.contains("lungo")){
+            nameImage="lungo.png";
+        }else if(name.contains("latte")){
+            nameImage="latte.png";
+        }else if(name.contains("cappuccino")){
+            nameImage="cappuccino.png";
+        }else if(name.contains("noisette")){
+            nameImage="noisette.png";
+        }else if(name.contains("caramel")){
+            nameImage="caramel.png";
+        }else if(name.contains("macchiato")){
+            nameImage="macchiato.png";
+        }else if(name.contains("viennese")){
+            nameImage="viennese.png";
+        }else if(name.contains("irish")){
+            nameImage="irish.png";
+        }
+        System.out.println("NAMEIMAGE -> "+nameImage);
+        return nameImage;
     }
 
 

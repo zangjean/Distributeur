@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.PasswordField?>
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="253.0" prefWidth="466.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.connexion.ConnexionController">
    <children>
       <HBox alignment="CENTER" prefHeight="0.0" prefWidth="466.0">
@@ -17,7 +18,7 @@
       <HBox alignment="CENTER" prefHeight="22.0" prefWidth="466.0">
          <children>
             <Label text="Password : " />
-            <TextField fx:id="fx_id_password" />
+            <PasswordField fx:id="fx_id_password" />
          </children>
       </HBox>
       <Button fx:id="fx_id_valider" mnemonicParsing="false" onAction="#on_action_valider" text="VALIDER" />

@@ -99,7 +99,7 @@ public class ProductsModel {
         caramel.addOneQuantityPrice(320,1.60);
         this.products.add(caramel);
 
-        Coffee latteMacchiato = new Coffee("Latte Macchiato");
+        Coffee latteMacchiato = new Coffee("Macchiato");
         latteMacchiato.addOneQuantityPrice(200,1.0);
         latteMacchiato.addOneQuantityPrice(220,1.40);
         latteMacchiato.addOneQuantityPrice(260,1.70);

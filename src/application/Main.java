@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static application.utils.Utils.*;
+
 public class Main extends Application {
     public static final ProductController productController = new ProductController();
     public static final Panier panier = new Panier();
@@ -23,7 +25,7 @@ public class Main extends Application {
         int width = 900; int height = 800 ;
 
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"))).load(), width, height);
-        stage.setResizable(false); // Empêche le redimensionnement
+        //stage.setResizable(false); // Empêche le redimensionnement
         stage.setTitle(" DISTRIBUTEUR ");
         stage.setScene(scene);
 
@@ -46,18 +48,6 @@ public class Main extends Application {
 
     public static Panier getPanier() {
         return panier;
-    }
-
-    private void executeBeforeClosing() {
-        // Logique à exécuter avant la fermeture
-        System.out.println("Exécution de la logique avant fermeture...");
-        //si il n'y apas d'utiisateur, pas besoin de sauvegarderle panier a la fermeture
-        // si il y a un utilisateur il faut sauvegarder le contenu du panieraffin de le sauvegarder
-        if(panier.getUser()== null){
-            System.out.println("Pas d'utilisateur");
-        }else {
-            System.out.println("Il y a un utilisateur courant -> il faut save le panier");
-        }
     }
 
     @Override

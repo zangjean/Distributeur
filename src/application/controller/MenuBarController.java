@@ -20,10 +20,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -53,6 +50,8 @@ public class MenuBarController {
     private int panierDelete=5;
 
     private ConnexionController connexionController;
+    private String currentUsername="";
+    private Boolean messagePanierEmpty=false;
 
 
     @FXML
@@ -61,11 +60,18 @@ public class MenuBarController {
         this.productController = Main.productController;
         System.out.println("menuBarController initialisé.");
 
+        if(Main.connexion.is_connected()){
+            this.currentUsername=Main.panier.getUser().getUsername()+" Vous avez "+Main.panier.getUser().getPoints()+" points.";
+
+        }
+
         fx_id_label_hello.textProperty().bind(
                 Bindings.when(Main.connexion.isConnectedProperty())
-                        .then("Bienvenue, utilisateur connecté !")
+                        .then("Bienvenue, "+this.currentUsername+" !" )
                         .otherwise("Pas d'utilisateur connecté.")
         );
+
+
 
 
 
@@ -151,7 +157,7 @@ public class MenuBarController {
             panierGrid.add(new Label(productForPanier.getAskingQuantity()+""),this.panierQuantiteDemande,rowIndex);
 
             Button btnDeleteFromPanier = new Button("Delete");
-            deleteProductFromPanier(btnDeleteFromPanier);
+            deleteProductFromPanier(btnDeleteFromPanier,productForPanier);
             panierGrid.add(btnDeleteFromPanier, this.panierDelete, rowIndex);
 
             rowIndex++;
@@ -160,11 +166,18 @@ public class MenuBarController {
 
         borderPane.setCenter(panierGrid);
 
-        Button btnAchat = new Button("Payer");
-        byAllPanier(btnAchat);
+        Button btnAchat = new Button("PAY (tot: "+Main.panier.getTotalPrice()+" )");
 
-        borderPane.setBottom(btnAchat);
-        BorderPane.setAlignment(btnAchat, Pos.CENTER);
+
+        VBox vBox=new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        vBox.getChildren().add(btnAchat);
+        borderPane.setBottom(vBox);
+        BorderPane.setAlignment(vBox, Pos.CENTER);
+
+        byAllPanier(btnAchat,vBox);
+
 
         Stage newStage = new Stage();
         newStage.setTitle(" Panier ");
@@ -182,29 +195,153 @@ public class MenuBarController {
     }
 
     private void byAllPanierRun(ActionEvent actionEvent) {
-        VBox vBox=new VBox();
-        Label label=new Label("Votre panier contient : ");
 
+            VBox vBox=new VBox();
+            Label label=new Label("Votre panier contient : ");
+            Label nameLabel = new Label();
+            nameLabel.setStyle("-fx-font-weight: bold");
 
-        Label nameLabel = new Label();
-        nameLabel.setStyle("-fx-font-weight: bold");
-        vBox.getChildren().addAll(label,nameLabel,progressBar,progressIndicator);
+            vBox.getChildren().addAll(label,nameLabel);
 
+            vBox.setAlignment(Pos.CENTER);
+            vBox.setSpacing(10);
 
-        for (ProductForPanier productForPanier : this.panier.getProducts()) {
-            runOneProduct(productForPanier,vBox);
-            nameLabel.setText(productForPanier.getNameProduct());
+            Scene scene = new Scene(vBox,400,200);
+            Stage stage = new Stage();
+            stage.setTitle("Realisation des produits du panier");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+
+            // Fermer la fenêtre source (si elle existe)
+            Stage sourceStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            sourceStage.close();
+
+            // Commencer la chaîne
+            runProductsSequentially(new ArrayList<>(this.panier.getProducts()),  vBox, nameLabel,this.panier.getProducts().getFirst().getAskingQuantity());
+
+    }
+
+    private void runProductsSequentially(ArrayList<ProductForPanier> productForPaniers,VBox vBox,Label nameLabel,int quantityDemande){
+        // Vérifie si la liste est vide
+        if (productForPaniers == null || productForPaniers.isEmpty()) {
+            nameLabel.setText("Aucun produit à traiter.");
+            System.out.println("Panier vide ou null.");
+            return;
         }
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
 
-        Scene scene = new Scene(vBox,400,200);
-        Stage stage = new Stage();
-        stage.setTitle("Realisation des produits du panier");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
-        stage.show();
+        // Indice pour suivre le produit en cours
+        final int[] currentIndex = {0};
+        nameLabel.setText("Préparation de : " + productForPaniers.get(currentIndex[0]).getNameProduct());
+
+        // ProgressBar et ProgressIndicator par produit
+        ProgressBar bar = new ProgressBar();
+        ProgressIndicator indicator = new ProgressIndicator();
+
+        // Préparer l'UI
+        nameLabel.setText("Préparation de : " + productForPaniers.get(currentIndex[0]).getNameProduct());
+        bar.setPrefWidth(250);
+        vBox.getChildren().addAll(bar, indicator);
+
+        // Service pour traiter les produits de manière séquentielle
+        Service<Void> productService = new Service<>() {
+            @Override
+            protected Task<Void> createTask() {
+                return new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        ProductForPanier product = productForPaniers.get(currentIndex[0]);
+                        System.out.println("Traitement du produit : " + product.getNameProduct());
+
+                        // Simulation du traitement (par exemple, une répétition)
+                        for (int i = 0; i < product.getQuantityML(); i++) {
+                            if (isCancelled()) break;
+                            updateProgress(i + 1, product.getQuantityML());
+                            Thread.sleep(50); // Simulation d'un délai pour chaque étape
+                        }
+                        return null;
+                    }
+                };
+            }
+        };
+
+
+        // Lier la progression au ProgressBar et au ProgressIndicator
+        bar.progressProperty().bind(productService.progressProperty());
+        indicator.progressProperty().bind(productService.progressProperty());
+
+        // Gestion des événements
+        productService.setOnSucceeded(event -> {
+            System.out.println("Produit traité : " + productForPaniers.get(currentIndex[0]).getNameProduct());
+
+            if(quantityDemande==1){
+                currentIndex[0]++; // Passe au produit suivant
+
+                // Si tous les produits sont traités
+                if (currentIndex[0] >= productForPaniers.size()) {
+                    nameLabel.setText("Tous les produits ont été traités.");
+                    System.out.println("Tous les produits ont été traités.");
+                    Main.panier.clear();
+                    pickupProduct(vBox);
+
+                } else {
+                    // Préparation du produit suivant
+                    ProductForPanier nextProduct = productForPaniers.get(currentIndex[0]);
+                    nameLabel.setText("Préparation de : " + nextProduct.getNameProduct());
+                    bar.progressProperty().unbind();
+                    indicator.progressProperty().unbind();
+                    vBox.getChildren().removeAll(bar, indicator);
+                    if(quantityDemande>1) {
+                        runProductsSequentially(productForPaniers, vBox, nameLabel, quantityDemande-1);
+                    }else{
+                        ArrayList<ProductForPanier> newproductForPaniers=new ArrayList<>(productForPaniers.subList(currentIndex[0], productForPaniers.size()));
+                        runProductsSequentially(newproductForPaniers, vBox, nameLabel,newproductForPaniers.getFirst().getAskingQuantity());
+                    }
+                }
+            }else{
+                ProductForPanier nextProduct = productForPaniers.get(currentIndex[0]);
+                nameLabel.setText("Préparation de : " + nextProduct.getNameProduct());
+                bar.progressProperty().unbind();
+                indicator.progressProperty().unbind();
+                vBox.getChildren().removeAll(bar, indicator);
+                if(quantityDemande>1) {
+                    runProductsSequentially(productForPaniers, vBox, nameLabel, quantityDemande-1);
+                }else{
+                    ArrayList<ProductForPanier> newproductForPaniers=new ArrayList<>(productForPaniers.subList(currentIndex[0], productForPaniers.size()));
+                    runProductsSequentially(newproductForPaniers, vBox, nameLabel,newproductForPaniers.getFirst().getAskingQuantity());
+                }
+
+            }
+
+
+        });
+
+        productService.setOnCancelled(event -> {
+            System.out.println("Traitement annulé.");
+            nameLabel.setText("Traitement annulé.");
+        });
+
+        productService.setOnFailed(event -> {
+            Throwable exception = productService.getException();
+            System.out.println("Erreur lors du traitement du produit : " + exception.getMessage());
+            nameLabel.setText("Erreur pendant le traitement.");
+        });
+
+        // Démarrer le traitement
+        productService.start();
+
+    }
+
+    private void pickupProduct(VBox vBox){
+        Button pickup = new Button("All products have been picked up");
+        vBox.getChildren().add(pickup);
+        pickup.setOnAction(closeEvent -> {
+            System.out.println("Button clicked" + " " + "All products have been picked up");
+            Stage stage = (Stage) pickup.getScene().getWindow();
+            stage.close();
+        });
+
     }
 
     private void byAllPanierSave(ActionEvent actionEvent) {
@@ -212,62 +349,35 @@ public class MenuBarController {
     }
 
 
-    private void byAllPanier(Button button){
+    private void byAllPanier(Button button, VBox vBox){
         button.setOnAction(closeEvent -> {
-            // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
-            // Et sauvegarder ce qui a ete acheter dans le fichier pour les favoris
-           //byAllPanierRun(closeEvent);
-            System.out.println("Button clicked Sauvgarde du panier DEBUT");
+            if(Main.panier.getProducts().isEmpty()){
+                if(!this.messagePanierEmpty){
+                    Label label = new Label("Votre panier est vide.");
+                    label.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: red");
+                    vBox.getChildren().add(label);
+                    this.messagePanierEmpty=true;
+                }
 
-           byAllPanierSave(closeEvent);
-           System.out.println("Button clicked Sauvgarde du panier FIN");
+            }else {
+                // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
+                // Et sauvegarder ce qui a ete acheter dans le fichier pour les favoris
+                if(Main.connexion.is_connected()){
+                    int points=Main.panier.howManyPointsUserWin();
+                    Main.panier.setPointsForCurrentUser(points);
+
+                }
+                byAllPanierSave(closeEvent);
+                byAllPanierRun(closeEvent);
+            }
+
 
 
         });
     }
 
-    private void runOneProduct(ProductForPanier productForPanier,VBox vBox){
-      int length = productForPanier.getQuantityML()*100_000_000;
-      int nbrRepetitions = productForPanier.getAskingQuantity();
 
 
-        Service service = new Service() {
-            @Override
-            protected Task<Integer> createTask() {
-                return new Task<Integer>() {
-                    @Override
-                    protected Integer call() throws Exception {
-                        for(int i=0;i<nbrRepetitions;i++){
-                            updateProgress(i,nbrRepetitions);
-                            Thread.sleep(productForPanier.getQuantityML() * 100L);
-                            updateMessage("Progression : " + (i + 1) + " / " + nbrRepetitions);
-
-                        }
-                        return null;
-                    }
-                };
-            }
-        };
-        progressBar.progressProperty().bind(service.progressProperty());
-        progressIndicator.progressProperty().bind(service.progressProperty());
-        //vBox.getChildren().addAll(progressBar,progressIndicator);
-
-        Label progressLabel = new Label();
-        progressLabel.textProperty().bind(service.messageProperty());
-
-        // Gestion des états du service (facultatif)
-        service.setOnRunning(e -> System.out.println("Tâche démarrée..."));
-        service.setOnSucceeded(e -> System.out.println("Tâche terminée avec succès."));
-        service.setOnFailed(e -> System.out.println("Une erreur est survenue."));
-
-        // Lance l'exécution
-        service.start();
-
-
-
-
-
-    }
 
     public void onActionPrintShop(ActionEvent actionEvent) {
         ArrayList<Product> products = this.productController.getProductsModel().getAllProducts();
@@ -277,22 +387,16 @@ public class MenuBarController {
         }
     }
 
-    private void deleteProductFromPanier(Button button){
+    private void deleteProductFromPanier(Button button, ProductForPanier productForPanier){
         button.setOnAction(closeEvent -> {
             System.out.println("Button clicked" + " " + "Delete");
             //this.panier.removeProduct();
+            this.panier.removeProduct(productForPanier);
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.close();
+
+
         });
-
-    }
-
-    public void setConnexionController(ConnexionController connexionController) {
-        this.connexionController = connexionController;
-        if (connexionController != null) {
-            System.out.println("ConnexionController injecté avec succès dans MenuBarController.");
-        } else {
-            System.out.println("Attention : ConnexionController n'est pas injecté !");
-        }
-
 
     }
 
