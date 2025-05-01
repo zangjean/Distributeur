@@ -1,6 +1,6 @@
 package application.controller.distrib;
 
-import application.Main;
+import application.MainApp;
 import application.model.distrib.productModel.product.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -207,8 +207,8 @@ public class CreateChocolateController {
                 String selectedAroma = witchAroma();
                 ArrayList<String> selectedToppings = getSelectedToppings();
                 int quantityMl = witchQuantityMl(selectedSize);
-                Product chocolate = Main.productController.createChocolate(selectedSize,selectedBase,selectedAroma,selectedToppings);
-                Main.panier.addProduct(chocolate,quantityMl,chocolate.getOnePrice(quantityMl));
+                Product chocolate = MainApp.productController.createChocolate(selectedSize,selectedBase,selectedAroma,selectedToppings);
+                MainApp.panier.addProduct(chocolate,quantityMl,chocolate.getOnePrice(quantityMl));
 
                 this.errorMassage.setText("Chocolate created !");
                 this.errorMassage.setStyle("-fx-font-size: 20; -fx-text-fill: green ");

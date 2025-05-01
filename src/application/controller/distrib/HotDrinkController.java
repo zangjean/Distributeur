@@ -1,9 +1,8 @@
 package application.controller.distrib;
 
 
-import application.Main;
+import application.MainApp;
 import application.model.distrib.panier.Panier;
-import application.model.distrib.saveFav.FavoriteProductForSave;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +37,7 @@ public class HotDrinkController {
     @FXML
     public void initialize() {
         //Main.productController.getProductsModel().get
-        this.panier = Main.panier;
+        this.panier = MainApp.panier;
         initAllFavProd(panier.return3FavoriteProduct());
     }
 

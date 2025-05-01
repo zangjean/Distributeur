@@ -1,6 +1,6 @@
 package application.controller.connexion;
 
-import application.Main;
+import application.MainApp;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +36,7 @@ public class CreateAccountController {
             System.out.println("Création de compte en cour:");
             this.fx_id_messages.setText(this.errorMessage);
 
-            Pair<Boolean,String> createAccountResult =Main.connexion.createAccount(this.fx_id_username.getText(),this.fx_id_password.getText());
+            Pair<Boolean,String> createAccountResult = MainApp.connexion.createAccount(this.fx_id_username.getText(),this.fx_id_password.getText());
             if(createAccountResult.getKey()){
                 System.out.println("Donnes VALIDE creation POSSIBLE ");
 

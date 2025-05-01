@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.Main;
+import application.MainApp;
 import application.controller.connexion.ConnexionController;
 import application.controller.distrib.ProductController;
 import application.model.distrib.panier.Panier;
@@ -56,17 +56,17 @@ public class MenuBarController {
 
     @FXML
     public void initialize() {
-        this.panier = Main.getPanier();
-        this.productController = Main.productController;
+        this.panier = MainApp.getPanier();
+        this.productController = MainApp.productController;
         System.out.println("menuBarController initialisé.");
 
-        if(Main.connexion.is_connected()){
-            this.currentUsername=Main.panier.getUser().getUsername()+" Vous avez "+Main.panier.getUser().getPoints()+" points.";
+        if(MainApp.connexion.is_connected()){
+            this.currentUsername= MainApp.panier.getUser().getUsername()+" Vous avez "+ MainApp.panier.getUser().getPoints()+" points.";
 
         }
 
         fx_id_label_hello.textProperty().bind(
-                Bindings.when(Main.connexion.isConnectedProperty())
+                Bindings.when(MainApp.connexion.isConnectedProperty())
                         .then("Bienvenue, "+this.currentUsername+" !" )
                         .otherwise("Pas d'utilisateur connecté.")
         );
@@ -103,7 +103,7 @@ public class MenuBarController {
         stage.initModality(Modality.APPLICATION_MODAL); // Empêche l'interaction avec d'autres fenêtres de l'application
 
         stage.setResizable(false);
-        if(Main.connexion.is_connected()){
+        if(MainApp.connexion.is_connected()){
             stage.setTitle(" DECONNEXION OR EDIT ");
         }else{
             stage.setTitle(" CREATE OR CONNEXION ");
@@ -166,7 +166,7 @@ public class MenuBarController {
 
         borderPane.setCenter(panierGrid);
 
-        Button btnAchat = new Button("PAY (tot: "+Main.panier.getTotalPrice()+" )");
+        Button btnAchat = new Button("PAY (tot: "+ MainApp.panier.getTotalPrice()+" )");
 
 
         VBox vBox=new VBox();
@@ -282,7 +282,7 @@ public class MenuBarController {
                 if (currentIndex[0] >= productForPaniers.size()) {
                     nameLabel.setText("Tous les produits ont été traités.");
                     System.out.println("Tous les produits ont été traités.");
-                    Main.panier.clear();
+                    MainApp.panier.clear();
                     pickupProduct(vBox);
 
                 } else {
@@ -351,7 +351,7 @@ public class MenuBarController {
 
     private void byAllPanier(Button button, VBox vBox){
         button.setOnAction(closeEvent -> {
-            if(Main.panier.getProducts().isEmpty()){
+            if(MainApp.panier.getProducts().isEmpty()){
                 if(!this.messagePanierEmpty){
                     Label label = new Label("Votre panier est vide.");
                     label.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: red");
@@ -362,9 +362,9 @@ public class MenuBarController {
             }else {
                 // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
                 // Et sauvegarder ce qui a ete acheter dans le fichier pour les favoris
-                if(Main.connexion.is_connected()){
-                    int points=Main.panier.howManyPointsUserWin();
-                    Main.panier.setPointsForCurrentUser(points);
+                if(MainApp.connexion.is_connected()){
+                    int points= MainApp.panier.howManyPointsUserWin();
+                    MainApp.panier.setPointsForCurrentUser(points);
 
                 }
                 byAllPanierSave(closeEvent);

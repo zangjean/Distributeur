@@ -1,12 +1,8 @@
 package application.controller.connexion;
 
-import application.Main;
+import application.MainApp;
 import application.model.connexion.Connexion;
 import application.model.distrib.panier.Panier;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,11 +19,11 @@ public class ConnexionController {
     @FXML
     public Button fx_id_valider;
 
-    private Connexion connexion = Main.connexion;
+    private Connexion connexion = MainApp.connexion;
     @FXML
     public Label fx_id_connexion_message;
 
-    private Panier panier=Main.panier;
+    private Panier panier= MainApp.panier;
 
     public void on_action_valider(javafx.event.ActionEvent actionEvent) {
         System.out.println("Username: "+ fx_id_username.getText());

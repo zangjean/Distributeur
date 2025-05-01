@@ -1,8 +1,7 @@
 package application.controller.distrib;
 
-import application.Main;
+import application.MainApp;
 import application.model.distrib.panier.Panier;
-import application.model.distrib.panier.ProductForPanier;
 import application.model.distrib.productModel.product.Product;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
 import javafx.fxml.FXML;
@@ -18,13 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
-
-import static java.util.function.Predicate.not;
 
 public class MenuHotDrinkController {
     @FXML
@@ -49,8 +45,8 @@ public class MenuHotDrinkController {
     public void initialize() throws IOException {
         //this.grid_cafe = new GridPane();
 
-        this.productController = Main.getProductController();
-        this.panier = Main.getPanier();
+        this.productController = MainApp.getProductController();
+        this.panier = MainApp.getPanier();
         initAllCoffee("cafe");
         initAllCoffee("cappu");
         initChocolateScrean();

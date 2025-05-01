@@ -1,11 +1,11 @@
 package application.utils;
 
-import application.Main;
+import application.MainApp;
 import application.model.user.User;
 
 import java.util.ArrayList;
 
-import static application.Main.panier;
+import static application.MainApp.panier;
 
 public abstract class Utils {
 
@@ -27,7 +27,7 @@ public abstract class Utils {
             }
             ArrayList<User> users = new ArrayList<>();
             users.add(panier.getUser());
-            Main.connexion.getUserManager().saveUsers(users,"utils");
+            MainApp.connexion.getUserManager().saveUsers(users,"utils");
 
         }
     }

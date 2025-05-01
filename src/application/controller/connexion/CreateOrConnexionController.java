@@ -1,19 +1,14 @@
 package application.controller.connexion;
 
-import application.Main;
-import javafx.application.Platform;
+import application.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
 
@@ -26,7 +21,7 @@ public class CreateOrConnexionController {
 
     @FXML
     public void initialize() {
-        if(Main.connexion.is_connected()){
+        if(MainApp.connexion.is_connected()){
             fx_id_button1.setText("DECONNEXION");
             fx_id_button2.setText("EDITER COMPTE");
 
@@ -40,7 +35,7 @@ public class CreateOrConnexionController {
 
     @FXML
     public void on_action_button1(ActionEvent actionEvent) throws IOException {
-        if(Main.connexion.is_connected()){
+        if(MainApp.connexion.is_connected()){
             deconnexion(actionEvent);
         }else{
             connexion(actionEvent);
@@ -53,7 +48,7 @@ public class CreateOrConnexionController {
 
     @FXML
     public void on_action_button2(ActionEvent actionEvent) throws IOException {
-        if(Main.connexion.is_connected()){
+        if(MainApp.connexion.is_connected()){
             editAccount(actionEvent);
         }else{
             createAccount(actionEvent);
@@ -99,7 +94,7 @@ public class CreateOrConnexionController {
 
     private void deconnexion(ActionEvent actionEvent) {
         System.out.println("deconnexion");
-        Main.connexion.disconnect();
+        MainApp.connexion.disconnect();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
 

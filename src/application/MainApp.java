@@ -1,21 +1,16 @@
 package application;
 
-import application.controller.connexion.ConnexionController;
 import application.controller.distrib.ProductController;
-import application.controller.MenuBarController;
 import application.model.connexion.Connexion;
 import application.model.distrib.panier.Panier;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 import static application.utils.Utils.*;
 
-public class Main extends Application {
+public class MainApp extends Application {
     public static final ProductController productController = new ProductController();
     public static final Panier panier = new Panier();
     public static final Connexion connexion = new Connexion();
