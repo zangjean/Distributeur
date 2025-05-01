@@ -32,15 +32,12 @@
                   <Menu mnemonicParsing="false" text="File">
                       <MenuItem mnemonicParsing="false" text="Save" onAction="#saveLayout" />
                       <MenuItem mnemonicParsing="false" text="Load" onAction="#loadLayout" />
-                      <MenuItem mnemonicParsing="false" text="Quit" onAction="#quitAll" />
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Edit">
-                      <MenuItem mnemonicParsing="false" text="Cut" />
-                      <MenuItem mnemonicParsing="false" text="Copy" />
-                      <MenuItem mnemonicParsing="false" text="Paste" />
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
                       <MenuItem mnemonicParsing="false" text="About" onAction="#displayMember" />
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Exit">
+                      <MenuItem mnemonicParsing="false" text="Quit" onAction="#quitAll" />
                   </Menu>
               </MenuBar>
             <Region prefHeight="27.0" prefWidth="542.0" HBox.hgrow="ALWAYS" />

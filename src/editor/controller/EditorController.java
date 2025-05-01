@@ -36,8 +36,6 @@ import java.util.Map;
 
 public class EditorController{
 
-
-
     @FXML
     private Button btnTemplate, btnHotDrink, btnColdDrink, btnPersonalisation, btnPizza, btnSnack;
     @FXML
@@ -118,25 +116,7 @@ public class EditorController{
         newStage.show();
     }
 
-//    private Parent createMemberLoader() {
-//        VBox vbox = new VBox();
-//        vbox.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 10px; -fx-spacing: 10px;");
-//        vbox.setPrefSize(300, 300);
-//        vbox.setAlignment(Pos.CENTER);
-//        vbox.setSpacing(20.0);
-//        // Add your member loader components here
-//        Label lbJean = new Label("Jean Zang");
-//        lbJean.setStyle("-fx-font-size: 20px; -fx-text-fill: #000000;");
-//        Label lbLe = new Label("Le Quang Hung");
-//        lbLe.setStyle("-fx-font-size: 20px; -fx-text-fill: #000000;");
-//        Label lbHoang = new Label("Hoang Minh Quan");
-//        lbHoang.setStyle("-fx-font-size: 20px; -fx-text-fill: #000000;");
-//
-//        vbox.getChildren().addAll(lbJean, lbLe, lbHoang);
-//
-//        return vbox;
-//    }
-private Parent createMemberLoader() {
+    private Parent createMemberLoader() {
     VBox vbox = new VBox();
     vbox.setStyle("-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0e0e0); -fx-padding: 20px; -fx-spacing: 20px;");
     vbox.setPrefSize(400, 500);
