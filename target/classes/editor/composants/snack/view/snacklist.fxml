@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root fx:id="root" type="ScrollPane" xmlns="http://javafx.com/javafx" vbarPolicy="NEVER" hbarPolicy="NEVER"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="editor.composants.snack.controller.SnacklistController"
+            >
+
+    <content>
+
+        <TilePane fx:id="tilePane" alignment="CENTER" hgap="10.0" vgap="10.0">
+        </TilePane>
+    </content>
+
+
+
+</fx:root>

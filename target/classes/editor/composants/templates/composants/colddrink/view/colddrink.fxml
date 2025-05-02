@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<fx:root fx:id="hboxContainer" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="editor.composants.templates.composants.colddrink.controller.ColdDrinkController"
+         prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <ScrollPane fx:id="scrollPane1" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="vbox1" spacing="20" alignment="TOP_CENTER" />
+            </content>
+        </ScrollPane>
+
+        <ScrollPane fx:id="scrollPane2" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="vbox2" spacing="20" alignment="TOP_CENTER" />
+            </content>
+        </ScrollPane>
+
+        <ScrollPane fx:id="scrollPane3" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="vbox3" spacing="20" alignment="TOP_CENTER" />
+            </content>
+        </ScrollPane>
+
+    </children>
+
+
+</fx:root>
