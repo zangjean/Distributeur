@@ -2,6 +2,7 @@ package application.model.distrib.productModel;
 
 import application.controller.distrib.ProductController;
 import application.model.distrib.productModel.product.Product;
+import application.model.distrib.productModel.product.beverage.Soda;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
 import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.Aroma;
 import application.model.distrib.productModel.product.beverage.sugar.all.chocolate.HotChocolate;
@@ -48,6 +49,7 @@ public class ProductsModel {
         this.productController = controller;
         this.products = new ArrayList<>();
         initAllProducts();
+        initAllSodas();
     }
 
     /**
@@ -78,7 +80,7 @@ public class ProductsModel {
     /**
      * Initialise la liste des cafés avec quantités et prix prédéfinis.
      */
-    public void initAllCoffees() {
+    private void initAllCoffees() {
         // Crée plusieurs cafés avec différentes tailles/prix
         Coffee expresso = new Coffee("Expresso");
         expresso.addOneQuantityPrice(30, 0.50);
@@ -251,5 +253,147 @@ public class ProductsModel {
         for (Product product : products) {
             System.out.println(product.toString());
         }
+    }
+
+    private void initAllSodas() {
+        //
+        Soda cocacola = new Soda("Coca-Cola");
+        cocacola.addOneQuantityPrice(330, 1.50);
+        cocacola.addOneQuantityPrice(500, 2.20);
+        this.products.add(cocacola);
+
+        Soda cocacolaZero = new Soda("Coca-Cola Zero");
+        cocacolaZero.addOneQuantityPrice(500, 2.00);
+        this.products.add(cocacolaZero);
+
+        Soda fantaOrange = new Soda("Fanta Orange");
+        fantaOrange.addOneQuantityPrice(330, 1.50);
+        fantaOrange.addOneQuantityPrice(500, 2.20);
+        this.products.add(fantaOrange);
+
+        Soda fantaCitron = new Soda("Fanta Citron");
+        fantaCitron.addOneQuantityPrice(500, 2.00);
+        this.products.add(fantaCitron);
+
+        Soda pepsi = new Soda("Pepsi");
+        pepsi.addOneQuantityPrice(330, 1.40);
+        this.products.add(pepsi);
+
+        Soda pepsiMax = new Soda("Pepsi Max");
+        pepsiMax.addOneQuantityPrice(500, 1.90);
+        this.products.add(pepsiMax);
+
+        Soda iceTeaPeche = new Soda("Lipton Ice Tea Peche");
+        iceTeaPeche.addOneQuantityPrice(330, 1.60);
+        iceTeaPeche.addOneQuantityPrice(500, 2.10);
+        this.products.add(iceTeaPeche);
+
+        Soda iceTeaCitron = new Soda("Lipton Ice Tea Citron");
+        iceTeaCitron.addOneQuantityPrice(500, 2.00);
+        this.products.add(iceTeaCitron);
+
+        Soda oasisTropical = new Soda("Oasis Tropical");
+        oasisTropical.addOneQuantityPrice(330, 1.60);
+        oasisTropical.addOneQuantityPrice(500, 2.10);
+        this.products.add(oasisTropical);
+
+        Soda oasisPommeCassis = new Soda("Oasis Pomme Cassis Framboise");
+        oasisPommeCassis.addOneQuantityPrice(500, 2.10);
+        this.products.add(oasisPommeCassis);
+
+        Soda minuteMaidOrange = new Soda("Minute Maid Orange");
+        minuteMaidOrange.addOneQuantityPrice(330, 1.80);
+        minuteMaidOrange.addOneQuantityPrice(500, 2.30);
+        this.products.add(minuteMaidOrange);
+
+        Soda minuteMaidPomme = new Soda("Minute Maid Pomme");
+        minuteMaidPomme.addOneQuantityPrice(500, 2.10);
+        this.products.add(minuteMaidPomme);
+
+        Soda tropicanaOrange = new Soda("Tropicana Orange");
+        tropicanaOrange.addOneQuantityPrice(330, 2.00);
+        this.products.add(tropicanaOrange);
+
+        Soda pulcoCitronnade = new Soda("Pulco Citronnade");
+        pulcoCitronnade.addOneQuantityPrice(500, 1.90);
+        this.products.add(pulcoCitronnade);
+
+        Soda sanPellegrino = new Soda("San Pellegrino");
+        sanPellegrino.addOneQuantityPrice(500, 2.00);
+        this.products.add(sanPellegrino);
+
+        Soda evian = new Soda("Evian");
+        evian.addOneQuantityPrice(500, 1.20);
+        evian.addOneQuantityPrice(750, 1.80);
+        this.products.add(evian);
+
+        Soda vittel = new Soda("Vittel");
+        vittel.addOneQuantityPrice(500, 1.20);
+        this.products.add(vittel);
+
+        Soda cristaline = new Soda("Cristaline");
+        cristaline.addOneQuantityPrice(500, 1.00);
+        cristaline.addOneQuantityPrice(330, 1.00);
+        this.products.add(cristaline);
+
+        Soda perrier = new Soda("Perrier");
+        perrier.addOneQuantityPrice(500, 1.50);
+        this.products.add(perrier);
+
+        Soda badoit = new Soda("Badoit");
+        badoit.addOneQuantityPrice(500, 1.60);
+        this.products.add(badoit);
+
+        Soda redBull = new Soda("Red Bull");
+        redBull.addOneQuantityPrice(250, 2.20);
+        this.products.add(redBull);
+
+        Soda redBullSugarfree = new Soda("Red Bull Sugarfree");
+        redBullSugarfree.addOneQuantityPrice(250, 2.20);
+        this.products.add(redBullSugarfree);
+
+        Soda monsterEnergy = new Soda("Monster Energy");
+        monsterEnergy.addOneQuantityPrice(500, 2.50);
+        this.products.add(monsterEnergy);
+
+        Soda monsterUltra = new Soda("Monster Ultra");
+        monsterUltra.addOneQuantityPrice(500, 2.50);
+        this.products.add(monsterUltra);
+
+        Soda gatorade = new Soda("Gatorade Citron");
+        gatorade.addOneQuantityPrice(500, 2.30);
+        this.products.add(gatorade);
+
+        Soda powerade = new Soda("Powerade Fruits Rouges");
+        powerade.addOneQuantityPrice(500, 2.30);
+        this.products.add(powerade);
+
+        Soda arizona = new Soda("Arizona The Vert");
+        arizona.addOneQuantityPrice(500, 2.20);
+        this.products.add(arizona);
+
+        Soda snapple = new Soda("Snapple Peche");
+        snapple.addOneQuantityPrice(500, 2.30);
+        this.products.add(snapple);
+
+    }
+
+    public ArrayList<Soda> getSodas() {
+        ArrayList<Soda> sodas = new ArrayList<>();
+        for (Product product : products) {
+            if (product instanceof Soda) {
+                sodas.add((Soda) product);
+            }
+        }
+        return sodas;
+    }
+
+    public Product getProductByName(String name) {
+        for (Product product : products) {
+            if (product.getName().toLowerCase().equals(name)) {
+                return product;
+            }
+        }
+        return null;
     }
 }

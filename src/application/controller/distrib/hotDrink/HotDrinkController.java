@@ -1,4 +1,4 @@
-package application.controller.distrib;
+package application.controller.distrib.hotDrink;
 
 import application.MainApp;
 import application.model.distrib.panier.Panier;

@@ -175,4 +175,11 @@ public abstract class Product {
                 "Nutriscore : " + this.nutriscore + "\n" +
                 "Food Allergen : " + this.foodAllergen + "\n";
     }
+
+    public ArrayList<Integer> getQuantities() {
+    	return new ArrayList<>(this.quantityPriceMap.keySet());
+    }
+
+
+
 }

@@ -89,6 +89,16 @@ public class HomePageController {
      */
     @FXML
     public void on_action_cold_drink(ActionEvent actionEvent) {
-        // TODO: Implémenter l'accès à la vue "Boissons Froides"
+        try {
+            Node source = (Node) actionEvent.getSource();
+            Scene currentScene = source.getScene();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/allDist/coldDrink/coldDrinkGrid.fxml"));
+            BorderPane hotDrinkView = loader.load();
+
+            currentScene.setRoot(hotDrinkView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,7 @@
-package application.controller.distrib;
+package application.controller.distrib.hotDrink;
 
 import application.MainApp;
+import application.controller.distrib.ProductController;
 import application.model.distrib.panier.Panier;
 import application.model.distrib.productModel.product.Product;
 import application.model.distrib.productModel.product.beverage.sugar.all.Coffee;
