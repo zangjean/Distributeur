@@ -1,0 +1,17 @@
+<map id="application.model.distrib.productModel.product.beverage.sugar.CanAddSugar" name="application.model.distrib.productModel.product.beverage.sugar.CanAddSugar">
+<area shape="rect" id="Node000001" title=" " alt="" coords="585,133,896,173"/>
+<area shape="rect" id="Node000004" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Coffee.html" title=" " alt="" coords="957,5,1242,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="788,125,860,89,943,55,985,43,986,48,945,60,862,93,790,129"/>
+<area shape="rect" id="Node000005" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1HotWine.html" title=" " alt="" coords="950,69,1249,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="867,128,986,107,987,112,868,133"/>
+<area shape="rect" id="Node000006" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Soup.html" title=" " alt="" coords="962,133,1237,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="910,151,962,151,962,156,910,156"/>
+<area shape="rect" id="Node000007" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1Tea.html" title=" " alt="" coords="967,197,1232,237"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="868,173,987,195,986,200,867,178"/>
+<area shape="rect" id="Node000008" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1sugar_1_1all_1_1chocolate_1_1HotChocolate.html" title=" " alt="" coords="944,262,1255,317"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="792,177,863,213,945,247,983,259,982,264,943,252,861,217,789,182"/>
+<area shape="rect" id="Node000002" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1beverage_1_1Beverage.html" title=" " alt="" coords="291,133,537,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="551,151,585,151,585,156,551,156"/>
+<area shape="rect" id="Node000003" href="$classapplication_1_1model_1_1distrib_1_1productModel_1_1product_1_1Product.html" title=" " alt="" coords="5,133,243,173"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="257,151,290,151,290,156,257,156"/>
+</map>
