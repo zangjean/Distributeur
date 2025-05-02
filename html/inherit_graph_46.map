@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,77,95,102"/>
-<area shape="rect" id="Node000001" href="$classeditor_1_1composants_1_1colddrink_1_1model_1_1ColdDrinksLoader.html" title=" " alt="" coords="143,5,397,45"/>
-<area shape="poly" id="edge26_Node000000_Node000001" title=" " alt="" coords="97,70,142,55,185,43,186,48,143,60,99,75"/>
-<area shape="rect" id="Node000002" href="$classeditor_1_1composants_1_1hotdrink_1_1model_1_1HotDrinksLoader.html" title=" " alt="" coords="145,69,395,109"/>
-<area shape="poly" id="edge27_Node000000_Node000002" title=" " alt="" coords="108,87,145,87,145,92,108,92"/>
-<area shape="rect" id="Node000003" href="$classeditor_1_1composants_1_1pizza_1_1model_1_1PizzaListLoader.html" title=" " alt="" coords="155,133,385,173"/>
-<area shape="poly" id="edge28_Node000000_Node000003" title=" " alt="" coords="99,104,143,119,186,131,185,136,142,124,97,109"/>
-</map>

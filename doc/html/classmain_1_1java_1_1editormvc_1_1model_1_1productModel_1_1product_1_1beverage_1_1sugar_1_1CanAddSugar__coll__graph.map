@@ -1,9 +1,0 @@
-<map id="main.java.editormvc.model.productModel.product.beverage.sugar.CanAddSugar" name="main.java.editormvc.model.productModel.product.beverage.sugar.CanAddSugar">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,287,316,327"/>
-<area shape="rect" id="Node000002" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1beverage_1_1Beverage.html" title=" " alt="" coords="33,197,288,237"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,251,163,287,158,287,158,251"/>
-<area shape="rect" id="Node000003" href="$classmain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Product.html" title=" " alt="" coords="33,108,288,148"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="163,162,163,197,158,197,158,162"/>
-<area shape="rect" id="Node000004" href="$enummain_1_1java_1_1editormvc_1_1model_1_1productModel_1_1product_1_1Nutriscore.html" title=" " alt="" coords="33,5,288,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="163,59,163,108,158,108,158,59"/>
-</map>

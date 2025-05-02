@@ -1,7 +1,0 @@
-<map id="editor.composants.templates.model.SnackPresetLoader" name="editor.composants.templates.model.SnackPresetLoader">
-<area shape="rect" id="Node000001" title=" " alt="" coords="24,93,285,133"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,101,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,45,134,91,131,95,76,49"/>
-<area shape="rect" id="Node000003" href="$interfaceeditor_1_1composants_1_1templates_1_1model_1_1Saveable.html" title=" " alt="" coords="125,5,387,45"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,56,179,95,175,91,221,52"/>
-</map>

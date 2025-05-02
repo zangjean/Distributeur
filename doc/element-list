@@ -1,0 +1,17 @@
+application
+application.controller
+application.controller.connexion
+application.controller.distrib
+application.controller.homePage
+application.model.connexion
+application.model.distrib.panier
+application.model.distrib.productModel
+application.model.distrib.productModel.product
+application.model.distrib.productModel.product.beverage
+application.model.distrib.productModel.product.beverage.sugar
+application.model.distrib.productModel.product.beverage.sugar.all
+application.model.distrib.productModel.product.beverage.sugar.all.chocolate
+application.model.distrib.saveFav
+application.model.homePage
+application.model.user
+application.utils

@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,45,61,70"/>
-<area shape="rect" id="Node000001" href="$classeditor_1_1composants_1_1templates_1_1composants_1_1hotdrink_1_1model_1_1HotDrinkLoader.html" title=" " alt="" coords="109,5,512,45"/>
-<area shape="poly" id="edge33_Node000000_Node000001" title=" " alt="" coords="75,50,137,43,138,48,75,55"/>
-<area shape="rect" id="Node000002" href="$classeditor_1_1composants_1_1templates_1_1composants_1_1hotdrink_1_1model_1_1ProductCardLoader.html" title=" " alt="" coords="109,69,512,109"/>
-<area shape="poly" id="edge34_Node000000_Node000002" title=" " alt="" coords="75,59,138,67,137,72,75,65"/>
-</map>

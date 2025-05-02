@@ -22,73 +22,88 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Contrôleur de l'interface des boissons chaudes (MenuHotDrink).
+ * Permet d'afficher et de sélectionner différentes boissons comme les cafés, cappuccinos et chocolats.
+ */
 public class MenuHotDrinkController {
-    @FXML
-    public Tab tab_cafe;
-    @FXML
-    public Tab tab_cappu;
-    @FXML
-    public Tab tab_choco;
-    @FXML
-    public Tab tab_the;
-    @FXML
-    public Tab tab_soupes;
 
-    @FXML
-    public TabPane tabPaneID;
+    /** Onglet pour les cafés classiques. */
+    @FXML public Tab tab_cafe;
 
+    /** Onglet pour les cappuccinos et lattes. */
+    @FXML public Tab tab_cappu;
+
+    /** Onglet pour les chocolats chauds. */
+    @FXML public Tab tab_choco;
+
+    /** Onglet pour les thés. */
+    @FXML public Tab tab_the;
+
+    /** Onglet pour les soupes. */
+    @FXML public Tab tab_soupes;
+
+    /** Le conteneur principal des onglets. */
+    @FXML public TabPane tabPaneID;
+
+    /** Contrôleur des produits utilisé pour accéder aux données. */
     private ProductController productController;
+
+    /** Le panier de l'utilisateur courant. */
     private Panier panier;
 
-
+    /**
+     * Méthode d'initialisation appelée automatiquement après chargement FXML.
+     * Initialise le contrôleur, les produits café et cappuccino, et l'interface chocolat.
+     *
+     * @throws IOException si une ressource FXML est introuvable.
+     */
     @FXML
     public void initialize() throws IOException {
-        //this.grid_cafe = new GridPane();
-
         this.productController = MainApp.getProductController();
         this.panier = MainApp.getPanier();
         initAllCoffee("cafe");
         initAllCoffee("cappu");
         initChocolateScrean();
-
     }
-    private ArrayList<Coffee> returnCoffee(String type){
+
+    /**
+     * Récupère la liste des objets {@code Coffee} correspondant au type sélectionné.
+     *
+     * @param type "cafe" pour les cafés simples, "cappu" pour cappuccino/latte.
+     * @return Liste de cafés filtrée selon le type.
+     */
+    private ArrayList<Coffee> returnCoffee(String type) {
         ArrayList<Product> products = productController.getProductsModel().getAllProducts();
         ArrayList<Coffee> coffees = new ArrayList<>();
         for (Product product : products) {
-            if(product.getClass().equals(Coffee.class)){
-                if(type.equals("cafe")){
-                    if (!((product.getName().toLowerCase().contains("latte"))|| (product.getName().toLowerCase().contains("cappuccino")))){
-                        coffees.add((Coffee) product);
-                    }
-                }else{
-                    if ((product.getName().toLowerCase().contains("latte"))|| (product.getName().toLowerCase().contains("cappuccino"))){
-                        coffees.add((Coffee) product);
-                    }
+            if (product instanceof Coffee coffee) {
+                String name = product.getName().toLowerCase();
+                boolean isCappu = name.contains("latte") || name.contains("cappuccino");
+                if ((type.equals("cafe") && !isCappu) || (type.equals("cappu") && isCappu)) {
+                    coffees.add(coffee);
                 }
-
             }
         }
         return coffees;
     }
 
+    /**
+     * Initialise l'interface d'un type de café avec les boutons et images associés.
+     *
+     * @param type Type de café ("cafe" ou "cappu").
+     */
     private void initAllCoffee(String type) {
-        // Créer un FlowPane à la place d'un GridPane
         FlowPane flowPane = new FlowPane();
+        flowPane.setHgap(10);
+        flowPane.setVgap(10);
 
-        // Définir les espacements entre les éléments
-        flowPane.setHgap(10); // Espace horizontal entre les éléments
-        flowPane.setVgap(10); // Espace vertical entre les lignes
-
-        // Récupérer la liste de café
         ArrayList<Coffee> coffees = returnCoffee(type);
 
         for (Coffee coffee : coffees) {
             String name = coffee.getName().toLowerCase();
             String nameImage = returnStringImage(name);
-
             Button button = new Button(coffee.getName());
-
 
             URL imageUrl = getClass().getResource("/application/ressources/images/allHotDrinks/" + nameImage);
             if (imageUrl != null) {
@@ -103,53 +118,50 @@ public class MenuHotDrinkController {
                 System.err.println("Image introuvable : " + nameImage);
             }
 
-            // Action associée
             selectCoffee(coffee, button);
         }
 
-
-        // Définir le FlowPane comme contenu du tab
-        if(type.equals("cafe")){
+        if (type.equals("cafe")) {
             this.tab_cafe.setContent(flowPane);
-        }else if(type.equals("cappu")){
+        } else if (type.equals("cappu")) {
             this.tab_cappu.setContent(flowPane);
         }
     }
 
-    private String returnStringImage(String name){
-        String nameImage="";
+    /**
+     * Retourne le nom d'image associé à un produit café.
+     *
+     * @param name Nom du produit.
+     * @return Nom de fichier image (ex. "latte.png").
+     */
+    private String returnStringImage(String name) {
+        String nameImage = "";
 
-        if(name.contains("expresso")){
-            nameImage="expresso.png";
-        }else if(name.contains("ristretto")){
-            nameImage="ristretto.png";
-        }else if(name.contains("lungo")){
-            nameImage="lungo.png";
-        }else if(name.contains("latte")){
-            nameImage="latte.png";
-        }else if(name.contains("cappuccino")){
-            nameImage="cappuccino.png";
-        }else if(name.contains("noisette")){
-            nameImage="noisette.png";
-        }else if(name.contains("caramel")){
-            nameImage="caramel.png";
-        }else if(name.contains("macchiato")){
-            nameImage="macchiato.png";
-        }else if(name.contains("viennese")){
-            nameImage="viennese.png";
-        }else if(name.contains("irish")){
-            nameImage="irish.png";
-        }
-        System.out.println("NAMEIMAGE -> "+nameImage);
+        if (name.contains("expresso")) nameImage = "expresso.png";
+        else if (name.contains("ristretto")) nameImage = "ristretto.png";
+        else if (name.contains("lungo")) nameImage = "lungo.png";
+        else if (name.contains("latte")) nameImage = "latte.png";
+        else if (name.contains("cappuccino")) nameImage = "cappuccino.png";
+        else if (name.contains("noisette")) nameImage = "noisette.png";
+        else if (name.contains("caramel")) nameImage = "caramel.png";
+        else if (name.contains("macchiato")) nameImage = "macchiato.png";
+        else if (name.contains("viennese")) nameImage = "viennese.png";
+        else if (name.contains("irish")) nameImage = "irish.png";
+
+        System.out.println("NAMEIMAGE -> " + nameImage);
         return nameImage;
     }
 
-
-    private void selectCoffee(Coffee coffee,Button button){
+    /**
+     * Configure le bouton du café pour afficher une fenêtre d'ajout au panier avec choix de taille.
+     *
+     * @param coffee Objet café.
+     * @param button Bouton déclencheur.
+     */
+    private void selectCoffee(Coffee coffee, Button button) {
         button.setOnAction(event -> {
-            System.out.println("Button clicked" + " " + coffee.getName());
+            System.out.println("Button clicked: " + coffee.getName());
 
-            // Créer un GridPane pour afficher les informations
             GridPane select = new GridPane();
             select.setGridLinesVisible(true);
             select.add(new Label(" Taille (ml) "), 0, 0);
@@ -157,72 +169,44 @@ public class MenuHotDrinkController {
             select.add(new Label(" Select "), 2, 0);
 
             Map<Integer, Double> prices = coffee.getQuantityPriceMap();
-
-            int rowIndex = 1; // Commence à la ligne 1 (car ligne 0 contient les en-têtes)
+            int rowIndex = 1;
             for (Map.Entry<Integer, Double> entry : prices.entrySet()) {
                 select.add(new Label(entry.getKey() + ""), 0, rowIndex);
                 select.add(new Label(entry.getValue() + ""), 1, rowIndex);
-
-                // Créer un nouveau bouton pour chaque ligne
                 Button btnAdd = new Button("Add");
-
-                // Ajouter l'action au bouton (optionnel)
-                addOnPanier(btnAdd,entry,coffee);
-
+                addOnPanier(btnAdd, entry, coffee);
                 select.add(btnAdd, 2, rowIndex);
                 rowIndex++;
             }
 
-            // Créer un BorderPane
             BorderPane borderPane = new BorderPane();
-
-            // Ajouter le GridPane dans la partie centrale du BorderPane
             borderPane.setCenter(select);
-
-            // Créer un bouton "Cancel"
             Button btnCancel = new Button("Cancel");
-
-            // Définir une action pour fermer la fenêtre lorsque le bouton est cliqué
-            btnCancel.setOnAction(closeEvent -> {
-                // Ferme la fenêtre en cours
-                Stage stage = (Stage) btnCancel.getScene().getWindow();
-                stage.close();
-            });
-
-            // Ajouter le bouton "Cancel" dans la partie basse du BorderPane
+            btnCancel.setOnAction(e -> ((Stage) btnCancel.getScene().getWindow()).close());
             borderPane.setBottom(btnCancel);
-
-            // Centrer le bouton "Cancel" dans la section basse
             BorderPane.setAlignment(btnCancel, Pos.CENTER);
 
-            // Créer une nouvelle fenêtre (Stage) avec le BorderPane
             Stage newStage = new Stage();
             newStage.setTitle(coffee.getName());
-
-            // Créer une scène avec le BorderPane
-            Scene newScene = new Scene(borderPane, 400, 300);
-
-            // Ajouter la scène à la fenêtre
-            newStage.setScene(newScene);
-
-            // Rendre la fenêtre modale
+            newStage.setScene(new Scene(borderPane, 400, 300));
             newStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Définir la fenêtre principale comme propriétaire
             newStage.initOwner(button.getScene().getWindow());
-
-            // Afficher la nouvelle fenêtre
             newStage.show();
         });
     }
 
-    private void addOnPanier(Button button, Map.Entry<Integer, Double> entry, Coffee coffee){
+    /**
+     * Affiche une fenêtre pour sélectionner le niveau de sucre, puis ajoute le produit au panier.
+     *
+     * @param button Bouton déclencheur.
+     * @param entry  Taille et prix du produit.
+     * @param coffee Café sélectionné.
+     */
+    private void addOnPanier(Button button, Map.Entry<Integer, Double> entry, Coffee coffee) {
         button.setOnAction(event -> {
-
             BorderPane borderPane = new BorderPane();
             Stage newStage = new Stage();
             Button buttonValidate = new Button("Valider");
-
 
             Label sucreLabel = new Label("Sucre :");
             Slider sucreSlider = new Slider(0, 5, 0);
@@ -233,48 +217,40 @@ public class MenuHotDrinkController {
             sucreSlider.setShowTickMarks(true);
             sucreSlider.setBlockIncrement(1);
 
-            // Pour afficher la valeur sélectionnée
             Label valueLabel = new Label("Niveau : 0");
-            sucreSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
-                valueLabel.setText("Niveau : " + newVal.intValue());
-            });
+            sucreSlider.valueProperty().addListener((obs, oldVal, newVal) ->
+                    valueLabel.setText("Niveau : " + newVal.intValue()));
 
             VBox sucreBox = new VBox(5, sucreLabel, sucreSlider, valueLabel, buttonValidate);
             sucreBox.setAlignment(Pos.CENTER);
-
             borderPane.setCenter(sucreBox);
+
             Scene scene = new Scene(borderPane, 400, 300);
             newStage.setScene(scene);
-            newStage.setTitle(" Choisissez le niveau de sucre ");
+            newStage.setTitle("Choisissez le niveau de sucre");
             newStage.initModality(Modality.APPLICATION_MODAL);
             newStage.setResizable(false);
             newStage.show();
 
             buttonValidate.setOnAction(actionEvent -> {
                 coffee.addSugar((int) sucreSlider.getValue());
-                this.panier.addProduct(coffee,entry.getKey(),entry.getValue());
+                this.panier.addProduct(coffee, entry.getKey(), entry.getValue());
                 newStage.close();
             });
         });
     }
 
-
+    /**
+     * Initialise l'écran de personnalisation de chocolat chaud dans l'onglet dédié.
+     *
+     * @throws IOException si le fichier FXML ne peut pas être chargé.
+     */
     private void initChocolateScrean() throws IOException {
-        // Charger le fichier FXML du ScrollPane
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/view/allDist/hotDrink/create_chocolate.fxml"));
         ScrollPane scrollPane = fxmlLoader.load();
 
-        // Créer un nouveau BorderPane pour organiser le ScrollPane
         BorderPane borderPane = new BorderPane();
-
-        // Définir le ScrollPane dans la région centrale du BorderPane
         borderPane.setCenter(scrollPane);
-
-        // Définir ce BorderPane comme le contenu de l'onglet "tab_choco"
         this.tab_choco.setContent(borderPane);
     }
-
-
-
-
 }

@@ -1,7 +1,0 @@
-<map id="editor.composants.templates.model.PizzaPresetLoader" name="editor.composants.templates.model.PizzaPresetLoader">
-<area shape="rect" id="Node000001" title=" " alt="" coords="25,93,287,133"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,104,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,45,135,91,132,95,77,49"/>
-<area shape="rect" id="Node000003" href="$interfaceeditor_1_1composants_1_1templates_1_1model_1_1Saveable.html" title=" " alt="" coords="128,5,389,45"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,56,180,95,177,91,224,52"/>
-</map>
