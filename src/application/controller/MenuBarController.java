@@ -14,10 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -26,239 +23,254 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
+/**
+ * Contrôleur de la barre de menu générale de l'application.
+ * Gère les interactions utilisateur liées à la navigation, au compte, au panier et aux actions d'achat.
+ */
 public class MenuBarController {
-    @FXML
-    public Label fx_id_label_hello;
-    @FXML
-    public ImageView fx_id_account;
-    @FXML
-    public BorderPane fx_id_header;
-    @FXML
-    public Button fx_id_acceuilButton;
 
+    /** Label affichant le message de bienvenue ou d'état de connexion. */
+    @FXML public Label fx_id_label_hello;
+
+    /** Image de profil ou bouton d'accès au compte. */
+    @FXML public ImageView fx_id_account;
+
+    /** Conteneur principal de l'en-tête de l'application. */
+    @FXML public BorderPane fx_id_header;
+
+    /** Bouton pour retourner à l'accueil. */
+    @FXML public Button fx_id_acceuilButton;
+
+    /** Le panier de l'utilisateur. */
     private Panier panier;
 
-    private ProgressBar progressBar=new ProgressBar();
-    private ProgressIndicator progressIndicator=new ProgressIndicator();
+    /** Contrôleur de gestion des produits. */
     private ProductController productController;
-    private int panierType =0;
-    private int panierNomProduit=1;
-    private int panierTaille=2;
-    private int panierPrix=3;
-    private int panierQuantiteDemande=4;
-    private int panierDelete=5;
 
-    private ConnexionController connexionController;
-    private String currentUsername="";
-    private Boolean messagePanierEmpty=false;
+    /** Indices des colonnes du tableau de panier. */
+    private int panierType = 0, panierNomProduit = 1, panierTaille = 2, panierPrix = 3, panierQuantiteDemande = 4, panierDelete = 5;
 
+    /** Nom d'utilisateur actuellement connecté. */
+    private String currentUsername = "";
 
+    /** Indique si le message "panier vide" a déjà été affiché. */
+    private Boolean messagePanierEmpty = false;
+
+    /**
+     * Initialise le contrôleur après chargement FXML.
+     * Configure le message de bienvenue selon l'état de connexion.
+     */
     @FXML
     public void initialize() {
         this.panier = MainApp.getPanier();
         this.productController = MainApp.productController;
-        System.out.println("menuBarController initialisé.");
 
-        if(MainApp.connexion.is_connected()){
-            this.currentUsername= MainApp.panier.getUser().getUsername()+" Vous avez "+ MainApp.panier.getUser().getPoints()+" points.";
-
+        if (MainApp.connexion.is_connected()) {
+            this.currentUsername = MainApp.panier.getUser().getUsername() + " Vous avez " + MainApp.panier.getUser().getPoints() + " points.";
         }
 
         fx_id_label_hello.textProperty().bind(
                 Bindings.when(MainApp.connexion.isConnectedProperty())
-                        .then("Bienvenue, "+this.currentUsername+" !" )
+                        .then("Bienvenue, " + this.currentUsername + " !")
                         .otherwise("Pas d'utilisateur connecté.")
         );
-
-
-
-
-
-
-
     }
+
+    /**
+     * Applique un effet de survol (bordure rouge) sur le panneau du compte.
+     */
     @FXML
     public void onMouseEnteredAccount(MouseEvent mouseEvent) {
         StackPane stackPaneAccount = (StackPane) mouseEvent.getSource();
-
         stackPaneAccount.setStyle("-fx-border-color: red ; -fx-border-width: 5 ; -fx-border-radius: 4");
-
     }
+
+    /**
+     * Supprime l'effet de survol du panneau du compte.
+     */
     @FXML
     public void onMouseExitedAccount(MouseEvent mouseEvent) {
         StackPane stackPaneAccount = (StackPane) mouseEvent.getSource();
         stackPaneAccount.setStyle("-fx-border-color:transparent; ; -fx-border-width: 5");
-
     }
 
+    /**
+     * Ouvre la fenêtre de connexion ou d'édition de compte.
+     */
     @FXML
     public void onMousePressedAccount(MouseEvent mouseEvent) throws IOException {
-        int width = 300; int height = 200;
-        //Scene scene = new Scene(createOrConnexionView, width, height);
+        int width = 300, height = 200;
         Scene scene = new Scene((new FXMLLoader(getClass().getResource("/application/view/connexion/createOrConnexion.fxml"))).load(), width, height);
         Stage stage = new Stage();
 
-        // Configurer le stage comme modal
-        stage.initModality(Modality.APPLICATION_MODAL); // Empêche l'interaction avec d'autres fenêtres de l'application
-
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
-        if(MainApp.connexion.is_connected()){
-            stage.setTitle(" DECONNEXION OR EDIT ");
-        }else{
-            stage.setTitle(" CREATE OR CONNEXION ");
-        }
+        stage.setTitle(MainApp.connexion.is_connected() ? " DECONNEXION OR EDIT " : " CREATE OR CONNEXION ");
         stage.setScene(scene);
-        stage.showAndWait(); // Affiche la fenêtre et attend sa fermeture avant de continuer
-
-
-
-
+        stage.showAndWait();
     }
 
-
-
+    /**
+     * Action de retour à l'écran d'accueil si ce n’est pas déjà la scène actuelle.
+     */
     @FXML
     public void onActionAcceuil(ActionEvent actionEvent) {
         try {
-            // Vérifie si la page actuelle est différente de la page d'accueil
             Scene currentScene = ((Button) actionEvent.getSource()).getScene();
             String currentFXML = currentScene.getRoot().getClass().getSimpleName();
 
-            if (!"homePage.fxml".equals(currentFXML)) {  // Remplacez "AcceuilView.fxml" par le nom de votre fichier FXML de la page d'accueil
-                // Chargement de la page d'accueil
+            if (!"homePage.fxml".equals(currentFXML)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/homePage/homePage.fxml"));
                 BorderPane acceuilView = loader.load();
-
-                currentScene.setRoot(acceuilView);  // Remplace la scène actuelle par la page d'accueil
+                currentScene.setRoot(acceuilView);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Affiche le contenu du panier de l'utilisateur dans une nouvelle fenêtre.
+     */
     public void onActionPanier(ActionEvent actionEvent) {
         BorderPane borderPane = new BorderPane();
         GridPane panierGrid = new GridPane();
         panierGrid.setGridLinesVisible(true);
-        panierGrid.add(new Label(" Type  "), this.panierType, 0);
-        panierGrid.add(new Label(" Nom Produit "), this.panierNomProduit, 0);
-        panierGrid.add(new Label(" Taille (ml) "), this.panierTaille, 0);
-        panierGrid.add(new Label(" Prix (€) "), this.panierPrix, 0);
-        panierGrid.add(new Label(" Quantite demandé "), this.panierQuantiteDemande, 0);
-        panierGrid.add(new Label(" Delete "), this.panierDelete, 0);
+        panierGrid.add(new Label(" Type "), panierType, 0);
+        panierGrid.add(new Label(" Nom Produit "), panierNomProduit, 0);
+        panierGrid.add(new Label(" Taille (ml) "), panierTaille, 0);
+        panierGrid.add(new Label(" Prix (€) "), panierPrix, 0);
+        panierGrid.add(new Label(" Quantité demandée "), panierQuantiteDemande, 0);
+        panierGrid.add(new Label(" Delete "), panierDelete, 0);
 
         int rowIndex = 1;
-        for (ProductForPanier productForPanier : this.panier.getProducts()) {
-            panierGrid.add(new Label(productForPanier.getOriginaClassName()), this.panierType, rowIndex);
-            panierGrid.add(new Label(productForPanier.getNameProduct()+""), this.panierNomProduit, rowIndex);
-            panierGrid.add(new Label(productForPanier.getQuantityML()+""),this.panierTaille,rowIndex);
-            panierGrid.add(new Label(productForPanier.getPrice()+""),this.panierPrix,rowIndex);
-            panierGrid.add(new Label(productForPanier.getAskingQuantity()+""),this.panierQuantiteDemande,rowIndex);
+        for (ProductForPanier product : panier.getProducts()) {
+            panierGrid.add(new Label(product.getOriginaClassName()), panierType, rowIndex);
+            panierGrid.add(new Label(product.getNameProduct()), panierNomProduit, rowIndex);
+            panierGrid.add(new Label(String.valueOf(product.getQuantityML())), panierTaille, rowIndex);
+            panierGrid.add(new Label(String.valueOf(product.getPrice())), panierPrix, rowIndex);
+            panierGrid.add(new Label(String.valueOf(product.getAskingQuantity())), panierQuantiteDemande, rowIndex);
 
-            Button btnDeleteFromPanier = new Button("Delete");
-            deleteProductFromPanier(btnDeleteFromPanier,productForPanier);
-            panierGrid.add(btnDeleteFromPanier, this.panierDelete, rowIndex);
-
+            Button btnDelete = new Button("Delete");
+            deleteProductFromPanier(btnDelete, product);
+            panierGrid.add(btnDelete, panierDelete, rowIndex);
             rowIndex++;
-
         }
 
         borderPane.setCenter(panierGrid);
 
-        Button btnAchat = new Button("PAY (tot: "+ MainApp.panier.getTotalPrice()+" )");
-
-
-        VBox vBox=new VBox();
+        Button btnAchat = new Button("PAY (tot: " + panier.getTotalPrice() + " )");
+        VBox vBox = new VBox(btnAchat);
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
-        vBox.getChildren().add(btnAchat);
         borderPane.setBottom(vBox);
         BorderPane.setAlignment(vBox, Pos.CENTER);
 
-        byAllPanier(btnAchat,vBox);
-
+        byAllPanier(btnAchat, vBox);
 
         Stage newStage = new Stage();
         newStage.setTitle(" Panier ");
-        Scene newScene = new Scene(borderPane, 500, 300);
-        newStage.setScene(newScene);
-        // Rendre la fenêtre modale
+        newStage.setScene(new Scene(borderPane, 500, 300));
         newStage.initModality(Modality.APPLICATION_MODAL);
-
-        // Définir la fenêtre principale comme propriétaire
         newStage.initOwner(((Button) actionEvent.getSource()).getScene().getWindow());
-
-        // Afficher la nouvelle fenêtre
         newStage.show();
-
     }
 
+    /**
+     * Supprime un produit du panier lors du clic sur le bouton associé.
+     */
+    private void deleteProductFromPanier(Button button, ProductForPanier product) {
+        button.setOnAction(e -> {
+            panier.removeProduct(product);
+            ((Stage) button.getScene().getWindow()).close();
+        });
+    }
+
+    /**
+     * Initialise l'action du bouton "Valider l'achat" dans le panier.
+     */
+    private void byAllPanier(Button button, VBox vBox) {
+        button.setOnAction(e -> {
+            if (panier.getProducts().isEmpty()) {
+                if (!messagePanierEmpty) {
+                    Label label = new Label("Votre panier est vide.");
+                    label.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: red");
+                    vBox.getChildren().add(label);
+                    messagePanierEmpty = true;
+                }
+            } else {
+                if (MainApp.connexion.is_connected()) {
+                    int points = panier.howManyPointsUserWin();
+                    panier.setPointsForCurrentUser(points);
+                }
+                byAllPanierSave(e);
+                byAllPanierRun(e);
+            }
+        });
+    }
+
+    /**
+     * Sauvegarde les produits du panier pour les favoris.
+     */
+    private void byAllPanierSave(ActionEvent actionEvent) {
+        panier.updateFavorite(panier);
+    }
+
+    /**
+     * Démarre l’affichage de la fenêtre de préparation des produits du panier.
+     */
     private void byAllPanierRun(ActionEvent actionEvent) {
+        VBox vBox = new VBox();
+        Label label = new Label("Votre panier contient : ");
+        Label nameLabel = new Label();
+        nameLabel.setStyle("-fx-font-weight: bold");
 
-            VBox vBox=new VBox();
-            Label label=new Label("Votre panier contient : ");
-            Label nameLabel = new Label();
-            nameLabel.setStyle("-fx-font-weight: bold");
+        vBox.getChildren().addAll(label, nameLabel);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
 
-            vBox.getChildren().addAll(label,nameLabel);
+        Scene scene = new Scene(vBox, 400, 200);
+        Stage stage = new Stage();
+        stage.setTitle("Réalisation des produits du panier");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
 
-            vBox.setAlignment(Pos.CENTER);
-            vBox.setSpacing(10);
-
-            Scene scene = new Scene(vBox,400,200);
-            Stage stage = new Stage();
-            stage.setTitle("Realisation des produits du panier");
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setResizable(false);
-            stage.show();
-
-            // Fermer la fenêtre source (si elle existe)
-            Stage sourceStage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-            sourceStage.close();
-
-            // Commencer la chaîne
-            runProductsSequentially(new ArrayList<>(this.panier.getProducts()),  vBox, nameLabel,this.panier.getProducts().getFirst().getAskingQuantity());
-
+        ((Stage) ((Button) actionEvent.getSource()).getScene().getWindow()).close();
+        runProductsSequentially(new ArrayList<>(panier.getProducts()), vBox, nameLabel, panier.getProducts().getFirst().getAskingQuantity());
     }
 
-    private void runProductsSequentially(ArrayList<ProductForPanier> productForPaniers,VBox vBox,Label nameLabel,int quantityDemande){
-        // Vérifie si la liste est vide
-        if (productForPaniers == null || productForPaniers.isEmpty()) {
+    /**
+     * Traite séquentiellement chaque produit du panier avec animation de progression.
+     */
+    private void runProductsSequentially(ArrayList<ProductForPanier> products, VBox vBox, Label nameLabel, int quantity) {
+        if (products == null || products.isEmpty()) {
             nameLabel.setText("Aucun produit à traiter.");
-            System.out.println("Panier vide ou null.");
             return;
         }
 
-        // Indice pour suivre le produit en cours
         final int[] currentIndex = {0};
-        nameLabel.setText("Préparation de : " + productForPaniers.get(currentIndex[0]).getNameProduct());
+        nameLabel.setText("Préparation de : " + products.get(currentIndex[0]).getNameProduct());
 
-        // ProgressBar et ProgressIndicator par produit
         ProgressBar bar = new ProgressBar();
         ProgressIndicator indicator = new ProgressIndicator();
-
-        // Préparer l'UI
-        nameLabel.setText("Préparation de : " + productForPaniers.get(currentIndex[0]).getNameProduct());
         bar.setPrefWidth(250);
         vBox.getChildren().addAll(bar, indicator);
 
-        // Service pour traiter les produits de manière séquentielle
         Service<Void> productService = new Service<>() {
             @Override
             protected Task<Void> createTask() {
                 return new Task<>() {
                     @Override
                     protected Void call() throws Exception {
-                        ProductForPanier product = productForPaniers.get(currentIndex[0]);
-                        System.out.println("Traitement du produit : " + product.getNameProduct());
-
-                        // Simulation du traitement (par exemple, une répétition)
+                        ProductForPanier product = products.get(currentIndex[0]);
                         for (int i = 0; i < product.getQuantityML(); i++) {
                             if (isCancelled()) break;
                             updateProgress(i + 1, product.getQuantityML());
-                            Thread.sleep(50); // Simulation d'un délai pour chaque étape
+                            Thread.sleep(50);
                         }
                         return null;
                     }
@@ -266,138 +278,62 @@ public class MenuBarController {
             }
         };
 
-
-        // Lier la progression au ProgressBar et au ProgressIndicator
         bar.progressProperty().bind(productService.progressProperty());
         indicator.progressProperty().bind(productService.progressProperty());
 
-        // Gestion des événements
-        productService.setOnSucceeded(event -> {
-            System.out.println("Produit traité : " + productForPaniers.get(currentIndex[0]).getNameProduct());
-
-            if(quantityDemande==1){
-                currentIndex[0]++; // Passe au produit suivant
-
-                // Si tous les produits sont traités
-                if (currentIndex[0] >= productForPaniers.size()) {
+        productService.setOnSucceeded(e -> {
+            if (quantity == 1) {
+                currentIndex[0]++;
+                if (currentIndex[0] >= products.size()) {
                     nameLabel.setText("Tous les produits ont été traités.");
-                    System.out.println("Tous les produits ont été traités.");
                     MainApp.panier.clear();
                     pickupProduct(vBox);
-
                 } else {
-                    // Préparation du produit suivant
-                    ProductForPanier nextProduct = productForPaniers.get(currentIndex[0]);
-                    nameLabel.setText("Préparation de : " + nextProduct.getNameProduct());
-                    bar.progressProperty().unbind();
-                    indicator.progressProperty().unbind();
-                    vBox.getChildren().removeAll(bar, indicator);
-                    if(quantityDemande>1) {
-                        runProductsSequentially(productForPaniers, vBox, nameLabel, quantityDemande-1);
-                    }else{
-                        ArrayList<ProductForPanier> newproductForPaniers=new ArrayList<>(productForPaniers.subList(currentIndex[0], productForPaniers.size()));
-                        runProductsSequentially(newproductForPaniers, vBox, nameLabel,newproductForPaniers.getFirst().getAskingQuantity());
-                    }
+                    restartProduct(productService, products, vBox, nameLabel, quantity, currentIndex);
                 }
-            }else{
-                ProductForPanier nextProduct = productForPaniers.get(currentIndex[0]);
-                nameLabel.setText("Préparation de : " + nextProduct.getNameProduct());
-                bar.progressProperty().unbind();
-                indicator.progressProperty().unbind();
-                vBox.getChildren().removeAll(bar, indicator);
-                if(quantityDemande>1) {
-                    runProductsSequentially(productForPaniers, vBox, nameLabel, quantityDemande-1);
-                }else{
-                    ArrayList<ProductForPanier> newproductForPaniers=new ArrayList<>(productForPaniers.subList(currentIndex[0], productForPaniers.size()));
-                    runProductsSequentially(newproductForPaniers, vBox, nameLabel,newproductForPaniers.getFirst().getAskingQuantity());
-                }
-
+            } else {
+                restartProduct(productService, products, vBox, nameLabel, quantity - 1, currentIndex);
             }
-
-
         });
 
-        productService.setOnCancelled(event -> {
-            System.out.println("Traitement annulé.");
-            nameLabel.setText("Traitement annulé.");
-        });
-
-        productService.setOnFailed(event -> {
-            Throwable exception = productService.getException();
-            System.out.println("Erreur lors du traitement du produit : " + exception.getMessage());
+        productService.setOnFailed(e -> {
             nameLabel.setText("Erreur pendant le traitement.");
         });
 
-        // Démarrer le traitement
         productService.start();
-
     }
 
-    private void pickupProduct(VBox vBox){
+    /**
+     * Ajoute un bouton de confirmation de récupération des produits.
+     */
+    private void pickupProduct(VBox vBox) {
         Button pickup = new Button("All products have been picked up");
         vBox.getChildren().add(pickup);
-        pickup.setOnAction(closeEvent -> {
-            System.out.println("Button clicked" + " " + "All products have been picked up");
-            Stage stage = (Stage) pickup.getScene().getWindow();
-            stage.close();
-        });
-
+        pickup.setOnAction(e -> ((Stage) pickup.getScene().getWindow()).close());
     }
 
-    private void byAllPanierSave(ActionEvent actionEvent) {
-        this.panier.updateFavorite(this.panier);
+    /**
+     * Recharge le traitement d'un produit ou passe au suivant.
+     */
+    private void restartProduct(Service<Void> service, ArrayList<ProductForPanier> products, VBox vBox, Label nameLabel, int quantity, int[] currentIndex) {
+        nameLabel.setText("Préparation de : " + products.get(currentIndex[0]).getNameProduct());
+        vBox.getChildren().removeIf(node -> node instanceof ProgressBar || node instanceof ProgressIndicator);
+        if (quantity > 1) {
+            runProductsSequentially(products, vBox, nameLabel, quantity - 1);
+        } else {
+            ArrayList<ProductForPanier> sub = new ArrayList<>(products.subList(currentIndex[0], products.size()));
+            runProductsSequentially(sub, vBox, nameLabel, sub.getFirst().getAskingQuantity());
+        }
     }
 
-
-    private void byAllPanier(Button button, VBox vBox){
-        button.setOnAction(closeEvent -> {
-            if(MainApp.panier.getProducts().isEmpty()){
-                if(!this.messagePanierEmpty){
-                    Label label = new Label("Votre panier est vide.");
-                    label.setStyle("-fx-font-weight: bold; -fx-font-size: 15; -fx-text-fill: red");
-                    vBox.getChildren().add(label);
-                    this.messagePanierEmpty=true;
-                }
-
-            }else {
-                // Quand j'achete je dois lancer la fenetre de "realisation des produits du paniers"
-                // Et sauvegarder ce qui a ete acheter dans le fichier pour les favoris
-                if(MainApp.connexion.is_connected()){
-                    int points= MainApp.panier.howManyPointsUserWin();
-                    MainApp.panier.setPointsForCurrentUser(points);
-
-                }
-                byAllPanierSave(closeEvent);
-                byAllPanierRun(closeEvent);
-            }
-
-
-
-        });
-    }
-
-
-
-
+    /**
+     * Affiche tous les produits de la boutique en console.
+     */
     public void onActionPrintShop(ActionEvent actionEvent) {
-        ArrayList<Product> products = this.productController.getProductsModel().getAllProducts();
+        ArrayList<Product> products = productController.getProductsModel().getAllProducts();
         System.out.println("Print Shop");
         for (Product product : products) {
             System.out.println(product.toString());
         }
     }
-
-    private void deleteProductFromPanier(Button button, ProductForPanier productForPanier){
-        button.setOnAction(closeEvent -> {
-            System.out.println("Button clicked" + " " + "Delete");
-            //this.panier.removeProduct();
-            this.panier.removeProduct(productForPanier);
-            Stage stage = (Stage) button.getScene().getWindow();
-            stage.close();
-
-
-        });
-
-    }
-
 }
