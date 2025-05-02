@@ -36,7 +36,7 @@ public class TemplateController {
         // When click on the image, choose this template and set up the editor to drag and drop the components
        // imgView1.setOnMouseClicked(this::setUpEditor);
         //imgView3.setOnMouseClicked(this::setUpPizza);;
-        imgView4.setOnMouseClicked(this::setUpCoca);
+        //imgView4.setOnMouseClicked(this::setUpCoca);
     }
 
     @FXML
@@ -131,9 +131,6 @@ public class TemplateController {
         setUpSnack(event);
         snackStage.showAndWait();
 
-
-
-
     }
 
     private void setUpSnack(MouseEvent event) {
@@ -165,6 +162,7 @@ public class TemplateController {
         // Set the scene and show the stage
         Scene scene = new Scene(coldDrinkLoader);
         cocaStage.setScene(scene);
+        setUpCoca(event);
         cocaStage.showAndWait();
 
     }
