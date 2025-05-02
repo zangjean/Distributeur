@@ -4,11 +4,12 @@ import editor.composants.colddrink.model.ColdDrinksLoader;
 import editor.composants.hotdrink.model.HotDrinksLoader;
 import editor.composants.pizza.model.PizzaListLoader;
 import editor.composants.savegarde.SaveLoad;
+import editor.composants.snack.model.SnackListLoader;
 import editor.composants.templates.composants.colddrink.model.ColdDrinkLoader;
 import editor.composants.templates.controller.HotDrinkPresetController;
 import editor.composants.templates.controller.TemplateController;
 import editor.composants.templates.model.*;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,13 +65,74 @@ public class EditorController{
         rightSide.prefWidthProperty().bind(root.widthProperty().multiply(0.75));
 
         // set border for the leftSide
-        leftSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
+        //leftSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
+        leftSide.setStyle("-fx-background-color: linear-gradient(to bottom, #2c3e50, #34495e); "
+                + "-fx-padding: 15px; -fx-spacing: 12px;");
 
         // unset border for the rightSide
         //rightSide.setStyle("-fx-border-color: transparent; -fx-border-width: 0px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
 
         // set border for the leftSide
-        rightSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
+        //rightSide.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-border-style: solid; -fx-background-color: #f0f0f0;");
+        rightSide.setStyle("-fx-background-color: #f5f7fa; -fx-background-radius: 8px; "
+                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);");
+
+        String btnStyle = "-fx-background-color: rgba(255,255,255,0.15); "
+                + "-fx-text-fill: white; -fx-font-weight: bold; "
+                + "-fx-background-radius: 5px; -fx-padding: 10px 15px; "
+                + "-fx-cursor: hand;";
+
+
+        // Appliquer le style à tous les boutons
+        for (Node node : leftSide.getChildren()) {
+            if (node instanceof Button button) {
+                button.setStyle(btnStyle);
+                button.setMaxWidth(Double.MAX_VALUE);
+
+                // Animation hover
+                button.setOnMouseEntered(e -> {
+                    button.setStyle(btnStyle + "-fx-background-color: rgba(255,255,255,0.25);");
+                    ScaleTransition st = new ScaleTransition(Duration.millis(150), button);
+                    st.setToX(1.05);
+                    st.setToY(1.05);
+                    st.play();
+                });
+
+                button.setOnMouseExited(e -> {
+                    button.setStyle(btnStyle);
+                    ScaleTransition st = new ScaleTransition(Duration.millis(150), button);
+                    st.setToX(1.0);
+                    st.setToY(1.0);
+                    st.play();
+                });
+
+                // Animation de click
+                button.setOnMousePressed(e -> button.setStyle(btnStyle + "-fx-background-color: rgba(255,255,255,0.1);"));
+                button.setOnMouseReleased(e -> {
+                    if (button.isHover()) {
+                        button.setStyle(btnStyle + "-fx-background-color: rgba(255,255,255,0.25);");
+                    } else {
+                        button.setStyle(btnStyle);
+                    }
+                });
+            }
+        }
+
+        // Animation d'entrée pour le panneau gauche
+        TranslateTransition slideIn = new TranslateTransition(Duration.millis(500), leftSide);
+        slideIn.setFromX(-leftSide.getPrefWidth());
+        slideIn.setToX(0);
+        slideIn.setInterpolator(Interpolator.EASE_OUT);
+
+        // Animation d'entrée pour le panneau droit
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(800), rightSide);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+
+        // Exécuter les animations
+        ParallelTransition parallel = new ParallelTransition(slideIn, fadeIn);
+        parallel.play();
+
 
 
 
@@ -313,8 +375,28 @@ public class EditorController{
         });
     }
     @FXML
-    private void displaySnack(ActionEvent event) {
+    private void displaySnack(ActionEvent event) throws IOException {
         System.out.println("Display Snack");
+        // Get the current stage
+        Stage currentStage = (Stage) root.getScene().getWindow();
+        // Get the current stage's position
+        double x = currentStage.getX();
+        double y = currentStage.getY();
+        // Set the new stage's position to the left of the current stage
+        // Create a new scene with the HotdrinkLoader as the root
+        SnackListLoader snackListLoader = new SnackListLoader();
+        Scene scene = new Scene(snackListLoader);
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setX(x - 400);
+        newStage.setY(y);
+        newStage.setTitle("Snack List");
+        newStage.setScene(scene);
+        newStage.show();
+        // add an listener to close the stage when the main stage is closed
+        currentStage.setOnCloseRequest(event1 -> {
+            newStage.close();
+        });
     }
 
 
