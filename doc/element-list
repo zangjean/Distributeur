@@ -12,6 +12,5 @@ application.model.distrib.productModel.product.beverage.sugar
 application.model.distrib.productModel.product.beverage.sugar.all
 application.model.distrib.productModel.product.beverage.sugar.all.chocolate
 application.model.distrib.saveFav
-application.model.homePage
 application.model.user
 application.utils
