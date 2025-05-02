@@ -34,9 +34,11 @@ public class HomeController {
 
             // Fermer l'ancienne fenêtre
             Stage oldStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            oldStage.close();
+            //oldStage.close();
+            oldStage.setWidth(200);
+            oldStage.setHeight(200);
 
-            stage.show();
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,9 +62,12 @@ public class HomeController {
 
             // Fermer l'ancienne fenêtre
             Stage oldStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            oldStage.close();
 
-            stage.show();
+            oldStage.setWidth(200);
+            oldStage.setHeight(200);
+//            oldStage.close();
+
+            stage.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }
