@@ -3,37 +3,63 @@ package application.model.distrib.saveFav;
 import java.io.Serializable;
 import java.util.HashMap;
 
+/**
+ * Classe représentant un ensemble de produits favoris persistables,
+ * avec un compteur du nombre de fois qu'un produit a été acheté.
+ * Implémente {@link Serializable} pour permettre la sauvegarde sur disque.
+ */
 public class FavoriteProductForSave implements Serializable {
 
-    private HashMap<String,Integer> favProds;
-    //<nom du produit,nbr de fois ou il est pris>
+    /** Map des produits favoris : nom du produit → nombre de fois qu'il a été acheté. */
+    private HashMap<String, Integer> favProds;
 
+    /**
+     * Constructeur par défaut.
+     * Initialise la map vide.
+     */
     public FavoriteProductForSave() {
-        this.favProds=new HashMap<>();
+        this.favProds = new HashMap<>();
     }
 
-    public HashMap<String,Integer> getFavProds() {
+    /**
+     * Retourne la map complète des produits favoris.
+     *
+     * @return Map des produits favoris.
+     */
+    public HashMap<String, Integer> getFavProds() {
         return favProds;
     }
 
-    public void setFavProds(HashMap<String,Integer> favProds) {
+    /**
+     * Remplace la map actuelle par une nouvelle.
+     *
+     * @param favProds Nouvelle map à affecter.
+     */
+    public void setFavProds(HashMap<String, Integer> favProds) {
         this.favProds = favProds;
     }
 
-    public void addFavProd(String prodName,int nbFav){
-        if(this.favProds.containsKey(prodName)){
-            this.favProds.put(prodName,this.favProds.get(prodName)+nbFav);
-        }else {
-            this.favProds.put(prodName,nbFav);
-        }
+    /**
+     * Ajoute un produit en favori ou incrémente son compteur si déjà présent.
+     *
+     * @param prodName Nom du produit.
+     * @param nbFav    Nombre de fois à ajouter à son compteur.
+     */
+    public void addFavProd(String prodName, int nbFav) {
+        this.favProds.merge(prodName, nbFav, Integer::sum);
     }
 
+    /**
+     * Fournit une représentation textuelle des produits favoris.
+     *
+     * @return Une chaîne listant chaque produit et son compteur d'achat.
+     */
     @Override
-    public String toString(){
-        String string = "";
+    public String toString() {
+        StringBuilder string = new StringBuilder();
         for (String key : this.favProds.keySet()) {
-            string += key + " : " + this.favProds.get(key) + "\n";
+            string.append(key).append(" : ").append(this.favProds.get(key)).append("\n");
         }
-        return string;
+        return string.toString();
     }
 }
